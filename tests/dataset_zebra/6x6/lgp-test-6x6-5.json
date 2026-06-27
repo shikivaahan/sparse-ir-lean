@@ -1,0 +1,17 @@
+{
+  "id": "lgp-test-6x6-5",
+  "size": "6*6",
+  "puzzle": "There are 6 houses, numbered 1 to 6 from left to right, as seen from across the street. Each house is occupied by a different person. Each house has a unique attribute for each of the following characteristics:\n - Each person has a unique name: `Alice`, `Carol`, `Eric`, `Peter`, `Bob`, `Arnold`\n - People have unique favorite music genres: `classical`, `hip hop`, `jazz`, `pop`, `rock`, `country`\n - The mothers' names in different houses are unique: `Sarah`, `Penny`, `Aniya`, `Janelle`, `Kailyn`, `Holly`\n - Each mother is accompanied by their child: `Alice`, `Fred`, `Timothy`, `Bella`, `Samantha`, `Meredith`\n - People have unique heights: `very short`, `tall`, `short`, `very tall`, `super tall`, `average`\n - The people keep unique animals: `bird`, `dog`, `horse`, `rabbit`, `cat`, `fish`\n\n## Clues:\n1. The person who loves pop music is the cat lover.\n2. The rabbit owner is directly left of The person whose mother's name is Aniya.\n3. The person whose mother's name is Holly is directly left of Carol.\n4. The person whose mother's name is Holly is the person's child is named Alice.\n5. The person whose mother's name is Holly is the person who loves classical music.\n6. The person who loves jazz music is The person whose mother's name is Sarah.\n7. The person's child is named Meredith is somewhere to the right of The person whose mother's name is Aniya.\n8. The person who is super tall is The person whose mother's name is Holly.\n9. The person who is the mother of Timothy is Bob.\n10. The person who is very short is somewhere to the left of The person whose mother's name is Aniya.\n11. Eric is the fish enthusiast.\n12. The person's child is named Samantha is somewhere to the right of the person who is very tall.\n13. The person who loves rock music is The person whose mother's name is Janelle.\n14. There is one house between the person who keeps horses and the person's child is named Meredith.\n15. The person's child is named Bella is somewhere to the right of Peter.\n16. The fish enthusiast is somewhere to the left of the bird keeper.\n17. The fish enthusiast is somewhere to the right of the person's child is named Alice.\n18. There is one house between the person's child is named Bella and the person who loves rock music.\n19. The person who is short is the cat lover.\n20. Alice is directly left of the person who loves classical music.\n21. The person's child is named Bella is The person whose mother's name is Aniya.\n22. There are two houses between The person whose mother's name is Penny and the person who is short.\n23. The person who loves hip-hop music is in the first house.\n24. Carol is the person who is tall.\n",
+  "solution": {
+    "header": ["House", "Name", "MusicGenre", "Mother", "Children", "Height", "Animal"],
+    "rows": [
+      ["___", "___", "___", "___", "___", "___", "___"],
+      ["___", "___", "___", "___", "___", "___", "___"],
+      ["___", "___", "___", "___", "___", "___", "___"],
+      ["___", "___", "___", "___", "___", "___", "___"],
+      ["___", "___", "___", "___", "___", "___", "___"],
+      ["___", "___", "___", "___", "___", "___", "___"]
+    ]
+  },
+  "created_at": "2024-07-11T01:22:10.735417"
+}

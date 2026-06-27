@@ -1,0 +1,35 @@
+{
+  "layout_version": "0.1.0",
+  "status": "frozen-stage-0",
+  "source": {
+    "dataset": "allenai/ZebraLogicBench",
+    "configuration": "grid_mode",
+    "split": "test",
+    "revision": "a909ef550df0d218775ea6fc950368db34c98680",
+    "url": "https://huggingface.co/datasets/allenai/ZebraLogicBench",
+    "license": "CC BY 4.0"
+  },
+  "records": [
+    {
+      "external_id": "lgp-test-2x2-33",
+      "split": "test",
+      "grid": "2x2",
+      "path": "2x2/lgp-test-2x2-33.json",
+      "sha256": "62802c4754049d4d387f6495ea72d9ed0cd9f72d7812480a9e6c1c8f311614dd"
+    },
+    {
+      "external_id": "lgp-test-4x4-27",
+      "split": "test",
+      "grid": "4x4",
+      "path": "4x4/lgp-test-4x4-27.json",
+      "sha256": "f0b99c6f6e6af6ee018cc4636bb440c2abbbb5528700b8584f43581c2df30433"
+    },
+    {
+      "external_id": "lgp-test-6x6-5",
+      "split": "test",
+      "grid": "6x6",
+      "path": "6x6/lgp-test-6x6-5.json",
+      "sha256": "d6949afc01370596b1e238a4e4de4dee3688d19290d2ae02b9b6eb561a21fd9b"
+    }
+  ]
+}
