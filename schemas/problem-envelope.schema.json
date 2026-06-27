@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shikivaahan/sparse-ir-lean/schemas/problem-envelope.schema.json",
+  "title": "SparseIR canonical problem envelope",
+  "description": "Frozen Stage 0 envelope. Domain payload fields are defined by later schemas.",
+  "type": "object",
+  "required": ["schema_version", "domain", "id", "source"],
+  "properties": {
+    "schema_version": {"const": "0.2"},
+    "domain": {"const": "zebra"},
+    "id": {"type": "string", "minLength": 1},
+    "source": {
+      "type": "object",
+      "required": ["dataset", "split", "external_id", "grid"],
+      "properties": {
+        "dataset": {"const": "zebralogic"},
+        "split": {"type": "string", "minLength": 1},
+        "external_id": {"type": "string", "minLength": 1},
+        "grid": {"type": "string", "pattern": "^[1-9][0-9]*x[1-9][0-9]*$"}
+      },
+      "additionalProperties": false
+    },
+    "expect": {
+      "description": "Opaque evaluation label; never a verifier premise."
+    }
+  },
+  "additionalProperties": true,
+  "x-sparseir-interface": {
+    "version": "0.2",
+    "status": "frozen-stage-0"
+  }
+}
