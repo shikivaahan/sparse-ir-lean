@@ -104,17 +104,33 @@ private def asArray (path : String) (value : Json) : ParseM (Array Json) :=
   | .arr values => pure values
   | _ => fail .invalidFieldType path "expected an array"
 
+private def divideDecimal (mantissa exponent : Nat) : Option Nat :=
+  if mantissa == 0 then
+    some 0
+  else
+    match exponent with
+    | 0 => some mantissa
+    | exponent + 1 =>
+        if mantissa % 10 == 0 then divideDecimal (mantissa / 10) exponent else none
+
+/-- Interpret all JSON Schema integer encodings, including `4.0` and `4e0`. -/
+private def asNat? : Json → Option Nat
+  | .num number =>
+      if number.mantissa < 0 then none
+      else divideDecimal number.mantissa.natAbs number.exponent
+  | _ => none
+
 private def asPositiveNat (path : String) (value : Json) : ParseM Nat :=
-  match value.getNat? with
-  | .ok 0 => fail .invalidValue path "expected a positive integer"
-  | .ok result => pure result
-  | .error _ => fail .invalidFieldType path "expected a positive integer"
+  match asNat? value with
+  | some 0 => fail .invalidValue path "expected a positive integer"
+  | some result => pure result
+  | none => fail .invalidFieldType path "expected a positive integer"
 
 private def parseHouse (path : String) (value : Json) : ParseM Zebra.House :=
-  match value.getNat? with
-  | .ok 0 => fail .invalidHouse path "house numbers are one-based"
-  | .ok house => pure { value := house }
-  | .error _ => fail .invalidHouse path "expected a positive integer house number"
+  match asNat? value with
+  | some 0 => fail .invalidHouse path "house numbers are one-based"
+  | some house => pure { value := house }
+  | none => fail .invalidHouse path "expected a positive integer house number"
 
 private def validGrid (grid : String) : Bool :=
   match grid.splitOn "x" with

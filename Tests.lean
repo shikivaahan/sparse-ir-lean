@@ -89,6 +89,10 @@ def main : IO UInt32 := do
   let expected := Json.mkObj [("opaque_marker", Json.arr #[1, true, Json.null,
     Json.mkObj [("keep", "exactly")]])]
   assertTrue "expect was not preserved opaquely" (parsed.envelope.expect == some expected)
+  let _ ← expectParsed "integral JSON number"
+    (source.replace "\"houses\": 4" "\"houses\": 4.0")
+  expectError "fractional JSON number" .invalidFieldType <| parseProblem <|
+    source.replace "\"houses\": 4" "\"houses\": 4.5"
 
   expectError "invalid JSON" .invalidJson (parseProblem "{")
   expectError "root is not an object" .expectedObject (parseProblem "[]")
