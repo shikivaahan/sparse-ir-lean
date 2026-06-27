@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shikivaahan/sparse-ir-lean/schemas/verifier-protocol.schema.json",
+  "title": "SparseIR verifier subprocess protocol",
+  "description": "One JSON request on stdin and one JSON response on stdout. Only info is implemented in Stage 0.",
+  "oneOf": [
+    {"$ref": "#/$defs/request"},
+    {"$ref": "#/$defs/response"}
+  ],
+  "$defs": {
+    "request": {
+      "type": "object",
+      "required": ["protocol_version", "command"],
+      "properties": {
+        "protocol_version": {"const": "0.1.0"},
+        "request_id": {},
+        "command": {
+          "enum": ["info", "compile", "init_state", "step", "check_candidate", "classify", "render_audit", "emit_artifact"]
+        },
+        "payload": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "result_kind": {
+      "enum": [
+        "INFO",
+        "STATIC_ERROR",
+        "COMPILED",
+        "STATE_INITIALIZED",
+        "ACCEPT_STEP",
+        "ACCEPT_SOLVED",
+        "INCOMPLETE",
+        "REJECT",
+        "AUDIT_RENDERED",
+        "ARTIFACT_EMITTED"
+      ]
+    },
+    "info_result": {
+      "type": "object",
+      "required": ["kind", "backend_id", "backend_version", "domain", "schema_version", "trust", "capabilities"],
+      "properties": {
+        "kind": {"const": "INFO"},
+        "backend_id": {"type": "string", "minLength": 1},
+        "backend_version": {"type": "string", "minLength": 1},
+        "domain": {"const": "zebra"},
+        "schema_version": {"const": "0.2"},
+        "trust": {"const": "trusted_for_results"},
+        "capabilities": {
+          "type": "object",
+          "required": ["modes", "stepwise", "tactics", "audit_view"],
+          "properties": {
+            "modes": {
+              "type": "array",
+              "items": {"enum": [0, 1, 2]},
+              "uniqueItems": true
+            },
+            "stepwise": {"type": "boolean"},
+            "tactics": {"type": "boolean"},
+            "audit_view": {"type": "boolean"}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "static_error_result": {
+      "type": "object",
+      "required": ["kind", "error_code", "message"],
+      "properties": {
+        "kind": {"const": "STATIC_ERROR"},
+        "error_code": {"type": "string", "minLength": 1},
+        "message": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "compiled_result": {
+      "type": "object",
+      "required": ["kind", "compiled"],
+      "properties": {
+        "kind": {"const": "COMPILED"},
+        "compiled": {"description": "Opaque compiled problem; frozen by the compiler stage."}
+      },
+      "additionalProperties": false
+    },
+    "state_initialized_result": {
+      "type": "object",
+      "required": ["kind", "state"],
+      "properties": {
+        "kind": {"const": "STATE_INITIALIZED"},
+        "state": {"description": "Opaque checker state; frozen by the checker stage."}
+      },
+      "additionalProperties": false
+    },
+    "accept_step_result": {
+      "type": "object",
+      "required": ["kind", "state"],
+      "properties": {
+        "kind": {"const": "ACCEPT_STEP"},
+        "state": {"description": "Opaque updated checker state."}
+      },
+      "additionalProperties": false
+    },
+    "accept_solved_result": {
+      "type": "object",
+      "required": ["kind", "artifact"],
+      "properties": {
+        "kind": {"const": "ACCEPT_SOLVED"},
+        "artifact": {"description": "Opaque checked artifact; frozen by the artifact stage."}
+      },
+      "additionalProperties": false
+    },
+    "incomplete_result": {
+      "type": "object",
+      "required": ["kind", "state"],
+      "properties": {
+        "kind": {"const": "INCOMPLETE"},
+        "state": {"description": "Opaque checker state available for further steps."}
+      },
+      "additionalProperties": false
+    },
+    "reject_result": {
+      "type": "object",
+      "required": ["kind", "failure"],
+      "properties": {
+        "kind": {"const": "REJECT"},
+        "failure": {"description": "Opaque failure details; frozen by the failure-report stage."}
+      },
+      "additionalProperties": false
+    },
+    "audit_rendered_result": {
+      "type": "object",
+      "required": ["kind", "readable_view"],
+      "properties": {
+        "kind": {"const": "AUDIT_RENDERED"},
+        "readable_view": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "artifact_emitted_result": {
+      "type": "object",
+      "required": ["kind", "artifact"],
+      "properties": {
+        "kind": {"const": "ARTIFACT_EMITTED"},
+        "artifact": {"description": "Opaque emitted artifact; frozen by the artifact stage."}
+      },
+      "additionalProperties": false
+    },
+    "result": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": {"$ref": "#/$defs/result_kind"}
+      },
+      "oneOf": [
+        {"$ref": "#/$defs/info_result"},
+        {"$ref": "#/$defs/static_error_result"},
+        {"$ref": "#/$defs/compiled_result"},
+        {"$ref": "#/$defs/state_initialized_result"},
+        {"$ref": "#/$defs/accept_step_result"},
+        {"$ref": "#/$defs/accept_solved_result"},
+        {"$ref": "#/$defs/incomplete_result"},
+        {"$ref": "#/$defs/reject_result"},
+        {"$ref": "#/$defs/audit_rendered_result"},
+        {"$ref": "#/$defs/artifact_emitted_result"}
+      ]
+    },
+    "response": {
+      "type": "object",
+      "required": ["protocol_version", "request_id", "result"],
+      "properties": {
+        "protocol_version": {"const": "0.1.0"},
+        "request_id": {},
+        "result": {"$ref": "#/$defs/result"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-sparseir-interface": {
+    "version": "0.1.0",
+    "status": "frozen-stage-0",
+    "transport": "single-request-json-stdin-single-response-json-stdout"
+  },
+  "x-sparseir-command-results": {
+    "info": ["INFO", "STATIC_ERROR"],
+    "compile": ["COMPILED", "STATIC_ERROR"],
+    "init_state": ["STATE_INITIALIZED", "STATIC_ERROR"],
+    "step": ["ACCEPT_STEP", "ACCEPT_SOLVED", "INCOMPLETE", "REJECT", "STATIC_ERROR"],
+    "check_candidate": ["ACCEPT_SOLVED", "INCOMPLETE", "REJECT", "STATIC_ERROR"],
+    "classify": ["ACCEPT_SOLVED", "INCOMPLETE", "REJECT", "STATIC_ERROR"],
+    "render_audit": ["AUDIT_RENDERED", "STATIC_ERROR"],
+    "emit_artifact": ["ARTIFACT_EMITTED", "STATIC_ERROR"]
+  }
+}
