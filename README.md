@@ -16,9 +16,10 @@ differential oracle. It validates the Lean checker during development and must
 never be placed on the inference path. There is no Horn/ProofWriter checker and no
 solver in the trusted Lean code.
 
-Stage 0 establishes interfaces and dataset grounding only. Problem parsing,
-candidate checking, trace parsing, and artifact emission are deliberately absent.
-The verifier reports no checking capabilities until later stage gates pass.
+Stage 1 adds direct, trusted Lean parsing of canonical Zebra `problem.json` files.
+Static puzzle validation, candidate checking, trace parsing, and artifact emission
+remain deliberately absent. The verifier reports no checking capabilities until
+their later stage gates pass.
 
 ## Pinned tools
 
@@ -37,17 +38,20 @@ uv sync --dev
 No provider SDK is configured and the Stage 0 Inspect task explicitly uses no
 model.
 
-## Frozen Stage 0 interfaces
+## Frozen interfaces
 
 | Interface | Version | Source |
 | --- | --- | --- |
 | Canonical envelope | `0.2` | `schemas/problem-envelope.schema.json` |
+| Zebra problem and parse errors | `0.2` | `schemas/zebra-problem.schema.json` |
 | Dataset layout | `0.1.0` | `src/sparseir_harness/data/zebra/manifest.json` |
 | Verifier subprocess protocol | `0.1.0` | `schemas/verifier-protocol.schema.json` |
 
 The verifier transport is one JSON request on stdin and one JSON response on
-stdout. At Stage 0, only `info` is implemented. Every checking command fails closed
-with `STATIC_ERROR/not_implemented_stage_0`.
+stdout. Only `info` is implemented at the subprocess boundary. Every checking
+command continues to fail closed with the frozen Stage 0 error until its own gate
+passes; Stage 1 exposes parsing as the trusted Lean library functions
+`parseProblem` and `parseProblemJson`, not as a static-compiler result.
 
 ```bash
 printf '%s' '{"protocol_version":"0.1.0","request_id":"readme","command":"info"}' \
@@ -75,7 +79,19 @@ clues or judge solutions:
 uv run sparseir-check-dataset
 ```
 
-## Stage 0 checks
+## Stage 1 parser boundary
+
+`SparseIRLean.Json` parses the envelope, source metadata, positive raw size,
+categories, all ten Zebra clue forms, and opaque `expect` JSON. Unknown fields are
+rejected. Cross-reference validation, category cardinality/distinctness, clue-ID
+uniqueness, and puzzle-relative house bounds belong to the Stage 2 static compiler
+and are intentionally not parser decisions.
+
+The parser fixtures in `tests/problems/` are derived from the three pinned public
+records across 2x2, 4x4, and 6x6 grids. The published problem schema freezes the
+accepted JSON shape, unknown-field policy, and structured parse-error codes.
+
+## Checks
 
 ```bash
 lake build
