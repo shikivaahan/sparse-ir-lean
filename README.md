@@ -42,7 +42,7 @@ model.
 | Interface | Version | Source |
 | --- | --- | --- |
 | Canonical envelope | `0.2` | `schemas/problem-envelope.schema.json` |
-| Dataset layout | `0.1.0` | `tests/dataset_zebra/manifest.json` |
+| Dataset layout | `0.1.0` | `src/sparseir_harness/data/zebra/manifest.json` |
 | Verifier subprocess protocol | `0.1.0` | `schemas/verifier-protocol.schema.json` |
 
 The verifier transport is one JSON request on stdin and one JSON response on
@@ -61,10 +61,12 @@ owned by Lean.
 
 ## Dataset grounding
 
-`tests/dataset_zebra/` contains three unmodified public ZebraLogicBench records
-from the `grid_mode/test` split at 2x2, 4x4, and 6x6. The frozen manifest retains
-the external ID, split, normalized grid size, source revision, path, and SHA-256
-for every record. `ATTRIBUTION.md` records source and license information.
+The Python package contains three unmodified public ZebraLogicBench records under
+`src/sparseir_harness/data/zebra/` from the `grid_mode/test` split at 2x2, 4x4,
+and 6x6. The frozen manifest retains the external ID, split, normalized grid size,
+source revision, path, and SHA-256 for every record. `ATTRIBUTION.md` records source
+and license information. The records are bundled into the wheel so the installed
+dataset-checking entry point does not depend on a repository checkout.
 
 The loader checks provenance and on-disk integrity only. It does not interpret
 clues or judge solutions:

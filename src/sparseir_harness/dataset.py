@@ -9,12 +9,13 @@ from __future__ import annotations
 import hashlib
 import json
 from dataclasses import dataclass
+from importlib.resources import files
+from importlib.resources.abc import Traversable
 from pathlib import Path
 from typing import Any
 
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_DATASET_ROOT = REPOSITORY_ROOT / "tests" / "dataset_zebra"
+DEFAULT_DATASET_ROOT = files("sparseir_harness").joinpath("data", "zebra")
 DATASET_LAYOUT_VERSION = "0.1.0"
 
 
@@ -25,7 +26,7 @@ class ZebraRecord:
     houses: int
     categories: int
     split: str
-    path: Path
+    path: Traversable
     puzzle: str
     raw: dict[str, Any]
 
@@ -38,7 +39,7 @@ class DatasetManifest:
     records: tuple[ZebraRecord, ...]
 
 
-def _read_json(path: Path) -> dict[str, Any]:
+def _read_json(path: Traversable) -> dict[str, Any]:
     value = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
         raise ValueError(f"expected JSON object: {path}")
@@ -51,9 +52,9 @@ def _require_string(value: Any, field: str) -> str:
     return value
 
 
-def load_zebra_subset(root: Path = DEFAULT_DATASET_ROOT) -> DatasetManifest:
-    root = root.resolve()
-    manifest_data = _read_json(root / "manifest.json")
+def load_zebra_subset(root: Path | None = None) -> DatasetManifest:
+    dataset_root: Traversable = DEFAULT_DATASET_ROOT if root is None else root.resolve()
+    manifest_data = _read_json(dataset_root.joinpath("manifest.json"))
     layout_version = _require_string(manifest_data.get("layout_version"), "layout_version")
     if layout_version != DATASET_LAYOUT_VERSION:
         raise ValueError(
@@ -89,7 +90,7 @@ def load_zebra_subset(root: Path = DEFAULT_DATASET_ROOT) -> DatasetManifest:
         relative_path = Path(_require_string(entry.get("path"), "path"))
         if relative_path.is_absolute() or ".." in relative_path.parts:
             raise ValueError(f"record path must stay inside dataset root: {relative_path}")
-        record_path = root / relative_path
+        record_path = dataset_root.joinpath(*relative_path.parts)
         raw_bytes = record_path.read_bytes()
         actual_hash = hashlib.sha256(raw_bytes).hexdigest()
         expected_hash = _require_string(entry.get("sha256"), "sha256")

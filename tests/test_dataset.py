@@ -1,3 +1,4 @@
+from importlib.resources import files
 from pathlib import Path
 
 import pytest
@@ -22,14 +23,15 @@ def test_real_subset_loads_across_grid_sizes() -> None:
 
 
 def test_loader_rejects_tampered_record(tmp_path: Path) -> None:
-    source_root = Path(__file__).parent / "dataset_zebra"
+    source_root = files("sparseir_harness").joinpath("data", "zebra")
     target_root = tmp_path / "dataset_zebra"
     target_root.mkdir()
     (target_root / "manifest.json").write_bytes((source_root / "manifest.json").read_bytes())
     for grid in ("2x2", "4x4", "6x6"):
         (target_root / grid).mkdir()
-        for source in (source_root / grid).glob("*.json"):
-            (target_root / grid / source.name).write_bytes(source.read_bytes())
+        for source in source_root.joinpath(grid).iterdir():
+            if source.name.endswith(".json"):
+                (target_root / grid / source.name).write_bytes(source.read_bytes())
 
     record = target_root / "2x2" / "lgp-test-2x2-33.json"
     record.write_text(record.read_text(encoding="utf-8") + "\n", encoding="utf-8")
