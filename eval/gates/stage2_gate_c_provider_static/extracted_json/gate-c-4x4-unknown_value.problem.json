@@ -1,0 +1,194 @@
+{
+  "schema_version": "0.2",
+  "domain": "zebra",
+  "id": "zl_lgp-test-4x4-27",
+  "source": {
+    "dataset": "zebralogic",
+    "split": "test",
+    "external_id": "lgp-test-4x4-27",
+    "grid": "4x4"
+  },
+  "size": {
+    "houses": 4,
+    "categories": 4
+  },
+  "categories": {
+    "Name": [
+      "Alice",
+      "Eric",
+      "Arnold",
+      "Peter"
+    ],
+    "Occupation": [
+      "artist",
+      "engineer",
+      "teacher",
+      "doctor"
+    ],
+    "BookGenre": [
+      "fantasy",
+      "science fiction",
+      "mystery",
+      "romance"
+    ],
+    "PhoneModel": [
+      "google pixel 6",
+      "iphone 13",
+      "oneplus 9",
+      "samsung galaxy s21"
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "direct_left",
+      "a": {
+        "cat": "Occupation",
+        "val": "engineer"
+      },
+      "b": {
+        "cat": "PhoneModel",
+        "val": "samsung galaxy s21"
+      }
+    },
+    {
+      "id": "c2",
+      "type": "found_at",
+      "cat": "BookGenre",
+      "val": "fantasy",
+      "house": 2
+    },
+    {
+      "id": "c3",
+      "type": "not_at",
+      "cat": "Name",
+      "val": "Alice",
+      "house": 2
+    },
+    {
+      "id": "c4",
+      "type": "same_house",
+      "a": {
+        "cat": "Name",
+        "val": "Eric"
+      },
+      "b": {
+        "cat": "Occupation",
+        "val": "teacher"
+      }
+    },
+    {
+      "id": "c5",
+      "type": "same_house",
+      "a": {
+        "cat": "PhoneModel",
+        "val": "samsung galaxy s21"
+      },
+      "b": {
+        "cat": "BookGenre",
+        "val": "fantasy"
+      }
+    },
+    {
+      "id": "c6",
+      "type": "same_house",
+      "a": {
+        "cat": "PhoneModel",
+        "val": "iphone 13"
+      },
+      "b": {
+        "cat": "BookGenre",
+        "val": "science fiction"
+      }
+    },
+    {
+      "id": "c7",
+      "type": "left_of",
+      "a": {
+        "cat": "BookGenre",
+        "val": "science fiction"
+      },
+      "b": {
+        "cat": "PhoneModel",
+        "val": "oneplus 9"
+      }
+    },
+    {
+      "id": "c8",
+      "type": "same_house",
+      "a": {
+        "cat": "PhoneModel",
+        "val": "oneplus 9"
+      },
+      "b": {
+        "cat": "Name",
+        "val": "Arnold"
+      }
+    },
+    {
+      "id": "c9",
+      "type": "same_house",
+      "a": {
+        "cat": "Occupation",
+        "val": "doctor"
+      },
+      "b": {
+        "cat": "BookGenre",
+        "val": "mystery"
+      }
+    },
+    {
+      "id": "c10",
+      "type": "same_house",
+      "a": {
+        "cat": "PhoneModel",
+        "val": "iphone 13"
+      },
+      "b": {
+        "cat": "Occupation",
+        "val": "GhostValue"
+      }
+    }
+  ],
+  "expect": {
+    "source_solution": {
+      "header": [
+        "House",
+        "Name",
+        "Occupation",
+        "BookGenre",
+        "PhoneModel"
+      ],
+      "rows": [
+        [
+          "___",
+          "___",
+          "___",
+          "___",
+          "___"
+        ],
+        [
+          "___",
+          "___",
+          "___",
+          "___",
+          "___"
+        ],
+        [
+          "___",
+          "___",
+          "___",
+          "___",
+          "___"
+        ],
+        [
+          "___",
+          "___",
+          "___",
+          "___",
+          "___"
+        ]
+      ]
+    }
+  }
+}

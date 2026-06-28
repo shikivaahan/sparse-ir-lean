@@ -1,0 +1,38 @@
+{
+  "dataset_path": "eval/datasets/stage2_gate_c_provider_static.jsonl",
+  "gate": "stage2_gate_c_provider_static",
+  "inspect_log_path": "eval/logs/stage2_gate_c_provider_static/2026-06-28T20-29-37-00-00_stage2-gate-c-provider-static_KdxQrtW9SzowTKCryupBjA.eval",
+  "lean_error_code_coverage": {
+    "category_size_mismatch": 1,
+    "duplicate_clue_id": 1,
+    "house_out_of_range": 3,
+    "invalid_domain": 3,
+    "invalid_schema": 3,
+    "unknown_category": 3,
+    "unknown_value": 3,
+    "unsupported_schema_version": 3
+  },
+  "lean_error_path_present": 20,
+  "model": "deepseek/deepseek-v4-flash",
+  "provider": "openrouter",
+  "status": "pass",
+  "task_kind_coverage": {
+    "bad_house_index": 3,
+    "category_size_mismatch": 3,
+    "drop_required_field": 3,
+    "duplicate_clue_id": 3,
+    "freeform_convert_to_problem_json": 3,
+    "unknown_category": 3,
+    "unknown_value": 3,
+    "valid_reemit_problem": 3,
+    "wrong_domain": 3,
+    "wrong_schema_version": 3
+  },
+  "total_compiled": 10,
+  "total_parse_error": 9,
+  "total_protocol_error": 0,
+  "total_provider_calls": 30,
+  "total_provider_output_not_json": 0,
+  "total_samples": 30,
+  "total_static_error": 11
+}
