@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.2",
+  "domain": "zebra",
+  "id": "zl_lgp-test-2x2-33",
+  "source": {
+    "dataset": "zebralogic",
+    "split": "test",
+    "external_id": "lgp-test-2x2-33",
+    "grid": "2x2"
+  },
+  "size": {
+    "houses": 2,
+    "categories": 2
+  },
+  "categories": {
+    "Name": [
+      "Eric",
+      "Arnold"
+    ],
+    "Pet": [
+      "dog",
+      "cat"
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "left_of",
+      "a": {
+        "cat": "Name",
+        "val": "Eric"
+      },
+      "b": {
+        "cat": "Name",
+        "val": "Arnold"
+      }
+    },
+    {
+      "id": "c2",
+      "type": "not_at",
+      "cat": "GhostCategory",
+      "val": "dog",
+      "house": 1
+    }
+  ],
+  "expect": {
+    "source_solution": {
+      "header": [
+        "House",
+        "Name",
+        "Pet"
+      ],
+      "rows": [
+        [
+          "___",
+          "___",
+          "___"
+        ],
+        [
+          "___",
+          "___",
+          "___"
+        ]
+      ]
+    }
+  }
+}

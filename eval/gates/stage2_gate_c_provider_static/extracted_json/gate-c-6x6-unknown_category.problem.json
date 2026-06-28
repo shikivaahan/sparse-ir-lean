@@ -1,0 +1,419 @@
+{
+  "schema_version": "0.2",
+  "domain": "zebra",
+  "id": "zl_lgp-test-6x6-5",
+  "source": {
+    "dataset": "zebralogic",
+    "split": "test",
+    "external_id": "lgp-test-6x6-5",
+    "grid": "6x6"
+  },
+  "size": {
+    "houses": 6,
+    "categories": 6
+  },
+  "categories": {
+    "Name": [
+      "Alice",
+      "Carol",
+      "Eric",
+      "Peter",
+      "Bob",
+      "Arnold"
+    ],
+    "MusicGenre": [
+      "classical",
+      "hip hop",
+      "jazz",
+      "pop",
+      "rock",
+      "country"
+    ],
+    "Mother": [
+      "Sarah",
+      "Penny",
+      "Aniya",
+      "Janelle",
+      "Kailyn",
+      "Holly"
+    ],
+    "Children": [
+      "Alice",
+      "Fred",
+      "Timothy",
+      "Bella",
+      "Samantha",
+      "Meredith"
+    ],
+    "Height": [
+      "very short",
+      "tall",
+      "short",
+      "very tall",
+      "super tall",
+      "average"
+    ],
+    "Animal": [
+      "bird",
+      "dog",
+      "horse",
+      "rabbit",
+      "cat",
+      "fish"
+    ]
+  },
+  "clues": [
+    {
+      "id": "c1",
+      "type": "same_house",
+      "a": {
+        "cat": "MusicGenre",
+        "val": "pop"
+      },
+      "b": {
+        "cat": "Animal",
+        "val": "cat"
+      }
+    },
+    {
+      "id": "c2",
+      "type": "direct_left",
+      "a": {
+        "cat": "Animal",
+        "val": "rabbit"
+      },
+      "b": {
+        "cat": "Mother",
+        "val": "Aniya"
+      }
+    },
+    {
+      "id": "c3",
+      "type": "direct_left",
+      "a": {
+        "cat": "Mother",
+        "val": "Holly"
+      },
+      "b": {
+        "cat": "Name",
+        "val": "Carol"
+      }
+    },
+    {
+      "id": "c4",
+      "type": "same_house",
+      "a": {
+        "cat": "Mother",
+        "val": "Holly"
+      },
+      "b": {
+        "cat": "Children",
+        "val": "Alice"
+      }
+    },
+    {
+      "id": "c5",
+      "type": "same_house",
+      "a": {
+        "cat": "Mother",
+        "val": "Holly"
+      },
+      "b": {
+        "cat": "MusicGenre",
+        "val": "classical"
+      }
+    },
+    {
+      "id": "c6",
+      "type": "same_house",
+      "a": {
+        "cat": "MusicGenre",
+        "val": "jazz"
+      },
+      "b": {
+        "cat": "Mother",
+        "val": "Sarah"
+      }
+    },
+    {
+      "id": "c7",
+      "type": "right_of",
+      "a": {
+        "cat": "Children",
+        "val": "Meredith"
+      },
+      "b": {
+        "cat": "Mother",
+        "val": "Aniya"
+      }
+    },
+    {
+      "id": "c8",
+      "type": "same_house",
+      "a": {
+        "cat": "Height",
+        "val": "super tall"
+      },
+      "b": {
+        "cat": "Mother",
+        "val": "Holly"
+      }
+    },
+    {
+      "id": "c9",
+      "type": "same_house",
+      "a": {
+        "cat": "Children",
+        "val": "Timothy"
+      },
+      "b": {
+        "cat": "Name",
+        "val": "Bob"
+      }
+    },
+    {
+      "id": "c10",
+      "type": "left_of",
+      "a": {
+        "cat": "Height",
+        "val": "very short"
+      },
+      "b": {
+        "cat": "Mother",
+        "val": "Aniya"
+      }
+    },
+    {
+      "id": "c11",
+      "type": "same_house",
+      "a": {
+        "cat": "Name",
+        "val": "Eric"
+      },
+      "b": {
+        "cat": "Animal",
+        "val": "fish"
+      }
+    },
+    {
+      "id": "c12",
+      "type": "right_of",
+      "a": {
+        "cat": "Children",
+        "val": "Samantha"
+      },
+      "b": {
+        "cat": "Height",
+        "val": "very tall"
+      }
+    },
+    {
+      "id": "c13",
+      "type": "same_house",
+      "a": {
+        "cat": "MusicGenre",
+        "val": "rock"
+      },
+      "b": {
+        "cat": "Mother",
+        "val": "Janelle"
+      }
+    },
+    {
+      "id": "c14",
+      "type": "one_between",
+      "a": {
+        "cat": "Animal",
+        "val": "horse"
+      },
+      "b": {
+        "cat": "Children",
+        "val": "Meredith"
+      }
+    },
+    {
+      "id": "c15",
+      "type": "right_of",
+      "a": {
+        "cat": "Children",
+        "val": "Bella"
+      },
+      "b": {
+        "cat": "Name",
+        "val": "Peter"
+      }
+    },
+    {
+      "id": "c16",
+      "type": "left_of",
+      "a": {
+        "cat": "Animal",
+        "val": "fish"
+      },
+      "b": {
+        "cat": "Animal",
+        "val": "bird"
+      }
+    },
+    {
+      "id": "c17",
+      "type": "right_of",
+      "a": {
+        "cat": "Animal",
+        "val": "fish"
+      },
+      "b": {
+        "cat": "Children",
+        "val": "Alice"
+      }
+    },
+    {
+      "id": "c18",
+      "type": "one_between",
+      "a": {
+        "cat": "Children",
+        "val": "Bella"
+      },
+      "b": {
+        "cat": "MusicGenre",
+        "val": "rock"
+      }
+    },
+    {
+      "id": "c19",
+      "type": "same_house",
+      "a": {
+        "cat": "Height",
+        "val": "short"
+      },
+      "b": {
+        "cat": "Animal",
+        "val": "cat"
+      }
+    },
+    {
+      "id": "c20",
+      "type": "direct_left",
+      "a": {
+        "cat": "Name",
+        "val": "Alice"
+      },
+      "b": {
+        "cat": "MusicGenre",
+        "val": "classical"
+      }
+    },
+    {
+      "id": "c21",
+      "type": "same_house",
+      "a": {
+        "cat": "Children",
+        "val": "Bella"
+      },
+      "b": {
+        "cat": "Mother",
+        "val": "Aniya"
+      }
+    },
+    {
+      "id": "c22",
+      "type": "two_between",
+      "a": {
+        "cat": "Mother",
+        "val": "Penny"
+      },
+      "b": {
+        "cat": "Height",
+        "val": "short"
+      }
+    },
+    {
+      "id": "c23",
+      "type": "found_at",
+      "cat": "MusicGenre",
+      "val": "hip hop",
+      "house": 1
+    },
+    {
+      "id": "c24",
+      "type": "same_house",
+      "a": {
+        "cat": "Name",
+        "val": "Carol"
+      },
+      "b": {
+        "cat": "GhostCategory",
+        "val": "tall"
+      }
+    }
+  ],
+  "expect": {
+    "source_solution": {
+      "header": [
+        "House",
+        "Name",
+        "MusicGenre",
+        "Mother",
+        "Children",
+        "Height",
+        "Animal"
+      ],
+      "rows": [
+        [
+          "___",
+          "___",
+          "___",
+          "___",
+          "___",
+          "___",
+          "___"
+        ],
+        [
+          "___",
+          "___",
+          "___",
+          "___",
+          "___",
+          "___",
+          "___"
+        ],
+        [
+          "___",
+          "___",
+          "___",
+          "___",
+          "___",
+          "___",
+          "___"
+        ],
+        [
+          "___",
+          "___",
+          "___",
+          "___",
+          "___",
+          "___",
+          "___"
+        ],
+        [
+          "___",
+          "___",
+          "___",
+          "___",
+          "___",
+          "___",
+          "___"
+        ],
+        [
+          "___",
+          "___",
+          "___",
+          "___",
+          "___",
+          "___",
+          "___"
+        ]
+      ]
+    }
+  }
+}
