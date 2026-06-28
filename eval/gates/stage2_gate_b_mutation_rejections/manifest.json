@@ -1,0 +1,27 @@
+{
+  "error_code_coverage": {
+    "category_size_mismatch": 3,
+    "duplicate_clue_id": 3,
+    "duplicate_value": 3,
+    "house_out_of_range": 3,
+    "invalid_domain": 3,
+    "size_mismatch": 3,
+    "unknown_category": 3,
+    "unknown_value": 3,
+    "unsupported_schema_version": 3
+  },
+  "failures": [],
+  "gate": "stage2_gate_b_mutation_rejections",
+  "grid_coverage": {
+    "2x2": 9,
+    "4x4": 9,
+    "6x6": 9
+  },
+  "status": "pass",
+  "total_missing_error_path": 0,
+  "total_mutations_generated": 27,
+  "total_rejected": 27,
+  "total_source_problems_used": 3,
+  "total_unexpected_compiled": 0,
+  "total_wrong_error_code": 0
+}

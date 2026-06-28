@@ -1,0 +1,47 @@
+{
+  "failures": [],
+  "fixture_roots_scanned": [
+    "data",
+    "eval",
+    "src/sparseir_harness/data",
+    "tests"
+  ],
+  "gate": "stage2_gate_a_compile_all",
+  "skips": [
+    {
+      "reason": "duplicate stable key; canonical source is data/zebralogic/grid_mode-test-00000-of-00001.parquet",
+      "source_file": "src/sparseir_harness/data/zebra/2x2/lgp-test-2x2-33.json"
+    },
+    {
+      "reason": "duplicate stable key; canonical source is data/zebralogic/grid_mode-test-00000-of-00001.parquet",
+      "source_file": "src/sparseir_harness/data/zebra/4x4/lgp-test-4x4-27.json"
+    },
+    {
+      "reason": "duplicate stable key; canonical source is data/zebralogic/grid_mode-test-00000-of-00001.parquet",
+      "source_file": "src/sparseir_harness/data/zebra/6x6/lgp-test-6x6-5.json"
+    },
+    {
+      "reason": "duplicate stable key; canonical source is data/zebralogic/grid_mode-test-00000-of-00001.parquet",
+      "source_file": "tests/problems/lgp-test-2x2-33.problem.json"
+    },
+    {
+      "reason": "duplicate stable key; canonical source is data/zebralogic/grid_mode-test-00000-of-00001.parquet",
+      "source_file": "tests/problems/lgp-test-4x4-27.problem.json"
+    },
+    {
+      "reason": "duplicate stable key; canonical source is data/zebralogic/grid_mode-test-00000-of-00001.parquet",
+      "source_file": "tests/problems/lgp-test-6x6-5.problem.json"
+    }
+  ],
+  "source_roots_scanned": [
+    "data/zebralogic",
+    "src/sparseir_harness/data/zebra"
+  ],
+  "status": "pass",
+  "total_compiled": 1000,
+  "total_duplicates": 6,
+  "total_failed": 0,
+  "total_ingested": 1000,
+  "total_skipped": 6,
+  "total_source_records_seen": 1006
+}

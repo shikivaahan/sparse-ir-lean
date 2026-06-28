@@ -15,7 +15,7 @@
         "protocol_version": {"const": "0.1.0"},
         "request_id": {},
         "command": {
-          "enum": ["info", "compile", "init_state", "step", "check_candidate", "classify", "render_audit", "emit_artifact"]
+          "enum": ["info", "compile", "compile_view", "init_state", "step", "check_candidate", "classify", "render_audit", "emit_artifact"]
         },
         "payload": {"type": "object"}
       },
@@ -69,6 +69,7 @@
       "properties": {
         "kind": {"const": "STATIC_ERROR"},
         "error_code": {"type": "string", "minLength": 1},
+        "error_path": {"type": "string"},
         "message": {"type": "string"}
       },
       "additionalProperties": false
@@ -183,6 +184,7 @@
   "x-sparseir-command-results": {
     "info": ["INFO", "STATIC_ERROR"],
     "compile": ["COMPILED", "STATIC_ERROR"],
+    "compile_view": ["COMPILED", "STATIC_ERROR"],
     "init_state": ["STATE_INITIALIZED", "STATIC_ERROR"],
     "step": ["ACCEPT_STEP", "ACCEPT_SOLVED", "INCOMPLETE", "REJECT", "STATIC_ERROR"],
     "check_candidate": ["ACCEPT_SOLVED", "INCOMPLETE", "REJECT", "STATIC_ERROR"],
