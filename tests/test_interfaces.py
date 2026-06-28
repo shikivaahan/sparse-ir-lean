@@ -70,7 +70,7 @@ def test_problem_schema_freezes_stage1_policy_and_error_vocabulary() -> None:
 
     assert schema["x-sparseir-interface"] == {
         "version": "0.2",
-        "status": "frozen-stage-1",
+        "status": "frozen-stage-2",
         "unknown-field-policy": "reject",
     }
     assert schema["x-sparseir-parse-error-codes"] == [
@@ -80,10 +80,21 @@ def test_problem_schema_freezes_stage1_policy_and_error_vocabulary() -> None:
         "unknown_field",
         "invalid_field_type",
         "invalid_value",
-        "unsupported_schema_version",
-        "invalid_domain",
         "invalid_house",
         "unknown_clue_type",
+    ]
+    assert schema["x-sparseir-static-error-codes"] == [
+        "invalid_json",
+        "invalid_schema",
+        "unsupported_schema_version",
+        "invalid_domain",
+        "size_mismatch",
+        "category_size_mismatch",
+        "duplicate_value",
+        "unknown_category",
+        "unknown_value",
+        "house_out_of_range",
+        "duplicate_clue_id",
     ]
 
 
@@ -91,7 +102,6 @@ def test_problem_schema_freezes_stage1_policy_and_error_vocabulary() -> None:
     "mutation",
     [
         lambda value: value.pop("domain"),
-        lambda value: value.update(domain="horn"),
         lambda value: value.update(extra=True),
         lambda value: value["clues"][0].update(type="unknown"),
         lambda value: value["clues"][0].pop("a"),
@@ -108,6 +118,32 @@ def test_problem_schema_rejects_dataset_derived_malformed_mutations(mutation) ->
 
     with pytest.raises(ValidationError):
         Draft202012Validator(schema).validate(value)
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        # Semantic-but-shape-valid mutations that the JSON Schema accepts but
+        # Stage 2 must reject. They exist so the parser boundary stays narrow.
+        lambda value: value.update(domain="horn"),
+        lambda value: value.update(schema_version="9"),
+        lambda value: value.update(size={"houses": 99, "categories": 2}),
+        lambda value: value["categories"].update(Name=["Eric", "Eric"]),
+        lambda value: value["clues"][0]["a"].update(cat="Undeclared"),
+        lambda value: value["clues"][0]["a"].update(val="Missing"),
+        lambda value: value["clues"][1].update(house=99),
+        lambda value: value["clues"][1].update(id=value["clues"][0]["id"]),
+    ],
+)
+def test_problem_schema_accepts_shape_valid_semantic_mutations(mutation) -> None:
+    schema = json.loads((ROOT / "schemas" / "zebra-problem.schema.json").read_text())
+    value = json.loads(
+        (PROBLEM_FIXTURES / "lgp-test-2x2-33.problem.json").read_text(encoding="utf-8")
+    )
+    mutation(value)
+
+    # Stage 1 (the JSON Schema shape check) accepts these. Stage 2 rejects them.
+    Draft202012Validator(schema).validate(value)
 
 
 def test_verifier_protocol_schema_is_version_stamped() -> None:
@@ -140,6 +176,12 @@ def _verifier_protocol_validator() -> Draft202012Validator:
             "protocol_version": "0.1.0",
             "request_id": "compile-test",
             "command": "compile",
+            "payload": {},
+        },
+        {
+            "protocol_version": "0.1.0",
+            "request_id": "compile-view-test",
+            "command": "compile_view",
             "payload": {},
         },
     ],

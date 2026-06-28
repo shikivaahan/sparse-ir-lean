@@ -7,11 +7,11 @@ def domainId : String := "zebra"
 
 structure CategoryName where
   value : String
-  deriving Repr, BEq
+  deriving Repr, BEq, Inhabited
 
 structure ValueName where
   value : String
-  deriving Repr, BEq
+  deriving Repr, BEq, Inhabited
 
 /-- A one-based house encoding. Bounds against a puzzle are checked by Stage 2. -/
 structure House where

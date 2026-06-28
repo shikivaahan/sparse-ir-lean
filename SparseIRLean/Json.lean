@@ -29,7 +29,10 @@ structure ParsedProblem where
   puzzle : Zebra.RawPuzzle
   deriving BEq
 
-/-- Stable Stage 1 parse-error vocabulary. -/
+/-- Stable Stage 1 parse-error vocabulary. Stage 1 only checks JSON shape and
+    typed parsing. Value-level checks (e.g. `schema_version == "0.2"` or
+    `domain == "zebra"`) are not parser concerns; they are static-compiler
+    concerns in `SparseIRLean.Compiler`. -/
 inductive ParseErrorCode where
   | invalidJson
   | expectedObject
@@ -37,8 +40,6 @@ inductive ParseErrorCode where
   | unknownField
   | invalidFieldType
   | invalidValue
-  | unsupportedSchemaVersion
-  | invalidDomain
   | invalidHouse
   | unknownClueType
   deriving Repr, BEq
@@ -50,8 +51,6 @@ def ParseErrorCode.toString : ParseErrorCode → String
   | .unknownField => "unknown_field"
   | .invalidFieldType => "invalid_field_type"
   | .invalidValue => "invalid_value"
-  | .unsupportedSchemaVersion => "unsupported_schema_version"
-  | .invalidDomain => "invalid_domain"
   | .invalidHouse => "invalid_house"
   | .unknownClueType => "unknown_clue_type"
 
@@ -126,11 +125,13 @@ private def asPositiveNat (path : String) (value : Json) : ParseM Nat :=
   | some result => pure result
   | none => fail .invalidFieldType path "expected a positive integer"
 
+/-- Stage 1 accepts any natural number as a raw house. The puzzle-relative
+    bound `1..N` (including the one-based rejection of 0) is enforced by the
+    Stage 2 static compiler. -/
 private def parseHouse (path : String) (value : Json) : ParseM Zebra.House :=
   match asNat? value with
-  | some 0 => fail .invalidHouse path "house numbers are one-based"
   | some house => pure { value := house }
-  | none => fail .invalidHouse path "expected a positive integer house number"
+  | none => fail .invalidHouse path "expected a non-negative integer house number"
 
 private def validGrid (grid : String) : Bool :=
   match grid.splitOn "x" with
@@ -247,12 +248,7 @@ def parseProblemJson (value : Json) : Except ParseError ParsedProblem := do
   checkFields "$" ["schema_version", "domain", "id", "source", "size", "categories",
     "clues", "expect"] object
   let version ← asNonemptyString "$.schema_version" (← required "$" "schema_version" object)
-  unless version == schemaVersion do
-    fail .unsupportedSchemaVersion "$.schema_version"
-      s!"expected schema version {schemaVersion}"
   let domain ← asNonemptyString "$.domain" (← required "$" "domain" object)
-  unless domain == Zebra.domainId do
-    fail .invalidDomain "$.domain" "domain must be 'zebra'"
   let id ← asNonemptyString "$.id" (← required "$" "id" object)
   let source ← parseSource (← required "$" "source" object)
   let size ← parseSize (← required "$" "size" object)

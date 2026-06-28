@@ -1,0 +1,11 @@
+{
+  "audit": "stage2_gate_a_dataset_audit",
+  "audited_gate_dir": "eval/gates/stage2_gate_a_compile_all",
+  "status": "pass",
+  "total_compiled_rows_checked": 1000,
+  "total_errors": 0,
+  "total_findings": 0,
+  "total_ingested_problems_checked": 1000,
+  "total_source_rows_checked": 1006,
+  "total_warnings": 0
+}

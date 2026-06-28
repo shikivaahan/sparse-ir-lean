@@ -5,8 +5,8 @@
   "type": "object",
   "required": ["schema_version", "domain", "id", "source", "size", "categories", "clues"],
   "properties": {
-    "schema_version": {"const": "0.2"},
-    "domain": {"const": "zebra"},
+    "schema_version": {"type": "string", "minLength": 1},
+    "domain": {"type": "string", "minLength": 1},
     "id": {"type": "string", "minLength": 1},
     "source": {"$ref": "#/$defs/source"},
     "size": {"$ref": "#/$defs/size"},
@@ -83,7 +83,7 @@
   },
   "x-sparseir-interface": {
     "version": "0.2",
-    "status": "frozen-stage-1",
+    "status": "frozen-stage-2",
     "unknown-field-policy": "reject"
   },
   "x-sparseir-parse-error-codes": [
@@ -93,9 +93,20 @@
     "unknown_field",
     "invalid_field_type",
     "invalid_value",
-    "unsupported_schema_version",
-    "invalid_domain",
     "invalid_house",
     "unknown_clue_type"
+  ],
+  "x-sparseir-static-error-codes": [
+    "invalid_json",
+    "invalid_schema",
+    "unsupported_schema_version",
+    "invalid_domain",
+    "size_mismatch",
+    "category_size_mismatch",
+    "duplicate_value",
+    "unknown_category",
+    "unknown_value",
+    "house_out_of_range",
+    "duplicate_clue_id"
   ]
 }
