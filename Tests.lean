@@ -35,6 +35,16 @@ def expectParseErrorJson (label : String) (code : ParseErrorCode)
         (error.code == code)
       assertTrue s!"{label}: error path is empty" (!error.path.isEmpty)
 
+def expectTraceError (label : String) (code : TraceParseErrorCode)
+    (path input : String) : IO Unit :=
+  match TraceParser.parse input with
+  | .ok _ => throw <| IO.userError s!"{label}: unexpectedly parsed"
+  | .error error => do
+      assertTrue s!"{label}: got {error.code.toString}, expected {code.toString}"
+        (error.code == code)
+      assertTrue s!"{label}: got path {error.path}, expected {path}"
+        (error.path == path)
+
 /-- Parse successfully and then expect a static-compile error. -/
 def expectStaticError (label : String) (code : StaticErrorCode)
     (input : String) : IO Unit :=
@@ -544,6 +554,48 @@ def main : IO UInt32 := do
         (error.code == StepErrorCode.incompleteFinal)
   | _ => do
       throw <| IO.userError "incomplete state concluded solved"
+
+  -- ====================================================================
+  -- Stage 4 boundary: trace JSON shape parsing and AST lowering only.
+  -- ====================================================================
+  let fullTraceText :=
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"assign_all","solution":{"Color":{"1":"red"}}},{"op":"conclude","status":"solved"}]}"#
+  let fullTrace ← match TraceParser.parse fullTraceText with
+    | .ok trace => pure trace
+    | .error error => throw <| IO.userError s!"full trace: {error.code.toString} at {error.path}"
+  assertTrue "full trace problem id changed" (fullTrace.problemId == "zl_test")
+  assertTrue "full trace op count changed" (fullTrace.ops.length == 2)
+  assertTrue "full trace style changed" (fullTrace.style == TraceStyle.fullCandidate)
+
+  let stepwiseTraceText :=
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"place","cat":"Color","house":2,"val":"red","justify":{"clue":"c1"}},{"op":"eliminate","cat":"Drink","house":1,"val":"tea","justify":{"clue":"c3","from":[{"cat":"Color","house":2,"val":"red"}]}},{"op":"conclude","status":"solved","solution":{"Color":{"1":"blue","2":"red"}}}]}"#
+  let stepwiseTrace ← match TraceParser.parse stepwiseTraceText with
+    | .ok trace => pure trace
+    | .error error => throw <| IO.userError s!"stepwise trace: {error.code.toString} at {error.path}"
+  assertTrue "stepwise trace style changed" (stepwiseTrace.style == TraceStyle.stepwise)
+  assertTrue "stepwise trace op count changed" (stepwiseTrace.ops.length == 3)
+
+  expectTraceError "invalid trace JSON" .invalidJson "$" "{"
+  expectTraceError "missing trace ops" .missingOps "$.ops"
+    r#"{"schema_version":"0.2","problem_id":"zl_test"}"#
+  expectTraceError "unknown trace op" .unknownOp "$.ops[0].op"
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"guess"}]}"#
+  expectTraceError "assign_all missing solution" .assignAllMissingSolution "$.ops[0].solution"
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"assign_all"}]}"#
+  expectTraceError "assign_all malformed solution" .assignAllMalformedSolution "$.ops[0].solution"
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"assign_all","solution":[]}]}"#
+  expectTraceError "place missing cat" .placeMissingCat "$.ops[0].cat"
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"place","house":1,"val":"red","justify":{"clue":"c1"}}]}"#
+  expectTraceError "eliminate missing value" .eliminateMissingVal "$.ops[0].val"
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"eliminate","cat":"Color","house":1,"justify":{"clue":"c1"}}]}"#
+  expectTraceError "missing trace justification" .missingJustify "$.ops[0].justify"
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"place","cat":"Color","house":1,"val":"red"}]}"#
+  expectTraceError "malformed trace justification" .malformedJustify "$.ops[0].justify"
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"place","cat":"Color","house":1,"val":"red","justify":[]}]}"#
+  expectTraceError "malformed trace from-cell" .malformedFromCell "$.ops[0].justify.from[0].house"
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"place","cat":"Color","house":1,"val":"red","justify":{"clue":"c1","from":[{"cat":"Drink","val":"tea"}]}}]}"#
+  expectTraceError "bad conclude status" .concludeBadStatus "$.ops[0].status"
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"conclude","status":"unknown"}]}"#
 
   -- ====================================================================
   -- Walkthrough: problem.json -> ParsedProblem -> CompiledPuzzle ->

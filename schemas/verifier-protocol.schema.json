@@ -15,7 +15,7 @@
         "protocol_version": {"const": "0.1.0"},
         "request_id": {},
         "command": {
-          "enum": ["info", "compile", "compile_view", "init_state", "check_step", "apply_step", "step", "check_candidate", "classify", "render_audit", "emit_artifact"]
+          "enum": ["info", "compile", "compile_view", "init_state", "check_step", "apply_step", "step", "check_candidate", "parse_trace", "classify", "render_audit", "emit_artifact"]
         },
         "payload": {"type": "object"}
       },
@@ -31,6 +31,7 @@
         "ACCEPT_SOLVED",
         "INCOMPLETE",
         "REJECT",
+        "TRACE_PARSED",
         "AUDIT_RENDERED",
         "ARTIFACT_EMITTED"
       ]
@@ -128,6 +129,17 @@
       },
       "additionalProperties": false
     },
+    "trace_parsed_result": {
+      "type": "object",
+      "required": ["kind", "problem_id", "op_count", "trace_style"],
+      "properties": {
+        "kind": {"const": "TRACE_PARSED"},
+        "problem_id": {"type": "string", "minLength": 1},
+        "op_count": {"type": "integer", "minimum": 1},
+        "trace_style": {"enum": ["full_candidate", "stepwise"]}
+      },
+      "additionalProperties": false
+    },
     "audit_rendered_result": {
       "type": "object",
       "required": ["kind", "readable_view"],
@@ -161,6 +173,7 @@
         {"$ref": "#/$defs/accept_solved_result"},
         {"$ref": "#/$defs/incomplete_result"},
         {"$ref": "#/$defs/reject_result"},
+        {"$ref": "#/$defs/trace_parsed_result"},
         {"$ref": "#/$defs/audit_rendered_result"},
         {"$ref": "#/$defs/artifact_emitted_result"}
       ]
@@ -190,6 +203,7 @@
     "apply_step": ["ACCEPT_STEP", "ACCEPT_SOLVED", "REJECT", "STATIC_ERROR"],
     "step": ["ACCEPT_STEP", "ACCEPT_SOLVED", "INCOMPLETE", "REJECT", "STATIC_ERROR"],
     "check_candidate": ["ACCEPT_SOLVED", "INCOMPLETE", "REJECT", "STATIC_ERROR"],
+    "parse_trace": ["TRACE_PARSED", "REJECT", "STATIC_ERROR"],
     "classify": ["ACCEPT_SOLVED", "INCOMPLETE", "REJECT", "STATIC_ERROR"],
     "render_audit": ["AUDIT_RENDERED", "STATIC_ERROR"],
     "emit_artifact": ["ARTIFACT_EMITTED", "STATIC_ERROR"]
