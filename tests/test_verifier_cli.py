@@ -52,9 +52,7 @@ def test_info_command_reports_stage0_capabilities() -> None:
 @pytest.mark.parametrize(
     "command",
     [
-        "init_state",
         "step",
-        "check_candidate",
         "classify",
         "render_audit",
         "emit_artifact",

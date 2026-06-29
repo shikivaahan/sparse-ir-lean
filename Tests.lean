@@ -2,6 +2,8 @@ import SparseIRLean
 
 open Lean SparseIRLean
 
+set_option maxRecDepth 2000
+
 /-- A single assertion with a stable error message. -/
 def assertTrue (message : String) (condition : Bool) : IO Unit :=
   unless condition do
@@ -165,7 +167,7 @@ def main : IO UInt32 := do
   assertTrue "v0 domain changed" (Zebra.domainId == "zebra")
   assertTrue "Stage 1 parser is unavailable" problemParserAvailable
   assertTrue "Stage 1 Zebra AST is unavailable" Zebra.astAvailable
-  assertTrue "checker leaked into Stage 1" (!CheckerCore.available)
+  assertTrue "Stage 3A candidate checker is unavailable" CheckerCore.available
   assertTrue "audit renderer leaked into Stage 1" (!Pretty.available)
 
   -- The Stage 1 parse-error vocabulary is shape-only. Domain value,
@@ -268,7 +270,7 @@ def main : IO UInt32 := do
   -- Stage 2 boundary: semantic static compiler/well-formedness.
   -- ====================================================================
   assertTrue "static compiler not advertised" staticCompilerAvailable
-  assertTrue "checker leaked into Stage 2" (!CheckerCore.available)
+  assertTrue "Stage 3A candidate checker is unavailable" CheckerCore.available
   assertTrue "audit renderer leaked into Stage 2" (!Pretty.available)
 
   -- Static error vocabulary is the frozen set every Stage 2 release ships.
@@ -373,6 +375,175 @@ def main : IO UInt32 := do
   -- the original envelope id.
   assertTrue "expect mutated during compile"
     (compiledNoExpect.envelope.expect == none)
+
+  -- ====================================================================
+  -- Stage 3A boundary: candidate parsing, validation, and clue checking.
+  -- Public house keys are one-based and Lean never searches for values.
+  -- ====================================================================
+  let candidateText :=
+    "{\"schema_version\":\"0.2\",\"problem_id\":\"zl_lgp-test-2x2-33\"," ++
+    "\"solution\":{\"Name\":{\"1\":\"Eric\",\"2\":\"Arnold\"}," ++
+    "\"Pet\":{\"1\":\"cat\",\"2\":\"dog\"}}}"
+  let candidate ← match Candidate.parse candidateText with
+    | .ok value => pure value
+    | .error e => throw <| IO.userError (s!"candidate parse failed: {e.code.toString} at {e.path}")
+  let puzzle2x2 ← expectCompiled "Stage 3A 2x2" fixture2x2
+  assertTrue "known satisfying real 2x2 candidate was not solved"
+    (CheckerCore.checkCandidate puzzle2x2 candidate == .solved)
+
+  let violatingText := candidateText.replace
+    "\"Pet\":{\"1\":\"cat\",\"2\":\"dog\"}"
+    "\"Pet\":{\"1\":\"dog\",\"2\":\"cat\"}"
+  let violating ← match Candidate.parse violatingText with
+    | .ok value => pure value
+    | .error error => throw <| IO.userError error.message
+  assertTrue "complete bijective clue violation was not localized to c2"
+    (CheckerCore.checkCandidate puzzle2x2 violating == .clueViolation 1 "c2")
+
+  let partialText :=
+    "{\"schema_version\":\"0.2\",\"problem_id\":\"zl_lgp-test-2x2-33\"," ++
+    "\"solution\":{\"Name\":{\"1\":\"Eric\"}}}"
+  let partialCandidate ← match Candidate.parse partialText with
+    | .ok value => pure value
+    | .error error => throw <| IO.userError error.message
+  match CheckerCore.checkCandidate puzzle2x2 partialCandidate with
+  | .incomplete failure =>
+      assertTrue "partial candidate did not identify its first missing assignment"
+        (failure.code == "missing_assignment")
+  | _ => throw <| IO.userError "partial candidate was not INCOMPLETE"
+
+  let invalidText := candidateText.replace "\"cat\"" "\"dragon\""
+  let invalid ← match Candidate.parse invalidText with
+    | .ok value => pure value
+    | .error error => throw <| IO.userError error.message
+  match CheckerCore.checkCandidate puzzle2x2 invalid with
+  | .invalid failure => assertTrue "unknown value code changed" (failure.code == "unknown_value")
+  | _ => throw <| IO.userError "unknown candidate value was not rejected"
+  match Candidate.parse "{" with
+  | .error e => do
+      assertTrue "malformed JSON code changed"
+        (e.code == CandidateParseErrorCode.invalidCandidateJson)
+  | .ok _ => do
+      throw <| IO.userError "malformed candidate JSON parsed"
+
+  let a : Zebra.CategoryName := { value := "A" }
+  let b : Zebra.CategoryName := { value := "B" }
+  let a1 : Zebra.Attribute := { category := a, value := { value := "a1" } }
+  let a2 : Zebra.Attribute := { category := a, value := { value := "a2" } }
+  let a3 : Zebra.Attribute := { category := a, value := { value := "a3" } }
+  let b1 : Zebra.Attribute := { category := b, value := { value := "b1" } }
+  let b2 : Zebra.Attribute := { category := b, value := { value := "b2" } }
+  let b3 : Zebra.Attribute := { category := b, value := { value := "b3" } }
+  let b4 : Zebra.Attribute := { category := b, value := { value := "b4" } }
+  let semanticCandidate : CandidateAssignment := {
+    schemaVersion := "0.2", problemId := "semantics",
+    solution := [
+      { name := a, assignments := [
+          (1, { value := "a1" }), (2, { value := "a2" }),
+          (3, { value := "a3" }), (4, { value := "a4" })] },
+      { name := b, assignments := [
+          (1, { value := "b1" }), (2, { value := "b2" }),
+          (3, { value := "b3" }), (4, { value := "b4" })] }
+    ]
+  }
+  let violationClues : List Zebra.Clue := [
+    .foundAt "found_at" a1 { value := 2 },
+    .notAt "not_at" a1 { value := 1 },
+    .sameHouse "same_house" a1 b2,
+    .directLeft "direct_left" a2 b1,
+    .directRight "direct_right" a1 b2,
+    .sideBySide "side_by_side" a1 b3,
+    .leftOf "left_of" a3 b1,
+    .rightOf "right_of" a1 b3,
+    .oneBetween "one_between" a1 b2,
+    .twoBetween "two_between" a1 b3
+  ]
+  for clue in violationClues do
+    assertTrue "a v0 clue violation predicate unexpectedly passed"
+      (!CheckerCore.clueSatisfied semanticCandidate clue)
+  let satisfiedClues : List Zebra.Clue := [
+    .foundAt "found_at" a1 { value := 1 },
+    .notAt "not_at" a1 { value := 2 },
+    .sameHouse "same_house" a1 b1,
+    .directLeft "direct_left" a1 b2,
+    .directRight "direct_right" a2 b1,
+    .sideBySide "side_by_side" a1 b2,
+    .leftOf "left_of" a1 b3,
+    .rightOf "right_of" a3 b1,
+    .oneBetween "one_between" a1 b3,
+    .twoBetween "two_between" a1 b4
+  ]
+  for clue in satisfiedClues do
+    assertTrue "a v0 clue satisfaction predicate unexpectedly failed"
+      (CheckerCore.clueSatisfied semanticCandidate clue)
+
+  -- ====================================================================
+  -- Stage 3C boundary: local deterministic single-step checking.
+  -- ====================================================================
+  let stepPuzzle ← expectCompiled "Stage 3C 4x4"
+    (← loadFixture "lgp-test-4x4-27.problem.json")
+  let initialStepState := StepKernel.initState stepPuzzle
+  assertTrue "initial step state does not contain every category/house cell"
+    (initialStepState.cells.length == stepPuzzle.categories.length * stepPuzzle.houses)
+  assertTrue "initial step state contains a restricted cell"
+    (initialStepState.cells.all fun cell =>
+      cell.possible.length == stepPuzzle.houses && !cell.placed)
+  let foundStepText :=
+    r#"{"op":"place","cat":"BookGenre","house":2,"val":"fantasy","justify":{"rule":"given_found_at_place","clue_id":"c2"}}"#
+  let foundStep ← match StepKernel.parseStep stepPuzzle foundStepText with
+    | .ok step => pure step
+    | .error error => throw <| IO.userError error.message
+  let placedState ← match StepKernel.checkStep stepPuzzle initialStepState foundStep with
+    | .accepted state => pure state
+    | .rejected error => throw <| IO.userError error.message
+    | .solved => throw <| IO.userError "single placement unexpectedly solved puzzle"
+  let placedCell := placedState.cells.find? fun cell =>
+    cell.category.value == "BookGenre" && cell.house == 2
+  assertTrue "found_at placement did not create a placed singleton"
+    (placedCell.map (fun cell => cell.placed && cell.possible.map (·.value) == ["fantasy"]) == some true)
+  assertTrue "placement did not propagate same-value elimination"
+    (placedState.cells.all fun cell =>
+      cell.category.value != "BookGenre" || cell.house == 2 ||
+        !(cell.possible.any fun value => value.value == "fantasy"))
+
+  let eliminateStepText :=
+    r#"{"op":"eliminate","cat":"Name","house":2,"val":"Alice","justify":{"rule":"given_not_at_eliminate","clue_id":"c3"}}"#
+  let eliminateStep ← match StepKernel.parseStep stepPuzzle eliminateStepText with
+    | .ok step => pure step
+    | .error error => throw <| IO.userError error.message
+  match StepKernel.checkStep stepPuzzle initialStepState eliminateStep with
+  | .accepted state =>
+      let cell := state.cells.find? fun cell => cell.category.value == "Name" && cell.house == 2
+      assertTrue "not_at elimination did not remove the target"
+        (cell.map (fun value => !(value.possible.any fun item => item.value == "Alice")) == some true)
+  | _ => throw <| IO.userError "not_at elimination was not accepted"
+
+  match StepKernel.checkStep stepPuzzle placedState foundStep with
+  | .rejected error => do
+      assertTrue "duplicate placement code changed"
+        (error.code == StepErrorCode.contradictsState)
+  | _ => do
+      throw <| IO.userError "duplicate placement was accepted"
+  let unsupportedText := foundStepText.replace "given_found_at_place" "unchecked_guess"
+  let unsupported ← match StepKernel.parseStep stepPuzzle unsupportedText with
+    | .ok step => pure step
+    | .error error => throw <| IO.userError error.message
+  match StepKernel.checkStep stepPuzzle initialStepState unsupported with
+  | .rejected error => do
+      assertTrue "unsupported rule code changed"
+        (error.code == StepErrorCode.unsupportedRule)
+  | _ => do
+      throw <| IO.userError "unsupported true placement was accepted"
+  let concludeStep ← match StepKernel.parseStep stepPuzzle
+      r#"{"op":"conclude","status":"solved"}"# with
+    | .ok step => pure step
+    | .error error => throw <| IO.userError error.message
+  match StepKernel.checkStep stepPuzzle initialStepState concludeStep with
+  | .rejected error => do
+      assertTrue "incomplete conclusion code changed"
+        (error.code == StepErrorCode.incompleteFinal)
+  | _ => do
+      throw <| IO.userError "incomplete state concluded solved"
 
   -- ====================================================================
   -- Walkthrough: problem.json -> ParsedProblem -> CompiledPuzzle ->

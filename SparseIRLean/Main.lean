@@ -44,7 +44,7 @@ private def infoResponse (requestId : Json) : Json :=
       ("trust", jsonString "trusted_for_results"),
       ("capabilities", Json.mkObj [
         ("modes", Json.arr #[]),
-        ("stepwise", Json.bool false),
+        ("stepwise", Json.bool true),
         ("tactics", Json.bool false),
         ("audit_view", Json.bool false)
       ])
@@ -60,6 +60,94 @@ private def compiledResponse (requestId id : Json) : Json :=
       ("compiled", Json.mkObj [
         ("problem_id", id)
       ])
+    ])
+  ]
+
+private def resultResponse (requestId result : Json) : Json :=
+  Json.mkObj [
+    ("protocol_version", jsonString protocolVersion),
+    ("request_id", requestId),
+    ("result", result)
+  ]
+
+private def solvedResponse (requestId : Json) (problemId : String) : Json :=
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "ACCEPT_SOLVED"),
+    ("artifact", Json.mkObj [
+      ("problem_id", jsonString problemId),
+      ("status", jsonString "solved"),
+      ("claim", jsonString "assignment satisfies all clues of the puzzle")
+    ])
+  ]
+
+private def failureView (status : String) (failure : CandidateIssue)
+    (extra : List (String × Json) := []) : Json :=
+  Json.mkObj <| [
+    ("status", jsonString status),
+    ("failure_code", jsonString failure.code),
+    ("path", jsonString failure.path),
+    ("message", jsonString failure.message)
+  ] ++ extra
+
+private def invalidCandidateResponse (requestId : Json) (failure : CandidateIssue) : Json :=
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "REJECT"),
+    ("failure", failureView "invalid_candidate" failure)
+  ]
+
+private def malformedCandidateResponse (requestId : Json)
+    (failure : CandidateParseError) : Json :=
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "REJECT"),
+    ("failure", failureView "malformed_candidate" {
+      code := failure.code.toString, path := failure.path, message := failure.message
+    })
+  ]
+
+private def incompleteResponse (requestId : Json) (problemId : String)
+    (failure : CandidateIssue) : Json :=
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "INCOMPLETE"),
+    ("state", Json.mkObj [
+      ("problem_id", jsonString problemId),
+      ("status", jsonString "incomplete"),
+      ("failure_code", jsonString failure.code),
+      ("path", jsonString failure.path),
+      ("message", jsonString failure.message)
+    ])
+  ]
+
+private def clueViolationResponse (requestId : Json) (index : Nat) (clueId : String) : Json :=
+  let failure : CandidateIssue := {
+    code := "clue_violation",
+    path := s!"$.clues[{index}]",
+    message := s!"candidate violates clue {clueId}"
+  }
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "REJECT"),
+    ("failure", failureView "clue_violation" failure [("clue_id", jsonString clueId)])
+  ]
+
+private def initializedStateResponse (requestId : Json) (state : StepState) : Json :=
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "STATE_INITIALIZED"),
+    ("state", StepKernel.stateToJson state)
+  ]
+
+private def acceptedStepResponse (requestId : Json) (state : StepState) : Json :=
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "ACCEPT_STEP"),
+    ("state", StepKernel.stateToJson state)
+  ]
+
+private def rejectedStepResponse (requestId : Json) (failure : StepError) : Json :=
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "REJECT"),
+    ("failure", Json.mkObj [
+      ("status", jsonString "step_rejected"),
+      ("failure_code", jsonString failure.code.toString),
+      ("path", jsonString failure.path),
+      ("message", jsonString failure.message)
     ])
   ]
 
@@ -132,7 +220,7 @@ private def allowedRequestField (field : String) : Bool :=
 
 private def allowedCommand (command : String) : Bool :=
   command == "info" || command == "compile" || command == "compile_view" ||
-    command == "init_state" ||
+    command == "init_state" || command == "check_step" || command == "apply_step" ||
     command == "step" || command == "check_candidate" || command == "classify" ||
     command == "render_audit" || command == "emit_artifact"
 
@@ -153,6 +241,24 @@ private def payloadProblemText (request : Json) : Except String String := do
       | .ok (Json.str text) => pure text
       | .ok _ => throw "payload.problem must be a string"
       | .error _ => throw "payload.problem is required"
+  | .error _ => throw "payload is required"
+
+private def payloadCandidateText (request : Json) : Except String String := do
+  match request.getObjVal? "payload" with
+  | .ok payload =>
+      match payload.getObjVal? "candidate" with
+      | .ok (Json.str text) => pure text
+      | .ok _ => throw "payload.candidate must be a string"
+      | .error _ => throw "payload.candidate is required"
+  | .error _ => throw "payload is required"
+
+private def payloadText (request : Json) (field : String) : Except String String := do
+  match request.getObjVal? "payload" with
+  | .ok payload =>
+      match payload.getObjVal? field with
+      | .ok (Json.str text) => pure text
+      | .ok _ => throw s!"payload.{field} must be a string"
+      | .error _ => throw s!"payload.{field} is required"
   | .error _ => throw "payload is required"
 
 private def compileProblem (request : Json) (includeView : Bool) : Json :=
@@ -180,16 +286,91 @@ private def compileCommand (request : Json) : Json := compileProblem request fal
 
 private def compileViewCommand (request : Json) : Json := compileProblem request true
 
+private def checkCandidateCommand (request : Json) : Json :=
+  let id := requestId request
+  match payloadProblemText request, payloadCandidateText request with
+  | .error message, _ | _, .error message => errorResponse id "invalid_request" message
+  | .ok problemText, .ok candidateText =>
+      match parseProblem problemText with
+      | .error parseError =>
+          let kind := match parseError.code with
+            | .invalidJson => "invalid_json"
+            | _ => "invalid_schema"
+          errorResponseAt id kind parseError.path parseError.message
+      | .ok parsed =>
+          match Compiler.compile parsed with
+          | .error staticError =>
+              errorResponseAt id staticError.code.toString staticError.path staticError.message
+          | .ok compiled =>
+              match Candidate.parse candidateText with
+              | .error parseError => malformedCandidateResponse id parseError
+              | .ok candidate =>
+                  match CheckerCore.checkCandidate compiled candidate with
+                  | .solved => solvedResponse id compiled.envelope.id
+                  | .clueViolation index clueId => clueViolationResponse id index clueId
+                  | .incomplete failure => incompleteResponse id compiled.envelope.id failure
+                  | .invalid failure => invalidCandidateResponse id failure
+
+private def initStateCommand (request : Json) : Json :=
+  let id := requestId request
+  match payloadProblemText request with
+  | .error message => errorResponse id "invalid_request" message
+  | .ok problemText =>
+      match parseProblem problemText with
+      | .error parseError =>
+          let kind := match parseError.code with
+            | .invalidJson => "invalid_json"
+            | _ => "invalid_schema"
+          errorResponseAt id kind parseError.path parseError.message
+      | .ok parsed =>
+          match Compiler.compile parsed with
+          | .error staticError =>
+              errorResponseAt id staticError.code.toString staticError.path staticError.message
+          | .ok compiled => initializedStateResponse id (StepKernel.initState compiled)
+
+private def stepCommand (request : Json) (apply : Bool) : Json :=
+  let id := requestId request
+  match payloadProblemText request, payloadText request "state", payloadText request "step" with
+  | .error message, _, _ | _, .error message, _ | _, _, .error message =>
+      errorResponse id "invalid_request" message
+  | .ok problemText, .ok stateText, .ok stepText =>
+      match parseProblem problemText with
+      | .error parseError =>
+          let kind := match parseError.code with
+            | .invalidJson => "invalid_json"
+            | _ => "invalid_schema"
+          errorResponseAt id kind parseError.path parseError.message
+      | .ok parsed =>
+          match Compiler.compile parsed with
+          | .error staticError =>
+              errorResponseAt id staticError.code.toString staticError.path staticError.message
+          | .ok compiled =>
+              match StepKernel.parseState compiled stateText with
+              | .error stepError => rejectedStepResponse id stepError
+              | .ok state =>
+                  match StepKernel.parseStep compiled stepText with
+                  | .error stepError => rejectedStepResponse id stepError
+                  | .ok step =>
+                      match StepKernel.checkStep compiled state step with
+                      | .rejected failure => rejectedStepResponse id failure
+                      | .solved => solvedResponse id compiled.envelope.id
+                      | .accepted next =>
+                          acceptedStepResponse id (if apply then next else state)
+
 private def dispatchCommand (request : Json) : Json :=
   let id := requestId request
   match request.getObjVal? "command" with
   | .ok (Json.str "info") => infoResponse id
   | .ok (Json.str "compile") => compileCommand request
   | .ok (Json.str "compile_view") => compileViewCommand request
+  | .ok (Json.str "check_candidate") => checkCandidateCommand request
+  | .ok (Json.str "init_state") => initStateCommand request
+  | .ok (Json.str "check_step") => stepCommand request false
+  | .ok (Json.str "apply_step") => stepCommand request true
   | .ok (Json.str command) =>
       if allowedCommand command then
         errorResponse id "not_implemented_stage_0"
-          "Only the info and compile commands are implemented through Stage 2"
+          "This command is not implemented through Stage 3A"
       else
         errorResponse id "invalid_request" "unsupported command"
   | .ok _ => errorResponse id "invalid_request" "command must be a string"
