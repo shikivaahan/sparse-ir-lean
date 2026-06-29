@@ -10,8 +10,8 @@ Status: **PASS**
 - Failures: 0
 
 Stage 4 core parser: PASS
-Provider trace-shape validation: COMPLETE (3/3 valid JSON; 0/3 schema-valid)
+Provider trace-shape validation: PASS (20/20 valid JSON; 20/20 schema-valid)
 
-This gate parses and lowers trace JSON only. It does not replay operations,
-check trace correctness, emit trace artifacts, call a provider, retry requests,
-or perform solver/search work in Lean.
+The core gate parses and lowers trace JSON only. Provider trace-shape diagnostics are
+reported separately and do not replay operations, check trace correctness, score puzzle
+answers, retry requests, or perform solver/search work in Lean.
