@@ -9,6 +9,7 @@ from typing import Any
 
 from sparseir_harness.trace_parser_gate import (
     REQUIRED_ERROR_CODES,
+    _provider_validation,
     _malformed_cases,
     run_trace_parser_gate,
 )
@@ -199,7 +200,7 @@ def test_provider_validation_is_diagnostic_and_does_not_change_core_status(tmp_p
     )
 
     assert manifest["status"] == "pass"
-    assert manifest["provider_validation"]["status"] == "complete"
+    assert manifest["provider_validation"]["status"] == "pass"
     assert manifest["provider_validation"]["valid_json_trace_rate"] == 1.0
     assert manifest["provider_validation"]["valid_trace_schema_rate"] == 1.0
     rows = [
@@ -207,3 +208,35 @@ def test_provider_validation_is_diagnostic_and_does_not_change_core_status(tmp_p
         for line in (output / "provider_validation.jsonl").read_text(encoding="utf-8").splitlines()
     ]
     assert rows[0]["parser_result"]["kind"] == "TRACE_PARSED"
+
+
+def test_provider_validation_reports_fail_when_no_output_is_schema_valid() -> None:
+    references = [
+        {
+            "candidate": {
+                "problem_id": "zl_fixture",
+                "solution": {"Color": {"1": "red"}},
+            }
+        }
+    ]
+
+    def reject_trace(_request: dict[str, Any], _executable: Path | None) -> dict[str, Any]:
+        return {
+            "result": {
+                "kind": "REJECT",
+                "failure": {
+                    "failure_code": "unexpected_field",
+                    "path": "$.operations",
+                },
+            }
+        }
+
+    result, _rows = _provider_validation(
+        references,
+        None,
+        reject_trace,
+        lambda _messages, _model: json.dumps({"operations": []}),
+        "deepseek/deepseek-v4-flash",
+    )
+    assert result["status"] == "fail"
+    assert result["valid_trace_schemas"] == 0

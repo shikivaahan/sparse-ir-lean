@@ -16,6 +16,14 @@ from typing import Any, Callable
 ROOT = Path(__file__).resolve().parents[2]
 PROVIDER = "openrouter"
 DEFAULT_PROVIDER_MODEL = "deepseek/deepseek-v4-flash"
+TRACE_PROMPT_EXEMPLAR = {
+    "schema_version": "0.2",
+    "problem_id": "zl_example",
+    "ops": [
+        {"op": "assign_all", "solution": {"Category": {"1": "value"}}},
+        {"op": "conclude", "status": "solved"},
+    ],
+}
 REQUIRED_ERROR_CODES = (
     "invalid_json",
     "missing_schema_version",
@@ -284,7 +292,30 @@ def _relative(path: Path) -> str:
         return str(path.resolve())
 
 
-def _call_provider(prompt: str, model: str) -> str:
+def build_provider_messages(problem_id: str, solution: dict[str, Any]) -> list[dict[str, str]]:
+    exemplar = json.dumps(TRACE_PROMPT_EXEMPLAR, sort_keys=True, separators=(",", ":"))
+    payload = json.dumps(
+        {"problem_id": problem_id, "solution": solution},
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    return [
+        {
+            "role": "system",
+            "content": (
+                "Return only one raw trace.json object, with no wrapper, Markdown, commentary, "
+                "or extra fields. The top-level keys must be exactly schema_version, problem_id, "
+                "and ops. Use schema_version \"0.2\". The ops array must contain exactly "
+                "{\"op\":\"assign_all\",\"solution\":...} followed by "
+                "{\"op\":\"conclude\",\"status\":\"solved\"}. Copy the supplied solution "
+                f"without changing its shape. Valid shape exemplar: {exemplar}"
+            ),
+        },
+        {"role": "user", "content": payload},
+    ]
+
+
+def call_provider(messages: list[dict[str, str]], model: str) -> str:
     from openai import OpenAI
 
     client = OpenAI(
@@ -295,17 +326,7 @@ def _call_provider(prompt: str, model: str) -> str:
     )
     response = client.chat.completions.create(
         model=model,
-        messages=[
-            {
-                "role": "system",
-                "content": (
-                    "Return only one JSON trace object. Use schema_version 0.2, the supplied "
-                    "problem_id, an assign_all operation containing the supplied solution, and "
-                    "a conclude operation with status solved. Do not use Markdown fences."
-                ),
-            },
-            {"role": "user", "content": prompt},
-        ],
+        messages=messages,
         temperature=0,
         max_tokens=1800,
     )
@@ -319,7 +340,7 @@ def _provider_validation(
     references: list[dict[str, Any]],
     executable: Path | None,
     lean_invoke: Callable[[dict[str, Any], Path | None], dict[str, Any]],
-    provider_call: Callable[[str, str], str],
+    provider_call: Callable[[list[dict[str, str]], str], str],
     model: str,
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     rows: list[dict[str, Any]] = []
@@ -327,12 +348,9 @@ def _provider_validation(
     for index, reference in enumerate(references[:3]):
         candidate = reference["candidate"]
         sample_id = f"provider-trace-{index:02d}"
-        prompt = json.dumps(
-            {"problem_id": candidate["problem_id"], "solution": candidate["solution"]},
-            sort_keys=True,
-        )
+        messages = build_provider_messages(candidate["problem_id"], candidate["solution"])
         try:
-            raw_output = provider_call(prompt, model)
+            raw_output = provider_call(messages, model)
             try:
                 parsed = json.loads(raw_output)
                 valid_json = isinstance(parsed, dict)
@@ -362,6 +380,7 @@ def _provider_validation(
                     "problem_id": candidate["problem_id"],
                     "provider": PROVIDER,
                     "model": model,
+                    "prompt_messages": messages,
                     "raw_output": raw_output,
                     "valid_json_trace": valid_json,
                     "valid_trace_schema": valid_schema,
@@ -377,6 +396,7 @@ def _provider_validation(
                     "problem_id": candidate["problem_id"],
                     "provider": PROVIDER,
                     "model": model,
+                    "prompt_messages": messages,
                     "valid_json_trace": False,
                     "valid_trace_schema": False,
                     "failure_category": "provider_error",
@@ -386,8 +406,14 @@ def _provider_validation(
     total = len(rows)
     valid_json_count = sum(row["valid_json_trace"] for row in rows)
     valid_schema_count = sum(row["valid_trace_schema"] for row in rows)
+    if total > 0 and valid_schema_count == total:
+        status = "pass"
+    elif valid_schema_count == 0:
+        status = "fail"
+    else:
+        status = "partial"
     result = {
-        "status": "complete",
+        "status": status,
         "diagnostic_only": True,
         "provider": PROVIDER,
         "model": model,
@@ -409,7 +435,7 @@ def run_trace_parser_gate(
     *,
     lean_invoke: Callable[[dict[str, Any], Path | None], dict[str, Any]] = _invoke_lean,
     provider_validate: bool = False,
-    provider_call: Callable[[str, str], str] = _call_provider,
+    provider_call: Callable[[list[dict[str, str]], str], str] = call_provider,
     provider_model: str = DEFAULT_PROVIDER_MODEL,
 ) -> dict[str, Any]:
     references = _read_jsonl(reference_dir / "reference_solutions.jsonl")
@@ -540,7 +566,8 @@ def run_trace_parser_gate(
         "BLOCKED by missing provider authorization/access"
         if provider_validation["status"] == "blocked"
         else (
-            f"COMPLETE ({provider_validation['valid_json_traces']}/"
+            f"{provider_validation['status'].upper()} "
+            f"({provider_validation['valid_json_traces']}/"
             f"{provider_validation['total_calls']} valid JSON; "
             f"{provider_validation['valid_trace_schemas']}/"
             f"{provider_validation['total_calls']} schema-valid)"
@@ -560,9 +587,9 @@ Status: **{status.upper()}**
 Stage 4 core parser: {status.upper()}
 Provider trace-shape validation: {provider_summary}
 
-This gate parses and lowers trace JSON only. It does not replay operations,
-check trace correctness, emit trace artifacts, call a provider, retry requests,
-or perform solver/search work in Lean.
+The core gate parses and lowers trace JSON only. Provider trace-shape diagnostics are
+reported separately and do not replay operations, check trace correctness, score puzzle
+answers, retry requests, or perform solver/search work in Lean.
 """
     (output / "summary.md").write_text(summary, encoding="utf-8")
     return manifest
