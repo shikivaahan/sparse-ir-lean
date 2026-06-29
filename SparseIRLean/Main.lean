@@ -44,7 +44,7 @@ private def infoResponse (requestId : Json) : Json :=
       ("trust", jsonString "trusted_for_results"),
       ("capabilities", Json.mkObj [
         ("modes", Json.arr #[]),
-        ("stepwise", Json.bool false),
+        ("stepwise", Json.bool true),
         ("tactics", Json.bool false),
         ("audit_view", Json.bool false)
       ])
@@ -128,6 +128,29 @@ private def clueViolationResponse (requestId : Json) (index : Nat) (clueId : Str
     ("failure", failureView "clue_violation" failure [("clue_id", jsonString clueId)])
   ]
 
+private def initializedStateResponse (requestId : Json) (state : StepState) : Json :=
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "STATE_INITIALIZED"),
+    ("state", StepKernel.stateToJson state)
+  ]
+
+private def acceptedStepResponse (requestId : Json) (state : StepState) : Json :=
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "ACCEPT_STEP"),
+    ("state", StepKernel.stateToJson state)
+  ]
+
+private def rejectedStepResponse (requestId : Json) (failure : StepError) : Json :=
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "REJECT"),
+    ("failure", Json.mkObj [
+      ("status", jsonString "step_rejected"),
+      ("failure_code", jsonString failure.code.toString),
+      ("path", jsonString failure.path),
+      ("message", jsonString failure.message)
+    ])
+  ]
+
 private def attributeView (item : Zebra.Attribute) : Json :=
   Json.mkObj [
     ("cat", jsonString item.category.value),
@@ -197,7 +220,7 @@ private def allowedRequestField (field : String) : Bool :=
 
 private def allowedCommand (command : String) : Bool :=
   command == "info" || command == "compile" || command == "compile_view" ||
-    command == "init_state" ||
+    command == "init_state" || command == "check_step" || command == "apply_step" ||
     command == "step" || command == "check_candidate" || command == "classify" ||
     command == "render_audit" || command == "emit_artifact"
 
@@ -227,6 +250,15 @@ private def payloadCandidateText (request : Json) : Except String String := do
       | .ok (Json.str text) => pure text
       | .ok _ => throw "payload.candidate must be a string"
       | .error _ => throw "payload.candidate is required"
+  | .error _ => throw "payload is required"
+
+private def payloadText (request : Json) (field : String) : Except String String := do
+  match request.getObjVal? "payload" with
+  | .ok payload =>
+      match payload.getObjVal? field with
+      | .ok (Json.str text) => pure text
+      | .ok _ => throw s!"payload.{field} must be a string"
+      | .error _ => throw s!"payload.{field} is required"
   | .error _ => throw "payload is required"
 
 private def compileProblem (request : Json) (includeView : Bool) : Json :=
@@ -279,6 +311,52 @@ private def checkCandidateCommand (request : Json) : Json :=
                   | .incomplete failure => incompleteResponse id compiled.envelope.id failure
                   | .invalid failure => invalidCandidateResponse id failure
 
+private def initStateCommand (request : Json) : Json :=
+  let id := requestId request
+  match payloadProblemText request with
+  | .error message => errorResponse id "invalid_request" message
+  | .ok problemText =>
+      match parseProblem problemText with
+      | .error parseError =>
+          let kind := match parseError.code with
+            | .invalidJson => "invalid_json"
+            | _ => "invalid_schema"
+          errorResponseAt id kind parseError.path parseError.message
+      | .ok parsed =>
+          match Compiler.compile parsed with
+          | .error staticError =>
+              errorResponseAt id staticError.code.toString staticError.path staticError.message
+          | .ok compiled => initializedStateResponse id (StepKernel.initState compiled)
+
+private def stepCommand (request : Json) (apply : Bool) : Json :=
+  let id := requestId request
+  match payloadProblemText request, payloadText request "state", payloadText request "step" with
+  | .error message, _, _ | _, .error message, _ | _, _, .error message =>
+      errorResponse id "invalid_request" message
+  | .ok problemText, .ok stateText, .ok stepText =>
+      match parseProblem problemText with
+      | .error parseError =>
+          let kind := match parseError.code with
+            | .invalidJson => "invalid_json"
+            | _ => "invalid_schema"
+          errorResponseAt id kind parseError.path parseError.message
+      | .ok parsed =>
+          match Compiler.compile parsed with
+          | .error staticError =>
+              errorResponseAt id staticError.code.toString staticError.path staticError.message
+          | .ok compiled =>
+              match StepKernel.parseState compiled stateText with
+              | .error stepError => rejectedStepResponse id stepError
+              | .ok state =>
+                  match StepKernel.parseStep compiled stepText with
+                  | .error stepError => rejectedStepResponse id stepError
+                  | .ok step =>
+                      match StepKernel.checkStep compiled state step with
+                      | .rejected failure => rejectedStepResponse id failure
+                      | .solved => solvedResponse id compiled.envelope.id
+                      | .accepted next =>
+                          acceptedStepResponse id (if apply then next else state)
+
 private def dispatchCommand (request : Json) : Json :=
   let id := requestId request
   match request.getObjVal? "command" with
@@ -286,6 +364,9 @@ private def dispatchCommand (request : Json) : Json :=
   | .ok (Json.str "compile") => compileCommand request
   | .ok (Json.str "compile_view") => compileViewCommand request
   | .ok (Json.str "check_candidate") => checkCandidateCommand request
+  | .ok (Json.str "init_state") => initStateCommand request
+  | .ok (Json.str "check_step") => stepCommand request false
+  | .ok (Json.str "apply_step") => stepCommand request true
   | .ok (Json.str command) =>
       if allowedCommand command then
         errorResponse id "not_implemented_stage_0"
