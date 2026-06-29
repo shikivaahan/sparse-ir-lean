@@ -1,0 +1,51 @@
+{
+  "failure_count": 0,
+  "full_candidate_traces": 1000,
+  "gate": "stage4_trace_parser",
+  "lean_solver_search": false,
+  "malformed_traces": 22,
+  "parse_error_coverage": {
+    "assign_all_malformed_solution": true,
+    "assign_all_missing_solution": true,
+    "conclude_bad_status": true,
+    "conclude_missing_status": true,
+    "eliminate_missing_cat": true,
+    "eliminate_missing_house": true,
+    "eliminate_missing_val": true,
+    "empty_ops": true,
+    "invalid_json": true,
+    "malformed_from_cell": true,
+    "malformed_justify": true,
+    "missing_justify": true,
+    "missing_ops": true,
+    "missing_problem_id": true,
+    "missing_schema_version": true,
+    "ops_not_array": true,
+    "place_missing_cat": true,
+    "place_missing_house": true,
+    "place_missing_val": true,
+    "unexpected_field": true,
+    "unknown_op": true,
+    "unsupported_schema_version": true
+  },
+  "provider_validation": {
+    "common_trace_shape_failures": {
+      "unexpected_field": 3
+    },
+    "diagnostic_only": true,
+    "model": "deepseek/deepseek-v4-flash",
+    "provider": "openrouter",
+    "status": "complete",
+    "total_calls": 3,
+    "valid_json_trace_rate": 1.0,
+    "valid_json_traces": 3,
+    "valid_trace_schema_rate": 0.0,
+    "valid_trace_schemas": 0
+  },
+  "replay_or_checking": false,
+  "seed": 20260629,
+  "status": "pass",
+  "stepwise_traces": 1000,
+  "total_protocol_error": 0,
+  "total_traces": 2022
+}

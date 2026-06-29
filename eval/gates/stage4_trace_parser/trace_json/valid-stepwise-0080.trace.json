@@ -1,0 +1,1 @@
+{"ops":[{"cat":"Name","house":2,"justify":{"clue":"c2"},"op":"place","val":"Eric"},{"op":"conclude","solution":{"Cigar":{"1":"pall mall","2":"prince"},"Food":{"1":"pizza","2":"grilled cheese"},"HairColor":{"1":"brown","2":"black"},"Name":{"1":"Arnold","2":"Eric"}},"status":"solved"}],"problem_id":"zl_lgp-test-2x4-0","schema_version":"0.2"}

@@ -1,0 +1,1 @@
+{"ops":[{"op":"assign_all","solution":{"Name":{"1":"Alice","2":"Arnold","3":"Bob","4":"Eric","5":"Peter"},"PhoneModel":{"1":"huawei p50","2":"oneplus 9","3":"google pixel 6","4":"samsung galaxy s21","5":"iphone 13"}}},{"op":"conclude","status":"solved"}],"problem_id":"zl_lgp-test-5x2-19","schema_version":"0.2"}

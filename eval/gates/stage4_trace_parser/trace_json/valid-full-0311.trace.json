@@ -1,0 +1,1 @@
+{"ops":[{"op":"assign_all","solution":{"HairColor":{"1":"blonde","2":"brown","3":"black"},"Hobby":{"1":"cooking","2":"photography","3":"gardening"},"Name":{"1":"Arnold","2":"Eric","3":"Peter"},"Nationality":{"1":"swede","2":"brit","3":"dane"}}},{"op":"conclude","status":"solved"}],"problem_id":"zl_lgp-test-3x4-37","schema_version":"0.2"}
