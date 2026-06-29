@@ -1,0 +1,425 @@
+{
+  "bad_conclude_status": {
+    "exemplar": {
+      "ops": [
+        {
+          "op": "conclude",
+          "status": "unknown"
+        }
+      ],
+      "problem_id": "zl_bad_conclude_status_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": "conclude_bad_status",
+    "expected_path": "$.ops[0].status",
+    "kind": "adversarial",
+    "pass_rate": 1.0,
+    "passed": 10,
+    "samples": 10
+  },
+  "malformed_assign_all_solution": {
+    "exemplar": {
+      "ops": [
+        {
+          "op": "assign_all",
+          "solution": []
+        }
+      ],
+      "problem_id": "zl_malformed_assign_all_solution_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": "assign_all_malformed_solution",
+    "expected_path": "$.ops[0].solution",
+    "kind": "adversarial",
+    "pass_rate": 1.0,
+    "passed": 10,
+    "samples": 10
+  },
+  "malformed_justify": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Color",
+          "house": 1,
+          "justify": [],
+          "op": "place",
+          "val": "red"
+        }
+      ],
+      "problem_id": "zl_malformed_justify_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": "malformed_justify",
+    "expected_path": "$.ops[0].justify",
+    "kind": "adversarial",
+    "pass_rate": 1.0,
+    "passed": 10,
+    "samples": 10
+  },
+  "malformed_justify_from": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Drink",
+          "house": 1,
+          "justify": {
+            "clue": "c1",
+            "from": {}
+          },
+          "op": "eliminate",
+          "val": "tea"
+        }
+      ],
+      "problem_id": "zl_malformed_justify_from_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": "malformed_from_cell",
+    "expected_path": "$.ops[0].justify.from",
+    "kind": "adversarial",
+    "pass_rate": 1.0,
+    "passed": 10,
+    "samples": 10
+  },
+  "missing_justify": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Color",
+          "house": 1,
+          "op": "place",
+          "val": "red"
+        }
+      ],
+      "problem_id": "zl_missing_justify_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": "missing_justify",
+    "expected_path": "$.ops[0].justify",
+    "kind": "adversarial",
+    "pass_rate": 1.0,
+    "passed": 10,
+    "samples": 10
+  },
+  "missing_ops": {
+    "exemplar": {
+      "problem_id": "zl_missing_ops_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": "missing_ops",
+    "expected_path": "$.ops",
+    "kind": "adversarial",
+    "pass_rate": 1.0,
+    "passed": 10,
+    "samples": 10
+  },
+  "missing_problem_id": {
+    "exemplar": {
+      "ops": [
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "schema_version": "0.2"
+    },
+    "expected_code": "missing_problem_id",
+    "expected_path": "$.problem_id",
+    "kind": "adversarial",
+    "pass_rate": 1.0,
+    "passed": 10,
+    "samples": 10
+  },
+  "missing_schema_version": {
+    "exemplar": {
+      "ops": [
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_missing_schema_version_example"
+    },
+    "expected_code": "missing_schema_version",
+    "expected_path": "$.schema_version",
+    "kind": "adversarial",
+    "pass_rate": 1.0,
+    "passed": 10,
+    "samples": 10
+  },
+  "unexpected_top_level_field": {
+    "exemplar": {
+      "extra": true,
+      "ops": [
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_unexpected_top_level_field_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": "unexpected_field",
+    "expected_path": "$.extra",
+    "kind": "adversarial",
+    "pass_rate": 1.0,
+    "passed": 10,
+    "samples": 10
+  },
+  "unknown_op": {
+    "exemplar": {
+      "ops": [
+        {
+          "op": "guess"
+        }
+      ],
+      "problem_id": "zl_unknown_op_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": "unknown_op",
+    "expected_path": "$.ops[0].op",
+    "kind": "adversarial",
+    "pass_rate": 1.0,
+    "passed": 10,
+    "samples": 10
+  },
+  "unsupported_schema_version": {
+    "exemplar": {
+      "ops": [
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_unsupported_schema_version_example",
+      "schema_version": "9"
+    },
+    "expected_code": "unsupported_schema_version",
+    "expected_path": "$.schema_version",
+    "kind": "adversarial",
+    "pass_rate": 1.0,
+    "passed": 10,
+    "samples": 10
+  },
+  "valid_assign_all": {
+    "exemplar": {
+      "ops": [
+        {
+          "op": "assign_all",
+          "solution": {
+            "Color": {
+              "1": "red"
+            }
+          }
+        },
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_valid_assign_all_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": null,
+    "expected_path": null,
+    "kind": "positive",
+    "pass_rate": 1.0,
+    "passed": 20,
+    "samples": 20
+  },
+  "valid_conclude": {
+    "exemplar": {
+      "ops": [
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_valid_conclude_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": null,
+    "expected_path": null,
+    "kind": "positive",
+    "pass_rate": 1.0,
+    "passed": 20,
+    "samples": 20
+  },
+  "valid_eliminate": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Drink",
+          "house": 2,
+          "justify": {
+            "clue": "c2"
+          },
+          "op": "eliminate",
+          "val": "tea"
+        },
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_valid_eliminate_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": null,
+    "expected_path": null,
+    "kind": "positive",
+    "pass_rate": 1.0,
+    "passed": 20,
+    "samples": 20
+  },
+  "valid_justify": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Pet",
+          "house": 2,
+          "justify": {
+            "clue": "c3"
+          },
+          "op": "place",
+          "val": "cat"
+        },
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_valid_justify_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": null,
+    "expected_path": null,
+    "kind": "positive",
+    "pass_rate": 1.0,
+    "passed": 20,
+    "samples": 20
+  },
+  "valid_justify_from": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Drink",
+          "house": 1,
+          "justify": {
+            "clue": "c4",
+            "from": [
+              {
+                "cat": "Color",
+                "house": 2,
+                "val": "blue"
+              }
+            ]
+          },
+          "op": "eliminate",
+          "val": "coffee"
+        },
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_valid_justify_from_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": null,
+    "expected_path": null,
+    "kind": "positive",
+    "pass_rate": 1.0,
+    "passed": 20,
+    "samples": 20
+  },
+  "valid_mixed_trace": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Color",
+          "house": 1,
+          "justify": {
+            "clue": "c1"
+          },
+          "op": "place",
+          "val": "red"
+        },
+        {
+          "cat": "Drink",
+          "house": 2,
+          "justify": {
+            "clue": "c2",
+            "from": [
+              {
+                "cat": "Color",
+                "house": 1,
+                "val": "red"
+              }
+            ]
+          },
+          "op": "eliminate",
+          "val": "tea"
+        },
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_valid_mixed_trace_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": null,
+    "expected_path": null,
+    "kind": "positive",
+    "pass_rate": 1.0,
+    "passed": 20,
+    "samples": 20
+  },
+  "valid_place": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Color",
+          "house": 1,
+          "justify": {
+            "clue": "c1"
+          },
+          "op": "place",
+          "val": "red"
+        },
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_valid_place_example",
+      "schema_version": "0.2"
+    },
+    "expected_code": null,
+    "expected_path": null,
+    "kind": "positive",
+    "pass_rate": 1.0,
+    "passed": 20,
+    "samples": 20
+  },
+  "wrapper_object": {
+    "exemplar": {
+      "trace": {
+        "ops": [
+          {
+            "op": "conclude",
+            "status": "solved"
+          }
+        ],
+        "problem_id": "zl_wrapper_object_example",
+        "schema_version": "0.2"
+      }
+    },
+    "expected_code": "unexpected_wrapper_object",
+    "expected_path": "$.trace",
+    "kind": "adversarial",
+    "pass_rate": 1.0,
+    "passed": 10,
+    "samples": 10
+  }
+}

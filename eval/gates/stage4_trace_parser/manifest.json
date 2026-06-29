@@ -28,6 +28,19 @@
     "unknown_op": true,
     "unsupported_schema_version": true
   },
+  "provider_adversarial": {
+    "adversarial_samples": 120,
+    "artifact_path": "provider_adversarial",
+    "expected_rejections": 120,
+    "inspect_log_path": "provider_adversarial/inspect_logs/2026-06-29T19-58-32-00-00_stage4-provider-adversarial_6yGbaoGrSuxRmYWr8CBcdf.eval",
+    "inspect_view_url": "http://127.0.0.1:7577",
+    "model": "deepseek/deepseek-v4-flash",
+    "parseability_only": true,
+    "positive_samples": 140,
+    "status": "pass",
+    "total_samples": 260,
+    "trace_parsed": 140
+  },
   "provider_validation": {
     "artifact_path": "provider_validation",
     "model": "deepseek/deepseek-v4-flash",
