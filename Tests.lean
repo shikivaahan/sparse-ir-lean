@@ -165,7 +165,7 @@ def main : IO UInt32 := do
   assertTrue "v0 domain changed" (Zebra.domainId == "zebra")
   assertTrue "Stage 1 parser is unavailable" problemParserAvailable
   assertTrue "Stage 1 Zebra AST is unavailable" Zebra.astAvailable
-  assertTrue "checker leaked into Stage 1" (!CheckerCore.available)
+  assertTrue "Stage 3A candidate checker is unavailable" CheckerCore.available
   assertTrue "audit renderer leaked into Stage 1" (!Pretty.available)
 
   -- The Stage 1 parse-error vocabulary is shape-only. Domain value,
@@ -268,7 +268,7 @@ def main : IO UInt32 := do
   -- Stage 2 boundary: semantic static compiler/well-formedness.
   -- ====================================================================
   assertTrue "static compiler not advertised" staticCompilerAvailable
-  assertTrue "checker leaked into Stage 2" (!CheckerCore.available)
+  assertTrue "Stage 3A candidate checker is unavailable" CheckerCore.available
   assertTrue "audit renderer leaked into Stage 2" (!Pretty.available)
 
   -- Static error vocabulary is the frozen set every Stage 2 release ships.
@@ -373,6 +373,107 @@ def main : IO UInt32 := do
   -- the original envelope id.
   assertTrue "expect mutated during compile"
     (compiledNoExpect.envelope.expect == none)
+
+  -- ====================================================================
+  -- Stage 3A boundary: candidate parsing, validation, and clue checking.
+  -- Public house keys are one-based and Lean never searches for values.
+  -- ====================================================================
+  let candidateText :=
+    "{\"schema_version\":\"0.2\",\"problem_id\":\"zl_lgp-test-2x2-33\"," ++
+    "\"solution\":{\"Name\":{\"1\":\"Eric\",\"2\":\"Arnold\"}," ++
+    "\"Pet\":{\"1\":\"cat\",\"2\":\"dog\"}}}"
+  let candidate ← match Candidate.parse candidateText with
+    | .ok value => pure value
+    | .error e => throw <| IO.userError (s!"candidate parse failed: {e.code.toString} at {e.path}")
+  let puzzle2x2 ← expectCompiled "Stage 3A 2x2" fixture2x2
+  assertTrue "known satisfying real 2x2 candidate was not solved"
+    (CheckerCore.checkCandidate puzzle2x2 candidate == .solved)
+
+  let violatingText := candidateText.replace
+    "\"Pet\":{\"1\":\"cat\",\"2\":\"dog\"}"
+    "\"Pet\":{\"1\":\"dog\",\"2\":\"cat\"}"
+  let violating ← match Candidate.parse violatingText with
+    | .ok value => pure value
+    | .error error => throw <| IO.userError error.message
+  assertTrue "complete bijective clue violation was not localized to c2"
+    (CheckerCore.checkCandidate puzzle2x2 violating == .clueViolation 1 "c2")
+
+  let partialText :=
+    "{\"schema_version\":\"0.2\",\"problem_id\":\"zl_lgp-test-2x2-33\"," ++
+    "\"solution\":{\"Name\":{\"1\":\"Eric\"}}}"
+  let partialCandidate ← match Candidate.parse partialText with
+    | .ok value => pure value
+    | .error error => throw <| IO.userError error.message
+  match CheckerCore.checkCandidate puzzle2x2 partialCandidate with
+  | .incomplete failure =>
+      assertTrue "partial candidate did not identify its first missing assignment"
+        (failure.code == "missing_assignment")
+  | _ => throw <| IO.userError "partial candidate was not INCOMPLETE"
+
+  let invalidText := candidateText.replace "\"cat\"" "\"dragon\""
+  let invalid ← match Candidate.parse invalidText with
+    | .ok value => pure value
+    | .error error => throw <| IO.userError error.message
+  match CheckerCore.checkCandidate puzzle2x2 invalid with
+  | .invalid failure => assertTrue "unknown value code changed" (failure.code == "unknown_value")
+  | _ => throw <| IO.userError "unknown candidate value was not rejected"
+  match Candidate.parse "{" with
+  | .error e => do
+      assertTrue "malformed JSON code changed"
+        (e.code == CandidateParseErrorCode.invalidCandidateJson)
+  | .ok _ => do
+      throw <| IO.userError "malformed candidate JSON parsed"
+
+  let a : Zebra.CategoryName := { value := "A" }
+  let b : Zebra.CategoryName := { value := "B" }
+  let a1 : Zebra.Attribute := { category := a, value := { value := "a1" } }
+  let a2 : Zebra.Attribute := { category := a, value := { value := "a2" } }
+  let a3 : Zebra.Attribute := { category := a, value := { value := "a3" } }
+  let b1 : Zebra.Attribute := { category := b, value := { value := "b1" } }
+  let b2 : Zebra.Attribute := { category := b, value := { value := "b2" } }
+  let b3 : Zebra.Attribute := { category := b, value := { value := "b3" } }
+  let b4 : Zebra.Attribute := { category := b, value := { value := "b4" } }
+  let semanticCandidate : CandidateAssignment := {
+    schemaVersion := "0.2", problemId := "semantics",
+    solution := [
+      { name := a, assignments := [
+          (1, { value := "a1" }), (2, { value := "a2" }),
+          (3, { value := "a3" }), (4, { value := "a4" })] },
+      { name := b, assignments := [
+          (1, { value := "b1" }), (2, { value := "b2" }),
+          (3, { value := "b3" }), (4, { value := "b4" })] }
+    ]
+  }
+  let violationClues : List Zebra.Clue := [
+    .foundAt "found_at" a1 { value := 2 },
+    .notAt "not_at" a1 { value := 1 },
+    .sameHouse "same_house" a1 b2,
+    .directLeft "direct_left" a2 b1,
+    .directRight "direct_right" a1 b2,
+    .sideBySide "side_by_side" a1 b3,
+    .leftOf "left_of" a3 b1,
+    .rightOf "right_of" a1 b3,
+    .oneBetween "one_between" a1 b2,
+    .twoBetween "two_between" a1 b3
+  ]
+  for clue in violationClues do
+    assertTrue "a v0 clue violation predicate unexpectedly passed"
+      (!CheckerCore.clueSatisfied semanticCandidate clue)
+  let satisfiedClues : List Zebra.Clue := [
+    .foundAt "found_at" a1 { value := 1 },
+    .notAt "not_at" a1 { value := 2 },
+    .sameHouse "same_house" a1 b1,
+    .directLeft "direct_left" a1 b2,
+    .directRight "direct_right" a2 b1,
+    .sideBySide "side_by_side" a1 b2,
+    .leftOf "left_of" a1 b3,
+    .rightOf "right_of" a3 b1,
+    .oneBetween "one_between" a1 b3,
+    .twoBetween "two_between" a1 b4
+  ]
+  for clue in satisfiedClues do
+    assertTrue "a v0 clue satisfaction predicate unexpectedly failed"
+      (CheckerCore.clueSatisfied semanticCandidate clue)
 
   -- ====================================================================
   -- Walkthrough: problem.json -> ParsedProblem -> CompiledPuzzle ->

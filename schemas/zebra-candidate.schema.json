@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shikivaahan/sparse-ir-lean/schemas/zebra-candidate.schema.json",
+  "title": "SparseIR Stage 3A Zebra full-candidate assignment",
+  "type": "object",
+  "required": ["schema_version", "problem_id", "solution"],
+  "properties": {
+    "schema_version": {"const": "0.2"},
+    "problem_id": {"type": "string", "minLength": 1},
+    "solution": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "propertyNames": {"pattern": "^(0|[1-9][0-9]*)$"},
+        "additionalProperties": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "additionalProperties": false,
+  "x-sparseir-interface": {
+    "version": "0.2",
+    "status": "stage3a",
+    "house_indexing": "public one-based"
+  }
+}
