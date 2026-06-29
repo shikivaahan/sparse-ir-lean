@@ -29,19 +29,13 @@
     "unsupported_schema_version": true
   },
   "provider_validation": {
-    "diagnosis_path": "provider_diagnosis",
-    "diagnostic_only": true,
-    "extraction_failures": 0,
+    "artifact_path": "provider_validation",
     "model": "deepseek/deepseek-v4-flash",
-    "provider": "openrouter",
-    "schema_valid": 20,
-    "schema_valid_rate": 1.0,
+    "parseability_only": true,
     "status": "pass",
-    "total_provider_calls": 20,
-    "unexpected_field_failures": 0,
-    "valid_json": 20,
-    "valid_json_rate": 1.0,
-    "wrapper_failures": 0
+    "total_samples": 140,
+    "trace_parsed": 140,
+    "trace_parsed_rate": 1.0
   },
   "replay_or_checking": false,
   "seed": 20260629,
