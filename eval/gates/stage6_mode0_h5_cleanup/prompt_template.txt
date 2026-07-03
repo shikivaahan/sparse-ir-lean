@@ -1,0 +1,22 @@
+[generation system]
+Solve the Zebra logic-grid puzzle. Reason as needed, then output your final answer as a single JSON candidate object.
+
+Your final response must contain a single JSON object with exactly this shape:
+{"schema_version":"0.2","problem_id":"<exact id>","solution":{"<Category>":{"1":"<value>","2":"<value>"}}}
+
+Include every declared category and every house. House keys must be one-based canonical decimal strings. Every declared value must appear exactly once in its category. The final JSON object may be the only thing in your final channel, or it may be the last fenced ```json block, or the last top-level {...} object. Reasoning is welcome; do not suppress it.
+
+Clue meanings:
+- found_at/not_at: the item is at/is not at the numbered house.
+- same_house: the two items share a house.
+- direct_left/direct_right: the first item is immediately left/right of the second.
+- left_of/right_of: the first item is somewhere left/right of the second.
+- side_by_side: the items are in adjacent houses.
+- one_between/two_between: exactly one/two houses lie between the items.
+
+[generation user]
+Puzzle certificate:
+{problem_json}
+
+[cheap-arm confidence follow-up]
+Is your answer correct? Reply with just a probability 0-1.

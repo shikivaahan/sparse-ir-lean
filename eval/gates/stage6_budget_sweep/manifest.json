@@ -1,0 +1,70 @@
+{
+  "budgets": [
+    "0",
+    "256",
+    "512",
+    "1024",
+    "2048",
+    "4096",
+    "8192",
+    "full"
+  ],
+  "commands": {
+    "finalize": "PYTHONPATH=src .venv/bin/python scripts/run_stage6_budget_sweep.py finalize",
+    "full": "PYTHONPATH=src .venv/bin/python scripts/run_stage6_budget_sweep.py run --workers 12",
+    "prepare": "PYTHONPATH=src .venv/bin/python scripts/run_stage6_budget_sweep.py prepare --n 200",
+    "smoke": "PYTHONPATH=src .venv/bin/python scripts/run_stage6_budget_sweep.py smoke --n 6 --workers 8"
+  },
+  "completed_at": "2026-07-01T18:25:44.153924+00:00",
+  "config_hash": "38e6b643573133366f5f99696d6e25e71938e562d06281bf2df341dd18c1081e",
+  "correctness_judge": "Lean check_candidate only",
+  "gate": "stage6_budget_sweep",
+  "git_commit_before_results": "6b044e02251708492b76a7c767c1c9a940e77e36",
+  "grid_bins": {
+    "2x2": 8,
+    "2x3": 8,
+    "2x4": 8,
+    "2x5": 8,
+    "2x6": 8,
+    "3x2": 8,
+    "3x3": 8,
+    "3x4": 8,
+    "3x5": 8,
+    "3x6": 8,
+    "4x2": 8,
+    "4x3": 8,
+    "4x4": 8,
+    "4x5": 8,
+    "4x6": 8,
+    "5x2": 8,
+    "5x3": 8,
+    "5x4": 8,
+    "5x5": 8,
+    "5x6": 8,
+    "6x2": 8,
+    "6x3": 8,
+    "6x4": 8,
+    "6x5": 8,
+    "6x6": 8
+  },
+  "house_bins": {
+    "2": 40,
+    "3": 40,
+    "4": 40,
+    "5": 40,
+    "6": 40
+  },
+  "model": "deepseek/deepseek-v4-flash",
+  "n": 200,
+  "prompt_hash": "5ef37492fbe71c0d88f96ab0ae4ca8960142fd419850d24d2071f49040255c1f",
+  "raw_outputs_stored_before_parsing": true,
+  "result_metrics_recomputed_from_results_jsonl": true,
+  "selection_seed": 20260702,
+  "state": "complete",
+  "token_caps": {
+    "answer_tokens": 8192,
+    "reasoning_tokens_full": 24000,
+    "request_max_tokens": 32768
+  },
+  "workers": 12
+}

@@ -1,0 +1,25 @@
+{
+  "correct": 29,
+  "coverage": 0.9666666666666667,
+  "gates": {
+    "coverage_min": 0.3,
+    "malformed_max_rate": 0.05,
+    "reasoning_present_min_pct": 0.9
+  },
+  "gates_passed": true,
+  "malformed": 1,
+  "malformed_rate": 0.03333333333333333,
+  "max_reasoning_tokens": 28959,
+  "median_content_tokens": 279,
+  "median_reasoning_tokens": 3159,
+  "model": "deepseek/deepseek-v4-flash",
+  "n": 30,
+  "reasoning_present_count": 30,
+  "reasoning_present_pct": 1.0,
+  "token_caps": {
+    "answer_tokens": 8192,
+    "confidence_max_tokens": 32,
+    "reasoning_tokens": 24000,
+    "request_max_tokens": 32768
+  }
+}

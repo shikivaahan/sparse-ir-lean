@@ -1,0 +1,38 @@
+{
+  "completed_at": "2026-07-03T09:55:24.968845+00:00",
+  "confidence_max_tokens": 32,
+  "confidence_reasoning": "disabled",
+  "confidence_source": "p_true",
+  "correctness_judge": "Lean check_candidate (reused from ladder; never re-derived)",
+  "gate": "stage6_h3_confidence",
+  "git_commit_before_results": "a5c2b64e82b01363024696e60ae49e187a66d00e",
+  "ladder_reused_from": "stage6_capability_ladder",
+  "models": [
+    {
+      "id": "deepseek/deepseek-v4-flash",
+      "label": "v4-flash",
+      "role": "cheap_frontier_baseline"
+    },
+    {
+      "id": "qwen/qwen3-32b",
+      "label": "qwen3-32b",
+      "role": "mid_large_failing"
+    },
+    {
+      "id": "qwen/qwen3-8b",
+      "label": "qwen3-8b",
+      "role": "small_failing"
+    }
+  ],
+  "n": 200,
+  "n_total": 600,
+  "state": "complete",
+  "totals": {
+    "models": [
+      "deepseek/deepseek-v4-flash",
+      "qwen/qwen3-32b",
+      "qwen/qwen3-8b"
+    ],
+    "total_cost_usd": 0.083739281
+  }
+}

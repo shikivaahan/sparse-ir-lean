@@ -1,0 +1,14 @@
+{
+  "deepseek/deepseek-v4-flash": {
+    "n_rows": 200,
+    "n_with_puzzle_in_subset": 200
+  },
+  "qwen/qwen3-32b": {
+    "n_rows": 200,
+    "n_with_puzzle_in_subset": 200
+  },
+  "qwen/qwen3-8b": {
+    "n_rows": 121,
+    "n_with_puzzle_in_subset": 121
+  }
+}

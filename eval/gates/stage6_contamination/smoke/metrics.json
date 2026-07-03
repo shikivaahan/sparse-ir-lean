@@ -1,0 +1,129 @@
+{
+  "by_grid": {
+    "2x2": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "2x3": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "3x3": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "3x4": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "4x4": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "4x5": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "5x5": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "5x6": {
+      "clue_violation": 1,
+      "malformed": 0,
+      "n": 1,
+      "solved": 0
+    },
+    "6x2": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    }
+  },
+  "by_house": {
+    "2": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "3": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "4": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "5": {
+      "clue_violation": 1,
+      "malformed": 0,
+      "n": 2,
+      "solved": 1
+    },
+    "6": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    }
+  },
+  "clue_violation_count": 1,
+  "cost_usd": 0.01993189764,
+  "examples_per_minute": 0.573514754149584,
+  "failure_categories": {
+    "clue_violation": 1
+  },
+  "finish_reasons": {
+    "stop": 9
+  },
+  "lean_outcomes": {
+    "clue_violation": 1,
+    "solved": 8
+  },
+  "malformed_count": 0,
+  "n": 9,
+  "original_baseline_n": 9,
+  "original_baseline_solve_rate": 0.8888888888888888,
+  "original_baseline_solved": 8,
+  "perturbed_solve_rate": 0.8888888888888888,
+  "perturbed_solved": 8,
+  "provider_error_count": 0,
+  "rate_limit_error_count": 0,
+  "reasoning_tokens": {
+    "max": 61447,
+    "median": 2556,
+    "min": 217,
+    "p90": 8364,
+    "positive_count": 9,
+    "positive_rate": 1.0
+  },
+  "regurgitation_count": 0,
+  "smoke_passed": true,
+  "solve_rate_delta": 0.0,
+  "tokens": {
+    "input": 6587,
+    "output_including_reasoning": 87320
+  },
+  "truncation_count": 0,
+  "wall_seconds": 941.5625249270524
+}

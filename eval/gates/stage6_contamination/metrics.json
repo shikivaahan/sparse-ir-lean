@@ -1,0 +1,231 @@
+{
+  "by_grid": {
+    "2x2": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "2x3": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "2x4": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "2x5": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "2x6": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "3x2": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "3x3": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "3x4": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "3x5": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "3x6": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "4x2": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "4x3": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "4x4": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "4x5": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "4x6": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "5x2": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "5x3": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "5x4": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "5x5": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "5x6": {
+      "clue_violation": 1,
+      "malformed": 0,
+      "n": 2,
+      "solved": 1
+    },
+    "6x2": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 2,
+      "solved": 2
+    },
+    "6x3": {
+      "clue_violation": 0,
+      "malformed": 1,
+      "n": 2,
+      "solved": 1
+    },
+    "6x4": {
+      "clue_violation": 1,
+      "malformed": 0,
+      "n": 1,
+      "solved": 0
+    },
+    "6x5": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 1,
+      "solved": 1
+    },
+    "6x6": {
+      "clue_violation": 0,
+      "malformed": 1,
+      "n": 2,
+      "solved": 1
+    }
+  },
+  "by_house": {
+    "2": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 8,
+      "solved": 8
+    },
+    "3": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 8,
+      "solved": 8
+    },
+    "4": {
+      "clue_violation": 0,
+      "malformed": 0,
+      "n": 8,
+      "solved": 8
+    },
+    "5": {
+      "clue_violation": 1,
+      "malformed": 0,
+      "n": 8,
+      "solved": 7
+    },
+    "6": {
+      "clue_violation": 1,
+      "malformed": 2,
+      "n": 8,
+      "solved": 5
+    }
+  },
+  "clue_violation_count": 2,
+  "cost_usd": 0.07829473268,
+  "examples_per_minute": 2.4722895103482956,
+  "failure_categories": {
+    "clue_violation": 2,
+    "provider_error": 1,
+    "truncation": 1
+  },
+  "finish_reasons": {
+    "None": 1,
+    "length": 1,
+    "stop": 38
+  },
+  "lean_outcomes": {
+    "clue_violation": 2,
+    "malformed": 2,
+    "solved": 36
+  },
+  "malformed_count": 2,
+  "n": 40,
+  "original_baseline_n": 40,
+  "original_baseline_solve_rate": 0.9,
+  "original_baseline_solved": 36,
+  "perturbed_solve_rate": 0.9,
+  "perturbed_solved": 36,
+  "provider_error_count": 1,
+  "rate_limit_error_count": 0,
+  "reasoning_tokens": {
+    "max": 45531,
+    "median": 2566.0,
+    "min": 0,
+    "p90": 16616,
+    "positive_count": 39,
+    "positive_rate": 0.975
+  },
+  "regurgitation_count": 0,
+  "solve_rate_delta": 0.0,
+  "tokens": {
+    "input": 29680,
+    "output_including_reasoning": 321762
+  },
+  "truncation_count": 1,
+  "verdict": "passed",
+  "verdict_rule": "pass iff perturbed solve rate is within 0.10 of paired original baseline and regurgitation count is zero",
+  "wall_seconds": 970.7600950270134
+}

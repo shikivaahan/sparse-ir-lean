@@ -1,0 +1,76 @@
+{
+  "clingo_unique": 40,
+  "commands": {
+    "finalize": "PYTHONPATH=src .venv/bin/python scripts/run_stage6_contamination.py finalize",
+    "full": "PYTHONPATH=src .venv/bin/python scripts/run_stage6_contamination.py run --workers 8",
+    "prepare": "PYTHONPATH=src .venv/bin/python scripts/run_stage6_contamination.py prepare --n 40",
+    "smoke": "PYTHONPATH=src .venv/bin/python scripts/run_stage6_contamination.py smoke --n 10 --workers 8"
+  },
+  "completed_at": "2026-07-01T13:20:13.606355+00:00",
+  "config_hash": "072b330c51ec63afe455aa5420281ff8bda3a02d0ee7b39ec5d18a880fc9d972",
+  "correctness_judge": "Lean check_candidate only",
+  "gate": "stage6_contamination",
+  "git_commit_before_results": "656156197e1767a7c753ca67e2e0999d87eb180a",
+  "grid_bins": {
+    "2x2": 2,
+    "2x3": 2,
+    "2x4": 2,
+    "2x5": 1,
+    "2x6": 1,
+    "3x2": 1,
+    "3x3": 2,
+    "3x4": 2,
+    "3x5": 2,
+    "3x6": 1,
+    "4x2": 1,
+    "4x3": 1,
+    "4x4": 2,
+    "4x5": 2,
+    "4x6": 2,
+    "5x2": 2,
+    "5x3": 1,
+    "5x4": 1,
+    "5x5": 2,
+    "5x6": 2,
+    "6x2": 2,
+    "6x3": 2,
+    "6x4": 1,
+    "6x5": 1,
+    "6x6": 2
+  },
+  "house_bins": {
+    "2": 8,
+    "3": 8,
+    "4": 8,
+    "5": 8,
+    "6": 8
+  },
+  "model": "deepseek/deepseek-v4-flash",
+  "n": 40,
+  "preserved_runs": [
+    {
+      "location": "eval/gates/stage6_contamination/smoke_connection_blocked_20260701T111242Z",
+      "reason": "sandboxed network denied all 10 provider calls; zero billed tokens; not model-quality evidence"
+    },
+    {
+      "location": "eval/gates/stage6_contamination/smoke",
+      "reason": "reasoning-on guardrail passed on 9 durable rows; the tenth 6x6 request was interrupted after 15 minutes without a response and is excluded from smoke metrics"
+    }
+  ],
+  "prompt_hash": "5ef37492fbe71c0d88f96ab0ae4ca8960142fd419850d24d2071f49040255c1f",
+  "raw_outputs_stored_before_parsing": true,
+  "reasoning_config": {
+    "exclude": false,
+    "max_tokens": 24000
+  },
+  "result_metrics_recomputed_from_results_jsonl": true,
+  "selection_seed": 20260701,
+  "state": "complete",
+  "token_caps": {
+    "answer_tokens": 8192,
+    "reasoning_tokens": 24000,
+    "request_max_tokens": 32768
+  },
+  "verdict": "passed",
+  "workers": 8
+}

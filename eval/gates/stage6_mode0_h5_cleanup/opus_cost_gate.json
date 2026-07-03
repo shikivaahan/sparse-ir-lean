@@ -1,0 +1,52 @@
+{
+  "budget_usd": 5.0,
+  "hard_token_cap_upper_usd": 4.72477,
+  "ids": [
+    "zl_lgp-test-2x2-11",
+    "zl_lgp-test-2x3-39",
+    "zl_lgp-test-2x4-11",
+    "zl_lgp-test-2x5-11",
+    "zl_lgp-test-2x6-2",
+    "zl_lgp-test-2x2-31",
+    "zl_lgp-test-3x2-12",
+    "zl_lgp-test-3x3-3",
+    "zl_lgp-test-3x4-37",
+    "zl_lgp-test-3x5-2",
+    "zl_lgp-test-3x6-10",
+    "zl_lgp-test-3x2-15",
+    "zl_lgp-test-4x2-30",
+    "zl_lgp-test-4x3-36",
+    "zl_lgp-test-4x4-15",
+    "zl_lgp-test-4x5-25",
+    "zl_lgp-test-4x6-30",
+    "zl_lgp-test-4x2-19",
+    "zl_lgp-test-5x2-7",
+    "zl_lgp-test-5x3-16",
+    "zl_lgp-test-5x4-35",
+    "zl_lgp-test-5x5-4",
+    "zl_lgp-test-5x6-39",
+    "zl_lgp-test-5x2-9",
+    "zl_lgp-test-6x2-15",
+    "zl_lgp-test-6x3-8",
+    "zl_lgp-test-6x4-20",
+    "zl_lgp-test-6x5-1",
+    "zl_lgp-test-6x6-16",
+    "zl_lgp-test-6x2-1"
+  ],
+  "n": 30,
+  "probe_costs_usd": [
+    0.005115,
+    0.013585,
+    0.04009
+  ],
+  "probe_ids": [
+    "zl_lgp-test-2x2-11",
+    "zl_lgp-test-4x2-30",
+    "zl_lgp-test-6x2-15"
+  ],
+  "probe_n": 3,
+  "probe_total_cost_usd": 0.05879,
+  "projected_cost_usd": 1.2027,
+  "projected_per_puzzle_usd_with_25pct_margin": 0.04009,
+  "selection_rule": "largest N in {25,30,35,40}, divisible across five house bins, whose probe projection and conservative token-cap upper bound are both <= $5"
+}
