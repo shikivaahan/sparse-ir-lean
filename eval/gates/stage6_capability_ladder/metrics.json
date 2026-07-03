@@ -1,0 +1,829 @@
+{
+  "ladder": [
+    {
+      "clue_violation": 53,
+      "cost_per_verified_correct": 0.0050074170859375,
+      "cost_usd": 0.640949387,
+      "coverage": 0.64,
+      "examples_per_minute": 0.556800548294888,
+      "label": "qwen3-8b",
+      "malformed": 2,
+      "max_reasoning_tokens": 28102,
+      "median_reasoning_tokens": 3901.5,
+      "model_id": "qwen/qwen3-8b",
+      "n": 200,
+      "role": "small",
+      "solved": 128,
+      "truncation": 0,
+      "wall_minutes": 359.19504859050113
+    },
+    {
+      "clue_violation": 39,
+      "cost_per_verified_correct": 0.004029516780821918,
+      "cost_usd": 0.58830945,
+      "coverage": 0.73,
+      "examples_per_minute": 108634.2235162838,
+      "label": "qwen3-32b",
+      "malformed": 13,
+      "max_reasoning_tokens": 24000,
+      "median_reasoning_tokens": 3265.0,
+      "model_id": "qwen/qwen3-32b",
+      "n": 200,
+      "role": "mid_large",
+      "solved": 146,
+      "truncation": 0,
+      "wall_minutes": 0.0018410404523213704
+    },
+    {
+      "clue_violation": 0,
+      "cost_per_verified_correct": 0.0013245263094081635,
+      "cost_usd": 0.259607156644,
+      "coverage": 0.98,
+      "examples_per_minute": 108062.78729740233,
+      "label": "v4-flash-baseline",
+      "malformed": 4,
+      "max_reasoning_tokens": 32768,
+      "median_reasoning_tokens": 2501.0,
+      "model_id": "deepseek/deepseek-v4-flash",
+      "n": 200,
+      "role": "cheap_frontier_baseline",
+      "solved": 196,
+      "truncation": 2,
+      "wall_minutes": 0.0018507758776346841
+    }
+  ],
+  "per_model": {
+    "deepseek/deepseek-v4-flash": {
+      "by_grid": {
+        "2x2": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "2x3": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "2x4": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "2x5": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "2x6": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "3x2": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "3x3": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "3x4": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "3x5": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "3x6": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "4x2": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "4x3": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "4x4": {
+          "clue_violation": 0,
+          "coverage": 0.875,
+          "malformed": 1,
+          "n": 8,
+          "solved": 7
+        },
+        "4x5": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "4x6": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "5x2": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "5x3": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "5x4": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "5x5": {
+          "clue_violation": 0,
+          "coverage": 0.875,
+          "malformed": 1,
+          "n": 8,
+          "solved": 7
+        },
+        "5x6": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "6x2": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "6x3": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "6x4": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "6x5": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "6x6": {
+          "clue_violation": 0,
+          "coverage": 0.75,
+          "malformed": 2,
+          "n": 8,
+          "solved": 6
+        }
+      },
+      "by_house": {
+        "2": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 40,
+          "solved": 40
+        },
+        "3": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 40,
+          "solved": 40
+        },
+        "4": {
+          "clue_violation": 0,
+          "coverage": 0.975,
+          "malformed": 1,
+          "n": 40,
+          "solved": 39
+        },
+        "5": {
+          "clue_violation": 0,
+          "coverage": 0.975,
+          "malformed": 1,
+          "n": 40,
+          "solved": 39
+        },
+        "6": {
+          "clue_violation": 0,
+          "coverage": 0.95,
+          "malformed": 2,
+          "n": 40,
+          "solved": 38
+        }
+      },
+      "clue_violation": 0,
+      "confident_wrong": 0,
+      "cost_per_verified_correct": 0.0013245263094081635,
+      "cost_usd": 0.259607156644,
+      "coverage": 0.98,
+      "examples_per_minute": 108062.78729740233,
+      "finish_reasons": {
+        "None": 1,
+        "error": 1,
+        "length": 2,
+        "stop": 196
+      },
+      "lean_outcomes": {
+        "malformed": 4,
+        "solved": 196
+      },
+      "malformed": 4,
+      "model_id": "deepseek/deepseek-v4-flash",
+      "n": 200,
+      "p_true": null,
+      "provider_error": 1,
+      "rate_limit_error": 0,
+      "reasoning_tokens": {
+        "max": 32768,
+        "median": 2501.0,
+        "min": 0,
+        "p90": 10848,
+        "positive_count": 183,
+        "positive_rate": 0.915
+      },
+      "solved": 196,
+      "tokens": {
+        "input": 148010,
+        "output_including_reasoning": 969589
+      },
+      "truncation": 2,
+      "verifier_value": 0.98,
+      "wall_seconds": 0.11104655265808105
+    },
+    "qwen/qwen3-32b": {
+      "by_grid": {
+        "2x2": {
+          "clue_violation": 0,
+          "coverage": 0.5,
+          "malformed": 4,
+          "n": 8,
+          "solved": 4
+        },
+        "2x3": {
+          "clue_violation": 1,
+          "coverage": 0.75,
+          "malformed": 1,
+          "n": 8,
+          "solved": 6
+        },
+        "2x4": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "2x5": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "2x6": {
+          "clue_violation": 0,
+          "coverage": 0.625,
+          "malformed": 3,
+          "n": 8,
+          "solved": 5
+        },
+        "3x2": {
+          "clue_violation": 0,
+          "coverage": 0.875,
+          "malformed": 1,
+          "n": 8,
+          "solved": 7
+        },
+        "3x3": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "3x4": {
+          "clue_violation": 0,
+          "coverage": 0.875,
+          "malformed": 1,
+          "n": 8,
+          "solved": 7
+        },
+        "3x5": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "3x6": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "4x2": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "4x3": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "4x4": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "4x5": {
+          "clue_violation": 3,
+          "coverage": 0.625,
+          "malformed": 0,
+          "n": 8,
+          "solved": 5
+        },
+        "4x6": {
+          "clue_violation": 2,
+          "coverage": 0.75,
+          "malformed": 0,
+          "n": 8,
+          "solved": 6
+        },
+        "5x2": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "5x3": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "5x4": {
+          "clue_violation": 3,
+          "coverage": 0.5,
+          "malformed": 0,
+          "n": 8,
+          "solved": 4
+        },
+        "5x5": {
+          "clue_violation": 2,
+          "coverage": 0.625,
+          "malformed": 1,
+          "n": 8,
+          "solved": 5
+        },
+        "5x6": {
+          "clue_violation": 4,
+          "coverage": 0.375,
+          "malformed": 1,
+          "n": 8,
+          "solved": 3
+        },
+        "6x2": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "6x3": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "6x4": {
+          "clue_violation": 5,
+          "coverage": 0.375,
+          "malformed": 0,
+          "n": 8,
+          "solved": 3
+        },
+        "6x5": {
+          "clue_violation": 7,
+          "coverage": 0.0,
+          "malformed": 1,
+          "n": 8,
+          "solved": 0
+        },
+        "6x6": {
+          "clue_violation": 5,
+          "coverage": 0.25,
+          "malformed": 0,
+          "n": 8,
+          "solved": 2
+        }
+      },
+      "by_house": {
+        "2": {
+          "clue_violation": 2,
+          "coverage": 0.75,
+          "malformed": 8,
+          "n": 40,
+          "solved": 30
+        },
+        "3": {
+          "clue_violation": 1,
+          "coverage": 0.925,
+          "malformed": 2,
+          "n": 40,
+          "solved": 37
+        },
+        "4": {
+          "clue_violation": 8,
+          "coverage": 0.8,
+          "malformed": 0,
+          "n": 40,
+          "solved": 32
+        },
+        "5": {
+          "clue_violation": 10,
+          "coverage": 0.675,
+          "malformed": 2,
+          "n": 40,
+          "solved": 27
+        },
+        "6": {
+          "clue_violation": 18,
+          "coverage": 0.5,
+          "malformed": 1,
+          "n": 40,
+          "solved": 20
+        }
+      },
+      "clue_violation": 39,
+      "confident_wrong": 0,
+      "cost_per_verified_correct": 0.004029516780821918,
+      "cost_usd": 0.58830945,
+      "coverage": 0.73,
+      "examples_per_minute": 108634.2235162838,
+      "finish_reasons": {
+        "None": 2,
+        "error": 9,
+        "stop": 189
+      },
+      "lean_outcomes": {
+        "clue_violation": 39,
+        "invalid": 2,
+        "malformed": 13,
+        "solved": 146
+      },
+      "malformed": 13,
+      "model_id": "qwen/qwen3-32b",
+      "n": 200,
+      "p_true": null,
+      "provider_error": 2,
+      "rate_limit_error": 0,
+      "reasoning_tokens": {
+        "max": 24000,
+        "median": 3265.0,
+        "min": 0,
+        "p90": 18158,
+        "positive_count": 198,
+        "positive_rate": 0.99
+      },
+      "solved": 146,
+      "tokens": {
+        "input": 140569,
+        "output_including_reasoning": 1358549
+      },
+      "truncation": 0,
+      "verifier_value": 0.73,
+      "wall_seconds": 0.11046242713928223
+    },
+    "qwen/qwen3-8b": {
+      "by_grid": {
+        "2x2": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "2x3": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "2x4": {
+          "clue_violation": 1,
+          "coverage": 0.75,
+          "malformed": 0,
+          "n": 8,
+          "solved": 6
+        },
+        "2x5": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "2x6": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "3x2": {
+          "clue_violation": 0,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "3x3": {
+          "clue_violation": 0,
+          "coverage": 1.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 8
+        },
+        "3x4": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "3x5": {
+          "clue_violation": 3,
+          "coverage": 0.625,
+          "malformed": 0,
+          "n": 8,
+          "solved": 5
+        },
+        "3x6": {
+          "clue_violation": 0,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "4x2": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "4x3": {
+          "clue_violation": 1,
+          "coverage": 0.75,
+          "malformed": 0,
+          "n": 8,
+          "solved": 6
+        },
+        "4x4": {
+          "clue_violation": 1,
+          "coverage": 0.75,
+          "malformed": 0,
+          "n": 8,
+          "solved": 6
+        },
+        "4x5": {
+          "clue_violation": 3,
+          "coverage": 0.625,
+          "malformed": 0,
+          "n": 8,
+          "solved": 5
+        },
+        "4x6": {
+          "clue_violation": 3,
+          "coverage": 0.5,
+          "malformed": 0,
+          "n": 8,
+          "solved": 4
+        },
+        "5x2": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "5x3": {
+          "clue_violation": 1,
+          "coverage": 0.75,
+          "malformed": 0,
+          "n": 8,
+          "solved": 6
+        },
+        "5x4": {
+          "clue_violation": 4,
+          "coverage": 0.125,
+          "malformed": 1,
+          "n": 8,
+          "solved": 1
+        },
+        "5x5": {
+          "clue_violation": 5,
+          "coverage": 0.375,
+          "malformed": 0,
+          "n": 8,
+          "solved": 3
+        },
+        "5x6": {
+          "clue_violation": 4,
+          "coverage": 0.125,
+          "malformed": 1,
+          "n": 8,
+          "solved": 1
+        },
+        "6x2": {
+          "clue_violation": 1,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 8,
+          "solved": 7
+        },
+        "6x3": {
+          "clue_violation": 3,
+          "coverage": 0.625,
+          "malformed": 0,
+          "n": 8,
+          "solved": 5
+        },
+        "6x4": {
+          "clue_violation": 5,
+          "coverage": 0.125,
+          "malformed": 0,
+          "n": 8,
+          "solved": 1
+        },
+        "6x5": {
+          "clue_violation": 7,
+          "coverage": 0.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 0
+        },
+        "6x6": {
+          "clue_violation": 5,
+          "coverage": 0.0,
+          "malformed": 0,
+          "n": 8,
+          "solved": 0
+        }
+      },
+      "by_house": {
+        "2": {
+          "clue_violation": 4,
+          "coverage": 0.875,
+          "malformed": 0,
+          "n": 40,
+          "solved": 35
+        },
+        "3": {
+          "clue_violation": 4,
+          "coverage": 0.85,
+          "malformed": 0,
+          "n": 40,
+          "solved": 34
+        },
+        "4": {
+          "clue_violation": 9,
+          "coverage": 0.7,
+          "malformed": 0,
+          "n": 40,
+          "solved": 28
+        },
+        "5": {
+          "clue_violation": 15,
+          "coverage": 0.45,
+          "malformed": 2,
+          "n": 40,
+          "solved": 18
+        },
+        "6": {
+          "clue_violation": 21,
+          "coverage": 0.325,
+          "malformed": 0,
+          "n": 40,
+          "solved": 13
+        }
+      },
+      "clue_violation": 53,
+      "confident_wrong": 0,
+      "cost_per_verified_correct": 0.0050074170859375,
+      "cost_usd": 0.640949387,
+      "coverage": 0.64,
+      "examples_per_minute": 0.556800548294888,
+      "finish_reasons": {
+        "error": 2,
+        "stop": 198
+      },
+      "lean_outcomes": {
+        "clue_violation": 53,
+        "invalid": 17,
+        "malformed": 2,
+        "solved": 128
+      },
+      "malformed": 2,
+      "model_id": "qwen/qwen3-8b",
+      "n": 200,
+      "p_true": null,
+      "provider_error": 0,
+      "rate_limit_error": 0,
+      "reasoning_tokens": {
+        "max": 28102,
+        "median": 3901.5,
+        "min": 281,
+        "p90": 17198,
+        "positive_count": 200,
+        "positive_rate": 1.0
+      },
+      "solved": 128,
+      "tokens": {
+        "input": 141957,
+        "output_including_reasoning": 1399239
+      },
+      "truncation": 0,
+      "verifier_value": 0.64,
+      "wall_seconds": 21551.70291543007
+    }
+  },
+  "totals": {
+    "models": [
+      "qwen/qwen3-8b",
+      "qwen/qwen3-32b",
+      "deepseek/deepseek-v4-flash"
+    ],
+    "n_problems": 200,
+    "total_cost_usd": 1.488865993644
+  }
+}

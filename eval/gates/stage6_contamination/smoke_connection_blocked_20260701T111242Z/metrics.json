@@ -1,0 +1,134 @@
+{
+  "by_grid": {
+    "2x2": {
+      "clue_violation": 0,
+      "malformed": 1,
+      "n": 1,
+      "solved": 0
+    },
+    "2x3": {
+      "clue_violation": 0,
+      "malformed": 1,
+      "n": 1,
+      "solved": 0
+    },
+    "3x3": {
+      "clue_violation": 0,
+      "malformed": 1,
+      "n": 1,
+      "solved": 0
+    },
+    "3x4": {
+      "clue_violation": 0,
+      "malformed": 1,
+      "n": 1,
+      "solved": 0
+    },
+    "4x4": {
+      "clue_violation": 0,
+      "malformed": 1,
+      "n": 1,
+      "solved": 0
+    },
+    "4x5": {
+      "clue_violation": 0,
+      "malformed": 1,
+      "n": 1,
+      "solved": 0
+    },
+    "5x5": {
+      "clue_violation": 0,
+      "malformed": 1,
+      "n": 1,
+      "solved": 0
+    },
+    "5x6": {
+      "clue_violation": 0,
+      "malformed": 1,
+      "n": 1,
+      "solved": 0
+    },
+    "6x2": {
+      "clue_violation": 0,
+      "malformed": 1,
+      "n": 1,
+      "solved": 0
+    },
+    "6x6": {
+      "clue_violation": 0,
+      "malformed": 1,
+      "n": 1,
+      "solved": 0
+    }
+  },
+  "by_house": {
+    "2": {
+      "clue_violation": 0,
+      "malformed": 2,
+      "n": 2,
+      "solved": 0
+    },
+    "3": {
+      "clue_violation": 0,
+      "malformed": 2,
+      "n": 2,
+      "solved": 0
+    },
+    "4": {
+      "clue_violation": 0,
+      "malformed": 2,
+      "n": 2,
+      "solved": 0
+    },
+    "5": {
+      "clue_violation": 0,
+      "malformed": 2,
+      "n": 2,
+      "solved": 0
+    },
+    "6": {
+      "clue_violation": 0,
+      "malformed": 2,
+      "n": 2,
+      "solved": 0
+    }
+  },
+  "clue_violation_count": 0,
+  "cost_usd": 0.0,
+  "examples_per_minute": 90.62568893259458,
+  "failure_categories": {
+    "provider_error": 10
+  },
+  "finish_reasons": {
+    "None": 10
+  },
+  "lean_outcomes": {
+    "malformed": 10
+  },
+  "malformed_count": 10,
+  "n": 10,
+  "original_baseline_n": 10,
+  "original_baseline_solve_rate": 0.8,
+  "original_baseline_solved": 8,
+  "perturbed_solve_rate": 0.0,
+  "perturbed_solved": 0,
+  "provider_error_count": 10,
+  "rate_limit_error_count": 0,
+  "reasoning_tokens": {
+    "max": 0,
+    "median": 0.0,
+    "min": 0,
+    "p90": 0,
+    "positive_count": 0,
+    "positive_rate": 0.0
+  },
+  "regurgitation_count": 0,
+  "smoke_passed": false,
+  "solve_rate_delta": -0.8,
+  "tokens": {
+    "input": 0,
+    "output_including_reasoning": 0
+  },
+  "truncation_count": 0,
+  "wall_seconds": 6.620639324974036
+}

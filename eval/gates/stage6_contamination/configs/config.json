@@ -1,0 +1,13 @@
+{
+  "endpoint": "https://openrouter.ai/api/v1",
+  "max_tokens": 32768,
+  "mode": "Mode-0 single-shot",
+  "model": "deepseek/deepseek-v4-flash",
+  "reasoning": {
+    "exclude": false,
+    "max_tokens": 24000
+  },
+  "seed": 20260701,
+  "temperature": 0.1,
+  "workers": 8
+}

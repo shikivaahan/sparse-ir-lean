@@ -1,0 +1,25 @@
+{
+  "n": 10,
+  "grid_breakdown": {
+    "2x2": 1,
+    "2x3": 1,
+    "3x3": 1,
+    "3x4": 1,
+    "4x4": 1,
+    "4x5": 1,
+    "5x5": 1,
+    "5x6": 1,
+    "6x2": 1,
+    "6x6": 1
+  },
+  "tokens_in": 15003,
+  "tokens_out": 11623,
+  "actual_cost_usd": 0.00517071128,
+  "projected_n": 200,
+  "projected_tokens_in": 300060,
+  "projected_tokens_out": 232460,
+  "projected_cost_usd": 0.1034142256,
+  "projection_method": "linear 20x scale from the balanced 10-sample smoke",
+  "model_id": "deepseek/deepseek-v4-flash",
+  "seed": 20260630
+}

@@ -13,7 +13,7 @@
 ## Exact commands
 
 ```bash
-set -a; source .env; set +a; export OPENAI_API_KEY="$OPENROUTER_API_KEY"; export XDG_DATA_HOME=/tmp/sparseir-inspect-data; export TIKTOKEN_CACHE_DIR=/tmp/sparseir-tiktoken-cache; .venv/bin/inspect eval evals/stage2_gate_c_provider_static.py --model openai/deepseek/deepseek-v4-flash --model-base-url https://openrouter.ai/api/v1 --log-dir eval/logs/stage2_gate_c_provider_static --max-connections 4 --max-tokens 8192 --temperature 0 --max-retries 2 --timeout 180 --display plain
+set -a; source .env; set +a; export OPENAI_API_KEY="$OPENROUTER_API_KEY"; export XDG_DATA_HOME=/tmp/sparseir-inspect-data; export TIKTOKEN_CACHE_DIR=/tmp/sparseir-tiktoken-cache; .venv/bin/inspect eval eval/inspect_tasks/stage2_gate_c_provider_static.py --model openai/deepseek/deepseek-v4-flash --model-base-url https://openrouter.ai/api/v1 --log-dir eval/logs/stage2_gate_c_provider_static --max-connections 4 --max-tokens 8192 --temperature 0 --max-retries 2 --timeout 180 --display plain
 ```
 
 ```bash

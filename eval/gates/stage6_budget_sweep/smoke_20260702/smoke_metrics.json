@@ -1,0 +1,42 @@
+{
+  "healthy": true,
+  "per_budget": {
+    "0": {
+      "candidate_parsed": 6,
+      "finish_reasons": {
+        "stop": 6
+      },
+      "lean_checked": 6,
+      "max_reasoning_tokens": 0,
+      "median_reasoning_tokens": 0.0,
+      "n": 6,
+      "reasoning_positive": 0,
+      "truncation_count": 0
+    },
+    "1024": {
+      "candidate_parsed": 6,
+      "finish_reasons": {
+        "stop": 6
+      },
+      "lean_checked": 6,
+      "max_reasoning_tokens": 336,
+      "median_reasoning_tokens": 279.5,
+      "n": 6,
+      "reasoning_positive": 6,
+      "truncation_count": 0
+    },
+    "full": {
+      "candidate_parsed": 6,
+      "finish_reasons": {
+        "stop": 6
+      },
+      "lean_checked": 6,
+      "max_reasoning_tokens": 330,
+      "median_reasoning_tokens": 240.5,
+      "n": 6,
+      "reasoning_positive": 6,
+      "truncation_count": 0
+    }
+  },
+  "wall_seconds": 25.9567662650079
+}

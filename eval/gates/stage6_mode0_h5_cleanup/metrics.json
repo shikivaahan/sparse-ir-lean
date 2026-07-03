@@ -1,0 +1,6949 @@
+{
+  "H11": {
+    "note": "Difficulty scaling is reported by house count with Wilson 95% intervals.",
+    "primary_bins": {
+      "2": {
+        "clue_violation_rate": {
+          "estimate": 0.0,
+          "high": 0.018845326377266575,
+          "low": 1.734723475976807e-18
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.018845326377266575,
+          "low": 1.734723475976807e-18
+        },
+        "malformed_rate": {
+          "estimate": 0.0,
+          "high": 0.018845326377266575,
+          "low": 1.734723475976807e-18
+        },
+        "mode0_coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9811546736227335
+        },
+        "n": 200
+      },
+      "3": {
+        "clue_violation_rate": {
+          "estimate": 0.01,
+          "high": 0.0357217617161768,
+          "low": 0.0027466581335444384
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.02,
+          "high": 0.050287086905826436,
+          "low": 0.0078044264163494685
+        },
+        "malformed_rate": {
+          "estimate": 0.01,
+          "high": 0.0357217617161768,
+          "low": 0.0027466581335444384
+        },
+        "mode0_coverage": {
+          "estimate": 0.98,
+          "high": 0.9921955735836505,
+          "low": 0.9497129130941735
+        },
+        "n": 200
+      },
+      "4": {
+        "clue_violation_rate": {
+          "estimate": 0.005,
+          "high": 0.02777370439789293,
+          "low": 0.0008831687156009814
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.02,
+          "high": 0.050287086905826436,
+          "low": 0.0078044264163494685
+        },
+        "malformed_rate": {
+          "estimate": 0.015,
+          "high": 0.04316572879269026,
+          "low": 0.00511423779325831
+        },
+        "mode0_coverage": {
+          "estimate": 0.98,
+          "high": 0.9921955735836505,
+          "low": 0.9497129130941735
+        },
+        "n": 200
+      },
+      "5": {
+        "clue_violation_rate": {
+          "estimate": 0.0,
+          "high": 0.018845326377266575,
+          "low": 1.734723475976807e-18
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.05,
+          "high": 0.08957814813877599,
+          "low": 0.02738264560076393
+        },
+        "malformed_rate": {
+          "estimate": 0.05,
+          "high": 0.08957814813877599,
+          "low": 0.02738264560076393
+        },
+        "mode0_coverage": {
+          "estimate": 0.95,
+          "high": 0.972617354399236,
+          "low": 0.9104218518612239
+        },
+        "n": 200
+      },
+      "6": {
+        "clue_violation_rate": {
+          "estimate": 0.035,
+          "high": 0.07047061152229073,
+          "low": 0.017055542008567192
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.115,
+          "high": 0.16664716898487572,
+          "low": 0.07786373232561955
+        },
+        "malformed_rate": {
+          "estimate": 0.08,
+          "high": 0.12598948826714396,
+          "low": 0.049840585889759974
+        },
+        "mode0_coverage": {
+          "estimate": 0.885,
+          "high": 0.9221362676743804,
+          "low": 0.8333528310151243
+        },
+        "n": 200
+      }
+    }
+  },
+  "H2": {
+    "drop": 0.041,
+    "mode0_catastrophic_rate": 0.0,
+    "unchecked_confident_wrong_rate": {
+      "estimate": 0.041,
+      "high": 0.0551479932076413,
+      "low": 0.030364971082098315
+    }
+  },
+  "H3": {
+    "best_ptrue_risk_at_equal_or_higher_coverage": 0.018769551616266946,
+    "lean_point": {
+      "coverage": 0.959,
+      "selective_risk": 0.0
+    },
+    "note": "P(True) is a weak, highly concentrated baseline; Lean is the correctness gate.",
+    "ptrue_curve": [
+      {
+        "committed": 959,
+        "coverage": 0.959,
+        "selective_risk": 0.018769551616266946,
+        "tau": 0.0,
+        "wrong": 18
+      },
+      {
+        "committed": 812,
+        "coverage": 0.812,
+        "selective_risk": 0.01847290640394089,
+        "tau": 0.05,
+        "wrong": 15
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.1,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.15,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.2,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.25,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.3,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.35,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.4,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.45,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.5,
+        "wrong": 14
+      },
+      {
+        "committed": 810,
+        "coverage": 0.81,
+        "selective_risk": 0.01728395061728395,
+        "tau": 0.55,
+        "wrong": 14
+      },
+      {
+        "committed": 810,
+        "coverage": 0.81,
+        "selective_risk": 0.01728395061728395,
+        "tau": 0.6,
+        "wrong": 14
+      },
+      {
+        "committed": 810,
+        "coverage": 0.81,
+        "selective_risk": 0.01728395061728395,
+        "tau": 0.65,
+        "wrong": 14
+      },
+      {
+        "committed": 810,
+        "coverage": 0.81,
+        "selective_risk": 0.01728395061728395,
+        "tau": 0.7,
+        "wrong": 14
+      },
+      {
+        "committed": 810,
+        "coverage": 0.81,
+        "selective_risk": 0.01728395061728395,
+        "tau": 0.75,
+        "wrong": 14
+      },
+      {
+        "committed": 809,
+        "coverage": 0.809,
+        "selective_risk": 0.0173053152039555,
+        "tau": 0.8,
+        "wrong": 14
+      },
+      {
+        "committed": 808,
+        "coverage": 0.808,
+        "selective_risk": 0.017326732673267328,
+        "tau": 0.85,
+        "wrong": 14
+      },
+      {
+        "committed": 799,
+        "coverage": 0.799,
+        "selective_risk": 0.016270337922403004,
+        "tau": 0.9,
+        "wrong": 13
+      },
+      {
+        "committed": 781,
+        "coverage": 0.781,
+        "selective_risk": 0.015364916773367477,
+        "tau": 0.95,
+        "wrong": 12
+      },
+      {
+        "committed": 118,
+        "coverage": 0.118,
+        "selective_risk": 0.00847457627118644,
+        "tau": 1.0,
+        "wrong": 1
+      }
+    ]
+  },
+  "H5_single_shot": {
+    "cheap_mode0": {
+      "committed_correct": 30,
+      "cost_per_verified_correct": 0.0013674017298666667,
+      "coverage": 1.0,
+      "coverage_ci95": {
+        "estimate": 1.0,
+        "high": 0.9999999999999999,
+        "low": 0.8864866068260312
+      },
+      "malformed_rate": 0.0,
+      "n": 30,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 30
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.11351339317396876,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.11351339317396876,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.11351339317396876,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.11351339317396876,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 0.9999999999999999,
+            "low": 0.8864866068260312
+          }
+        }
+      },
+      "total_cost_usd": 0.041022051896
+    },
+    "directional": true,
+    "frontier_mode0": {
+      "committed_correct": 30,
+      "cost_per_verified_correct": 0.0414175,
+      "coverage": 1.0,
+      "coverage_ci95": {
+        "estimate": 1.0,
+        "high": 0.9999999999999999,
+        "low": 0.8864866068260312
+      },
+      "malformed_rate": 0.0,
+      "n": 30,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 30
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.11351339317396876,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.11351339317396876,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.11351339317396876,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.11351339317396876,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 0.9999999999999999,
+            "low": 0.8864866068260312
+          }
+        }
+      },
+      "total_cost_usd": 1.242525
+    },
+    "note": "H5 here is the HONEST single-shot version: \"cheap+Lean vs frontier+Lean, both gated to ~100% precision; cheap is cheaper but coverage-capped at its raw solve rate; this is NOT the retry/feedback H5 (that needs Stage 4/5).\" The shared frontier subset is small and directional/preliminary.",
+    "shared_subset_n": 30
+  },
+  "by_grid": {
+    "2x2": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 40,
+        "coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 40
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 1.0,
+            "low": 0.9123783988027135
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.08762160119728664,
+          "low": 0.0
+        },
+        "coverage": 1.0
+      }
+    },
+    "2x3": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 40,
+        "coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 40
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 1.0,
+            "low": 0.9123783988027135
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 27,
+          "coverage": 0.675,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 26,
+          "coverage": 0.65,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 24,
+          "coverage": 0.6,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 18,
+          "coverage": 0.45,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.08762160119728664,
+          "low": 0.0
+        },
+        "coverage": 1.0
+      }
+    },
+    "2x4": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 40,
+        "coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 40
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 1.0,
+            "low": 0.9123783988027135
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 39,
+          "coverage": 0.975,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 27,
+          "coverage": 0.675,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 27,
+          "coverage": 0.675,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 27,
+          "coverage": 0.675,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 26,
+          "coverage": 0.65,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 8,
+          "coverage": 0.2,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.08762160119728664,
+          "low": 0.0
+        },
+        "coverage": 1.0
+      }
+    },
+    "2x5": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 40,
+        "coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 40
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 1.0,
+            "low": 0.9123783988027135
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 39,
+          "coverage": 0.975,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 23,
+          "coverage": 0.575,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 21,
+          "coverage": 0.525,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 4,
+          "coverage": 0.1,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.08762160119728664,
+          "low": 0.0
+        },
+        "coverage": 1.0
+      }
+    },
+    "2x6": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 40,
+        "coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 40
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 1.0,
+            "low": 0.9123783988027135
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 39,
+          "coverage": 0.975,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 4,
+          "coverage": 0.1,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.08762160119728664,
+          "low": 0.0
+        },
+        "coverage": 1.0
+      }
+    },
+    "3x2": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 40,
+        "coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 40
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 1.0,
+            "low": 0.9123783988027135
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 40,
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 17,
+          "coverage": 0.425,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.08762160119728664,
+          "low": 0.0
+        },
+        "coverage": 1.0
+      }
+    },
+    "3x3": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 39,
+        "coverage": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 1,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 39
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.025,
+            "high": 0.1288136896347409,
+            "low": 0.0044268315026814095
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 0.975,
+            "high": 0.9955731684973186,
+            "low": 0.8711863103652591
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 39,
+          "coverage": 0.975,
+          "selective_risk": 0.02564102564102564,
+          "tau": 0.0,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.05,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.1,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.15,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.2,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.25,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.3,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.35,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.4,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.45,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.5,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.55,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.6,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.65,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.7,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.75,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.8,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.85,
+          "wrong": 1
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.02857142857142857,
+          "tau": 0.9,
+          "wrong": 1
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.030303030303030304,
+          "tau": 0.95,
+          "wrong": 1
+        },
+        {
+          "committed": 6,
+          "coverage": 0.15,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.025,
+          "high": 0.1288136896347409,
+          "low": 0.0044268315026814095
+        },
+        "coverage": 1.0
+      }
+    },
+    "3x4": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 40,
+        "coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 40
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 1.0,
+            "low": 0.9123783988027135
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 40,
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 1,
+          "coverage": 0.025,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.08762160119728664,
+          "low": 0.0
+        },
+        "coverage": 1.0
+      }
+    },
+    "3x5": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 39,
+        "coverage": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 1,
+          "solved": 39
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.025,
+            "high": 0.1288136896347409,
+            "low": 0.0044268315026814095
+          },
+          "solved": {
+            "estimate": 0.975,
+            "high": 0.9955731684973186,
+            "low": 0.8711863103652591
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 39,
+          "coverage": 0.975,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 0,
+          "coverage": 0.0,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.025,
+          "high": 0.1288136896347409,
+          "low": 0.0044268315026814095
+        },
+        "coverage": 1.0
+      }
+    },
+    "3x6": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 38,
+        "coverage": {
+          "estimate": 0.95,
+          "high": 0.9861793326138516,
+          "low": 0.8349612263085903
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 1,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 1,
+          "solved": 38
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.025,
+            "high": 0.1288136896347409,
+            "low": 0.0044268315026814095
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.025,
+            "high": 0.1288136896347409,
+            "low": 0.0044268315026814095
+          },
+          "solved": {
+            "estimate": 0.95,
+            "high": 0.9861793326138516,
+            "low": 0.8349612263085903
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.02631578947368421,
+          "tau": 0.0,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.05,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.1,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.15,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.2,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.25,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.3,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.35,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.4,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.45,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.5,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.55,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.6,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.65,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.7,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.75,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.8,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.85,
+          "wrong": 1
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.03333333333333333,
+          "tau": 0.9,
+          "wrong": 1
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.034482758620689655,
+          "tau": 0.95,
+          "wrong": 1
+        },
+        {
+          "committed": 2,
+          "coverage": 0.05,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.95,
+          "high": 0.9861793326138516,
+          "low": 0.8349612263085903
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.05,
+          "high": 0.16503877369140962,
+          "low": 0.013820667386148344
+        },
+        "coverage": 1.0
+      }
+    },
+    "4x2": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 39,
+        "coverage": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 1,
+          "solved": 39
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.025,
+            "high": 0.1288136896347409,
+            "low": 0.0044268315026814095
+          },
+          "solved": {
+            "estimate": 0.975,
+            "high": 0.9955731684973186,
+            "low": 0.8711863103652591
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 39,
+          "coverage": 0.975,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 9,
+          "coverage": 0.225,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.025,
+          "high": 0.1288136896347409,
+          "low": 0.0044268315026814095
+        },
+        "coverage": 1.0
+      }
+    },
+    "4x3": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 39,
+        "coverage": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 1,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 39
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.025,
+            "high": 0.1288136896347409,
+            "low": 0.0044268315026814095
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 0.975,
+            "high": 0.9955731684973186,
+            "low": 0.8711863103652591
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 40,
+          "coverage": 1.0,
+          "selective_risk": 0.025,
+          "tau": 0.0,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.05,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.1,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.15,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.2,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.25,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.3,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.35,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.4,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.45,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.5,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.55,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.6,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.65,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.7,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.75,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.8,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.85,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.9,
+          "wrong": 1
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.02702702702702703,
+          "tau": 0.95,
+          "wrong": 1
+        },
+        {
+          "committed": 2,
+          "coverage": 0.05,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.025,
+          "high": 0.1288136896347409,
+          "low": 0.0044268315026814095
+        },
+        "coverage": 1.0
+      }
+    },
+    "4x4": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 40,
+        "coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 40
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 1.0,
+            "low": 0.9123783988027135
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 2,
+          "coverage": 0.05,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.08762160119728664,
+          "low": 0.0
+        },
+        "coverage": 1.0
+      }
+    },
+    "4x5": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 39,
+        "coverage": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 1,
+          "solved": 39
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.025,
+            "high": 0.1288136896347409,
+            "low": 0.0044268315026814095
+          },
+          "solved": {
+            "estimate": 0.975,
+            "high": 0.9955731684973186,
+            "low": 0.8711863103652591
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 39,
+          "coverage": 0.975,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 0,
+          "coverage": 0.0,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.025,
+          "high": 0.1288136896347409,
+          "low": 0.0044268315026814095
+        },
+        "coverage": 1.0
+      }
+    },
+    "4x6": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 39,
+        "coverage": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 1,
+          "solved": 39
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.025,
+            "high": 0.1288136896347409,
+            "low": 0.0044268315026814095
+          },
+          "solved": {
+            "estimate": 0.975,
+            "high": 0.9955731684973186,
+            "low": 0.8711863103652591
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 39,
+          "coverage": 0.975,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 31,
+          "coverage": 0.775,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 0,
+          "coverage": 0.0,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.025,
+          "high": 0.1288136896347409,
+          "low": 0.0044268315026814095
+        },
+        "coverage": 1.0
+      }
+    },
+    "5x2": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 39,
+        "coverage": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 1,
+          "solved": 39
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.025,
+            "high": 0.1288136896347409,
+            "low": 0.0044268315026814095
+          },
+          "solved": {
+            "estimate": 0.975,
+            "high": 0.9955731684973186,
+            "low": 0.8711863103652591
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 39,
+          "coverage": 0.975,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 1,
+          "coverage": 0.025,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.025,
+          "high": 0.1288136896347409,
+          "low": 0.0044268315026814095
+        },
+        "coverage": 1.0
+      }
+    },
+    "5x3": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 39,
+        "coverage": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 1,
+          "solved": 39
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.025,
+            "high": 0.1288136896347409,
+            "low": 0.0044268315026814095
+          },
+          "solved": {
+            "estimate": 0.975,
+            "high": 0.9955731684973186,
+            "low": 0.8711863103652591
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 39,
+          "coverage": 0.975,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 1,
+          "coverage": 0.025,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.975,
+          "high": 0.9955731684973186,
+          "low": 0.8711863103652591
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.025,
+          "high": 0.1288136896347409,
+          "low": 0.0044268315026814095
+        },
+        "coverage": 1.0
+      }
+    },
+    "5x4": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 38,
+        "coverage": {
+          "estimate": 0.95,
+          "high": 0.9861793326138516,
+          "low": 0.8349612263085903
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 2,
+          "solved": 38
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.05,
+            "high": 0.16503877369140962,
+            "low": 0.013820667386148344
+          },
+          "solved": {
+            "estimate": 0.95,
+            "high": 0.9861793326138516,
+            "low": 0.8349612263085903
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 2,
+          "coverage": 0.05,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.95,
+          "high": 0.9861793326138516,
+          "low": 0.8349612263085903
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.05,
+          "high": 0.16503877369140962,
+          "low": 0.013820667386148344
+        },
+        "coverage": 1.0
+      }
+    },
+    "5x5": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 40,
+        "coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 40
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 1.0,
+            "low": 0.9123783988027135
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 40,
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 38,
+          "coverage": 0.95,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 1,
+          "coverage": 0.025,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.08762160119728664,
+          "low": 0.0
+        },
+        "coverage": 1.0
+      }
+    },
+    "5x6": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 34,
+        "coverage": {
+          "estimate": 0.85,
+          "high": 0.9293881228267964,
+          "low": 0.709276756335103
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 6,
+          "solved": 34
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.15,
+            "high": 0.29072324366489705,
+            "low": 0.0706118771732036
+          },
+          "solved": {
+            "estimate": 0.85,
+            "high": 0.9293881228267964,
+            "low": 0.709276756335103
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 37,
+          "coverage": 0.925,
+          "selective_risk": 0.10810810810810811,
+          "tau": 0.0,
+          "wrong": 4
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.05,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.1,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.15,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.2,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.25,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.3,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.35,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.4,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.45,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.5,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.55,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.6,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.65,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.7,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.75,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.8,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.85,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.9,
+          "wrong": 3
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.09090909090909091,
+          "tau": 0.95,
+          "wrong": 3
+        },
+        {
+          "committed": 3,
+          "coverage": 0.075,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.85,
+          "high": 0.9293881228267964,
+          "low": 0.709276756335103
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.15,
+          "high": 0.29072324366489705,
+          "low": 0.0706118771732036
+        },
+        "coverage": 1.0
+      }
+    },
+    "6x2": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 40,
+        "coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 40
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 1.0,
+            "low": 0.9123783988027135
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 40,
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 35,
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 34,
+          "coverage": 0.85,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 3,
+          "coverage": 0.075,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.08762160119728664,
+          "low": 0.0
+        },
+        "coverage": 1.0
+      }
+    },
+    "6x3": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 40,
+        "coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 40
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 1.0,
+            "low": 0.9123783988027135
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 39,
+          "coverage": 0.975,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 2,
+          "coverage": 0.05,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9123783988027135
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.08762160119728664,
+          "low": 0.0
+        },
+        "coverage": 1.0
+      }
+    },
+    "6x4": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 36,
+        "coverage": {
+          "estimate": 0.9,
+          "high": 0.9604204713173936,
+          "low": 0.7694822477247771
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 1,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 3,
+          "solved": 36
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.025,
+            "high": 0.1288136896347409,
+            "low": 0.0044268315026814095
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.075,
+            "high": 0.19864233524310543,
+            "low": 0.025836025774588198
+          },
+          "solved": {
+            "estimate": 0.9,
+            "high": 0.9604204713173936,
+            "low": 0.7694822477247771
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.027777777777777776,
+          "tau": 0.0,
+          "wrong": 1
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.030303030303030304,
+          "tau": 0.05,
+          "wrong": 1
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.030303030303030304,
+          "tau": 0.1,
+          "wrong": 1
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.030303030303030304,
+          "tau": 0.15,
+          "wrong": 1
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.030303030303030304,
+          "tau": 0.2,
+          "wrong": 1
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.030303030303030304,
+          "tau": 0.25,
+          "wrong": 1
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.030303030303030304,
+          "tau": 0.3,
+          "wrong": 1
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.030303030303030304,
+          "tau": 0.35,
+          "wrong": 1
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.030303030303030304,
+          "tau": 0.4,
+          "wrong": 1
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.030303030303030304,
+          "tau": 0.45,
+          "wrong": 1
+        },
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.030303030303030304,
+          "tau": 0.5,
+          "wrong": 1
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.03125,
+          "tau": 0.55,
+          "wrong": 1
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.03125,
+          "tau": 0.6,
+          "wrong": 1
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.03125,
+          "tau": 0.65,
+          "wrong": 1
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.03125,
+          "tau": 0.7,
+          "wrong": 1
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.03125,
+          "tau": 0.75,
+          "wrong": 1
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.03125,
+          "tau": 0.8,
+          "wrong": 1
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.03125,
+          "tau": 0.85,
+          "wrong": 1
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.03125,
+          "tau": 0.9,
+          "wrong": 1
+        },
+        {
+          "committed": 32,
+          "coverage": 0.8,
+          "selective_risk": 0.03125,
+          "tau": 0.95,
+          "wrong": 1
+        },
+        {
+          "committed": 1,
+          "coverage": 0.025,
+          "selective_risk": 1.0,
+          "tau": 1.0,
+          "wrong": 1
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.9,
+          "high": 0.9604204713173936,
+          "low": 0.7694822477247771
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.1,
+          "high": 0.23051775227522298,
+          "low": 0.03957952868260638
+        },
+        "coverage": 1.0
+      }
+    },
+    "6x5": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 34,
+        "coverage": {
+          "estimate": 0.85,
+          "high": 0.9293881228267964,
+          "low": 0.709276756335103
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 2,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 4,
+          "solved": 34
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.05,
+            "high": 0.16503877369140962,
+            "low": 0.013820667386148344
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.1,
+            "high": 0.23051775227522298,
+            "low": 0.03957952868260638
+          },
+          "solved": {
+            "estimate": 0.85,
+            "high": 0.9293881228267964,
+            "low": 0.709276756335103
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 36,
+          "coverage": 0.9,
+          "selective_risk": 0.08333333333333333,
+          "tau": 0.0,
+          "wrong": 3
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.05,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.1,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.15,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.2,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.25,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.3,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.35,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.4,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.45,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.5,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.55,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.6,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.65,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.7,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.75,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.8,
+          "wrong": 2
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.06666666666666667,
+          "tau": 0.85,
+          "wrong": 2
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.06896551724137931,
+          "tau": 0.9,
+          "wrong": 2
+        },
+        {
+          "committed": 28,
+          "coverage": 0.7,
+          "selective_risk": 0.03571428571428571,
+          "tau": 0.95,
+          "wrong": 1
+        },
+        {
+          "committed": 0,
+          "coverage": 0.0,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.85,
+          "high": 0.9293881228267964,
+          "low": 0.709276756335103
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.15,
+          "high": 0.29072324366489705,
+          "low": 0.0706118771732036
+        },
+        "coverage": 1.0
+      }
+    },
+    "6x6": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 27,
+        "coverage": {
+          "estimate": 0.675,
+          "high": 0.799154977682173,
+          "low": 0.5201774618987768
+        },
+        "selective_risk": 0.0
+      },
+      "n": 40,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 4,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 9,
+          "solved": 27
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.1,
+            "high": 0.23051775227522298,
+            "low": 0.03957952868260638
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.08762160119728664,
+            "low": 0.0
+          },
+          "malformed": {
+            "estimate": 0.225,
+            "high": 0.3750309674231002,
+            "low": 0.12316091323540745
+          },
+          "solved": {
+            "estimate": 0.675,
+            "high": 0.799154977682173,
+            "low": 0.5201774618987768
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 33,
+          "coverage": 0.825,
+          "selective_risk": 0.21212121212121213,
+          "tau": 0.0,
+          "wrong": 7
+        },
+        {
+          "committed": 30,
+          "coverage": 0.75,
+          "selective_risk": 0.2,
+          "tau": 0.05,
+          "wrong": 6
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.1,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.15,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.2,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.25,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.3,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.35,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.4,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.45,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.5,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.55,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.6,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.65,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.7,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.75,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.8,
+          "wrong": 5
+        },
+        {
+          "committed": 29,
+          "coverage": 0.725,
+          "selective_risk": 0.1724137931034483,
+          "tau": 0.85,
+          "wrong": 5
+        },
+        {
+          "committed": 26,
+          "coverage": 0.65,
+          "selective_risk": 0.15384615384615385,
+          "tau": 0.9,
+          "wrong": 4
+        },
+        {
+          "committed": 26,
+          "coverage": 0.65,
+          "selective_risk": 0.15384615384615385,
+          "tau": 0.95,
+          "wrong": 4
+        },
+        {
+          "committed": 0,
+          "coverage": 0.0,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.675,
+          "high": 0.799154977682173,
+          "low": 0.5201774618987768
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.325,
+          "high": 0.47982253810122333,
+          "low": 0.200845022317827
+        },
+        "coverage": 1.0
+      }
+    }
+  },
+  "by_houses": {
+    "2": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 200,
+        "coverage": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9811546736227335
+        },
+        "selective_risk": 0.0
+      },
+      "n": 200,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 0,
+          "solved": 200
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "malformed": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "solved": {
+            "estimate": 1.0,
+            "high": 1.0,
+            "low": 0.9811546736227335
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 193,
+          "coverage": 0.965,
+          "selective_risk": 0.0,
+          "tau": 0.0,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.05,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.1,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.15,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.2,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.25,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.3,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.35,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.4,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.45,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.5,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.55,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.6,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.65,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.7,
+          "wrong": 0
+        },
+        {
+          "committed": 143,
+          "coverage": 0.715,
+          "selective_risk": 0.0,
+          "tau": 0.75,
+          "wrong": 0
+        },
+        {
+          "committed": 142,
+          "coverage": 0.71,
+          "selective_risk": 0.0,
+          "tau": 0.8,
+          "wrong": 0
+        },
+        {
+          "committed": 141,
+          "coverage": 0.705,
+          "selective_risk": 0.0,
+          "tau": 0.85,
+          "wrong": 0
+        },
+        {
+          "committed": 140,
+          "coverage": 0.7,
+          "selective_risk": 0.0,
+          "tau": 0.9,
+          "wrong": 0
+        },
+        {
+          "committed": 132,
+          "coverage": 0.66,
+          "selective_risk": 0.0,
+          "tau": 0.95,
+          "wrong": 0
+        },
+        {
+          "committed": 65,
+          "coverage": 0.325,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 1.0,
+          "high": 1.0,
+          "low": 0.9811546736227335
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.0,
+          "high": 0.018845326377266575,
+          "low": 1.734723475976807e-18
+        },
+        "coverage": 1.0
+      }
+    },
+    "3": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 196,
+        "coverage": {
+          "estimate": 0.98,
+          "high": 0.9921955735836505,
+          "low": 0.9497129130941735
+        },
+        "selective_risk": 0.0
+      },
+      "n": 200,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 2,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 2,
+          "solved": 196
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.01,
+            "high": 0.0357217617161768,
+            "low": 0.0027466581335444384
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "malformed": {
+            "estimate": 0.01,
+            "high": 0.0357217617161768,
+            "low": 0.0027466581335444384
+          },
+          "solved": {
+            "estimate": 0.98,
+            "high": 0.9921955735836505,
+            "low": 0.9497129130941735
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 196,
+          "coverage": 0.98,
+          "selective_risk": 0.01020408163265306,
+          "tau": 0.0,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.05,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.1,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.15,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.2,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.25,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.3,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.35,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.4,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.45,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.5,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.55,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.6,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.65,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.7,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.75,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.8,
+          "wrong": 2
+        },
+        {
+          "committed": 163,
+          "coverage": 0.815,
+          "selective_risk": 0.012269938650306749,
+          "tau": 0.85,
+          "wrong": 2
+        },
+        {
+          "committed": 162,
+          "coverage": 0.81,
+          "selective_risk": 0.012345679012345678,
+          "tau": 0.9,
+          "wrong": 2
+        },
+        {
+          "committed": 156,
+          "coverage": 0.78,
+          "selective_risk": 0.01282051282051282,
+          "tau": 0.95,
+          "wrong": 2
+        },
+        {
+          "committed": 26,
+          "coverage": 0.13,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.98,
+          "high": 0.9921955735836505,
+          "low": 0.9497129130941735
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.02,
+          "high": 0.050287086905826436,
+          "low": 0.0078044264163494685
+        },
+        "coverage": 1.0
+      }
+    },
+    "4": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 196,
+        "coverage": {
+          "estimate": 0.98,
+          "high": 0.9921955735836505,
+          "low": 0.9497129130941735
+        },
+        "selective_risk": 0.0
+      },
+      "n": 200,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 1,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 3,
+          "solved": 196
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.005,
+            "high": 0.02777370439789293,
+            "low": 0.0008831687156009814
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "malformed": {
+            "estimate": 0.015,
+            "high": 0.04316572879269026,
+            "low": 0.00511423779325831
+          },
+          "solved": {
+            "estimate": 0.98,
+            "high": 0.9921955735836505,
+            "low": 0.9497129130941735
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 195,
+          "coverage": 0.975,
+          "selective_risk": 0.005128205128205128,
+          "tau": 0.0,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.05,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.1,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.15,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.2,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.25,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.3,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.35,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.4,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.45,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.5,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.55,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.6,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.65,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.7,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.75,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.8,
+          "wrong": 1
+        },
+        {
+          "committed": 171,
+          "coverage": 0.855,
+          "selective_risk": 0.005847953216374269,
+          "tau": 0.85,
+          "wrong": 1
+        },
+        {
+          "committed": 169,
+          "coverage": 0.845,
+          "selective_risk": 0.005917159763313609,
+          "tau": 0.9,
+          "wrong": 1
+        },
+        {
+          "committed": 167,
+          "coverage": 0.835,
+          "selective_risk": 0.005988023952095809,
+          "tau": 0.95,
+          "wrong": 1
+        },
+        {
+          "committed": 13,
+          "coverage": 0.065,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.98,
+          "high": 0.9921955735836505,
+          "low": 0.9497129130941735
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.02,
+          "high": 0.050287086905826436,
+          "low": 0.0078044264163494685
+        },
+        "coverage": 1.0
+      }
+    },
+    "5": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 190,
+        "coverage": {
+          "estimate": 0.95,
+          "high": 0.972617354399236,
+          "low": 0.9104218518612239
+        },
+        "selective_risk": 0.0
+      },
+      "n": 200,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 0,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 10,
+          "solved": 190
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "malformed": {
+            "estimate": 0.05,
+            "high": 0.08957814813877599,
+            "low": 0.02738264560076393
+          },
+          "solved": {
+            "estimate": 0.95,
+            "high": 0.972617354399236,
+            "low": 0.9104218518612239
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 191,
+          "coverage": 0.955,
+          "selective_risk": 0.020942408376963352,
+          "tau": 0.0,
+          "wrong": 4
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.05,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.1,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.15,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.2,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.25,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.3,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.35,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.4,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.45,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.5,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.55,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.6,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.65,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.7,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.75,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.8,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.85,
+          "wrong": 3
+        },
+        {
+          "committed": 174,
+          "coverage": 0.87,
+          "selective_risk": 0.017241379310344827,
+          "tau": 0.9,
+          "wrong": 3
+        },
+        {
+          "committed": 173,
+          "coverage": 0.865,
+          "selective_risk": 0.017341040462427744,
+          "tau": 0.95,
+          "wrong": 3
+        },
+        {
+          "committed": 8,
+          "coverage": 0.04,
+          "selective_risk": 0.0,
+          "tau": 1.0,
+          "wrong": 0
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.95,
+          "high": 0.972617354399236,
+          "low": 0.9104218518612239
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.05,
+          "high": 0.08957814813877599,
+          "low": 0.02738264560076393
+        },
+        "coverage": 1.0
+      }
+    },
+    "6": {
+      "mode0": {
+        "catastrophic_rate": 0.0,
+        "committed_correct": 177,
+        "coverage": {
+          "estimate": 0.885,
+          "high": 0.9221362676743804,
+          "low": 0.8333528310151243
+        },
+        "selective_risk": 0.0
+      },
+      "n": 200,
+      "outcomes": {
+        "counts": {
+          "clue_violation": 7,
+          "incomplete": 0,
+          "invalid": 0,
+          "malformed": 16,
+          "solved": 177
+        },
+        "rates": {
+          "clue_violation": {
+            "estimate": 0.035,
+            "high": 0.07047061152229073,
+            "low": 0.017055542008567192
+          },
+          "incomplete": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "invalid": {
+            "estimate": 0.0,
+            "high": 0.018845326377266575,
+            "low": 1.734723475976807e-18
+          },
+          "malformed": {
+            "estimate": 0.08,
+            "high": 0.12598948826714396,
+            "low": 0.049840585889759974
+          },
+          "solved": {
+            "estimate": 0.885,
+            "high": 0.9221362676743804,
+            "low": 0.8333528310151243
+          }
+        }
+      },
+      "ptrue_curve": [
+        {
+          "committed": 184,
+          "coverage": 0.92,
+          "selective_risk": 0.059782608695652176,
+          "tau": 0.0,
+          "wrong": 11
+        },
+        {
+          "committed": 161,
+          "coverage": 0.805,
+          "selective_risk": 0.055900621118012424,
+          "tau": 0.05,
+          "wrong": 9
+        },
+        {
+          "committed": 160,
+          "coverage": 0.8,
+          "selective_risk": 0.05,
+          "tau": 0.1,
+          "wrong": 8
+        },
+        {
+          "committed": 160,
+          "coverage": 0.8,
+          "selective_risk": 0.05,
+          "tau": 0.15,
+          "wrong": 8
+        },
+        {
+          "committed": 160,
+          "coverage": 0.8,
+          "selective_risk": 0.05,
+          "tau": 0.2,
+          "wrong": 8
+        },
+        {
+          "committed": 160,
+          "coverage": 0.8,
+          "selective_risk": 0.05,
+          "tau": 0.25,
+          "wrong": 8
+        },
+        {
+          "committed": 160,
+          "coverage": 0.8,
+          "selective_risk": 0.05,
+          "tau": 0.3,
+          "wrong": 8
+        },
+        {
+          "committed": 160,
+          "coverage": 0.8,
+          "selective_risk": 0.05,
+          "tau": 0.35,
+          "wrong": 8
+        },
+        {
+          "committed": 160,
+          "coverage": 0.8,
+          "selective_risk": 0.05,
+          "tau": 0.4,
+          "wrong": 8
+        },
+        {
+          "committed": 160,
+          "coverage": 0.8,
+          "selective_risk": 0.05,
+          "tau": 0.45,
+          "wrong": 8
+        },
+        {
+          "committed": 160,
+          "coverage": 0.8,
+          "selective_risk": 0.05,
+          "tau": 0.5,
+          "wrong": 8
+        },
+        {
+          "committed": 159,
+          "coverage": 0.795,
+          "selective_risk": 0.050314465408805034,
+          "tau": 0.55,
+          "wrong": 8
+        },
+        {
+          "committed": 159,
+          "coverage": 0.795,
+          "selective_risk": 0.050314465408805034,
+          "tau": 0.6,
+          "wrong": 8
+        },
+        {
+          "committed": 159,
+          "coverage": 0.795,
+          "selective_risk": 0.050314465408805034,
+          "tau": 0.65,
+          "wrong": 8
+        },
+        {
+          "committed": 159,
+          "coverage": 0.795,
+          "selective_risk": 0.050314465408805034,
+          "tau": 0.7,
+          "wrong": 8
+        },
+        {
+          "committed": 159,
+          "coverage": 0.795,
+          "selective_risk": 0.050314465408805034,
+          "tau": 0.75,
+          "wrong": 8
+        },
+        {
+          "committed": 159,
+          "coverage": 0.795,
+          "selective_risk": 0.050314465408805034,
+          "tau": 0.8,
+          "wrong": 8
+        },
+        {
+          "committed": 159,
+          "coverage": 0.795,
+          "selective_risk": 0.050314465408805034,
+          "tau": 0.85,
+          "wrong": 8
+        },
+        {
+          "committed": 154,
+          "coverage": 0.77,
+          "selective_risk": 0.045454545454545456,
+          "tau": 0.9,
+          "wrong": 7
+        },
+        {
+          "committed": 153,
+          "coverage": 0.765,
+          "selective_risk": 0.0392156862745098,
+          "tau": 0.95,
+          "wrong": 6
+        },
+        {
+          "committed": 6,
+          "coverage": 0.03,
+          "selective_risk": 0.16666666666666666,
+          "tau": 1.0,
+          "wrong": 1
+        }
+      ],
+      "unchecked": {
+        "accuracy": {
+          "estimate": 0.885,
+          "high": 0.9221362676743804,
+          "low": 0.8333528310151243
+        },
+        "confident_wrong_rate": {
+          "estimate": 0.115,
+          "high": 0.16664716898487572,
+          "low": 0.07786373232561955
+        },
+        "coverage": 1.0
+      }
+    }
+  },
+  "cheap_overall": {
+    "mode0": {
+      "catastrophic_rate": 0.0,
+      "committed_correct": 959,
+      "coverage": {
+        "estimate": 0.959,
+        "high": 0.9696350289179017,
+        "low": 0.9448520067923587
+      },
+      "selective_risk": 0.0
+    },
+    "n": 1000,
+    "outcomes": {
+      "counts": {
+        "clue_violation": 10,
+        "incomplete": 0,
+        "invalid": 0,
+        "malformed": 31,
+        "solved": 959
+      },
+      "rates": {
+        "clue_violation": {
+          "estimate": 0.01,
+          "high": 0.018309468870314774,
+          "low": 0.005440754445529249
+        },
+        "incomplete": {
+          "estimate": 0.0,
+          "high": 0.0038267584855551234,
+          "low": 2.168404344971009e-19
+        },
+        "invalid": {
+          "estimate": 0.0,
+          "high": 0.0038267584855551234,
+          "low": 2.168404344971009e-19
+        },
+        "malformed": {
+          "estimate": 0.031,
+          "high": 0.04366549601229214,
+          "low": 0.02192400344715857
+        },
+        "solved": {
+          "estimate": 0.959,
+          "high": 0.9696350289179017,
+          "low": 0.9448520067923587
+        }
+      }
+    },
+    "ptrue_curve": [
+      {
+        "committed": 959,
+        "coverage": 0.959,
+        "selective_risk": 0.018769551616266946,
+        "tau": 0.0,
+        "wrong": 18
+      },
+      {
+        "committed": 812,
+        "coverage": 0.812,
+        "selective_risk": 0.01847290640394089,
+        "tau": 0.05,
+        "wrong": 15
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.1,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.15,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.2,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.25,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.3,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.35,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.4,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.45,
+        "wrong": 14
+      },
+      {
+        "committed": 811,
+        "coverage": 0.811,
+        "selective_risk": 0.01726263871763255,
+        "tau": 0.5,
+        "wrong": 14
+      },
+      {
+        "committed": 810,
+        "coverage": 0.81,
+        "selective_risk": 0.01728395061728395,
+        "tau": 0.55,
+        "wrong": 14
+      },
+      {
+        "committed": 810,
+        "coverage": 0.81,
+        "selective_risk": 0.01728395061728395,
+        "tau": 0.6,
+        "wrong": 14
+      },
+      {
+        "committed": 810,
+        "coverage": 0.81,
+        "selective_risk": 0.01728395061728395,
+        "tau": 0.65,
+        "wrong": 14
+      },
+      {
+        "committed": 810,
+        "coverage": 0.81,
+        "selective_risk": 0.01728395061728395,
+        "tau": 0.7,
+        "wrong": 14
+      },
+      {
+        "committed": 810,
+        "coverage": 0.81,
+        "selective_risk": 0.01728395061728395,
+        "tau": 0.75,
+        "wrong": 14
+      },
+      {
+        "committed": 809,
+        "coverage": 0.809,
+        "selective_risk": 0.0173053152039555,
+        "tau": 0.8,
+        "wrong": 14
+      },
+      {
+        "committed": 808,
+        "coverage": 0.808,
+        "selective_risk": 0.017326732673267328,
+        "tau": 0.85,
+        "wrong": 14
+      },
+      {
+        "committed": 799,
+        "coverage": 0.799,
+        "selective_risk": 0.016270337922403004,
+        "tau": 0.9,
+        "wrong": 13
+      },
+      {
+        "committed": 781,
+        "coverage": 0.781,
+        "selective_risk": 0.015364916773367477,
+        "tau": 0.95,
+        "wrong": 12
+      },
+      {
+        "committed": 118,
+        "coverage": 0.118,
+        "selective_risk": 0.00847457627118644,
+        "tau": 1.0,
+        "wrong": 1
+      }
+    ],
+    "unchecked": {
+      "accuracy": {
+        "estimate": 0.959,
+        "high": 0.9696350289179017,
+        "low": 0.9448520067923587
+      },
+      "confident_wrong_rate": {
+        "estimate": 0.041,
+        "high": 0.0551479932076413,
+        "low": 0.030364971082098315
+      },
+      "coverage": 1.0
+    }
+  },
+  "malformed_rate": {
+    "cheap_mode0": {
+      "estimate": 0.031,
+      "high": 0.04366549601229214,
+      "low": 0.02192400344715857
+    },
+    "frontier_mode0": {
+      "estimate": 0.0,
+      "high": 0.11351339317396876,
+      "low": 0.0
+    },
+    "prior_cheap_run": 0.24
+  }
+}

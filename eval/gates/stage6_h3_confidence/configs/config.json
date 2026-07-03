@@ -1,0 +1,33 @@
+{
+  "confidence_max_tokens": 32,
+  "confidence_reasoning": "disabled",
+  "confidence_source": "p_true",
+  "default_workers": {
+    "deepseek/deepseek-v4-flash": 12,
+    "qwen/qwen3-32b": 8,
+    "qwen/qwen3-8b": 2
+  },
+  "endpoint": "https://openrouter.ai/api/v1",
+  "ladder_dir": "/tmp/sparse-ir-stage6/eval/gates/stage6_capability_ladder",
+  "ladder_reused_from": "stage6_capability_ladder",
+  "models": [
+    {
+      "id": "deepseek/deepseek-v4-flash",
+      "label": "v4-flash",
+      "role": "cheap_frontier_baseline"
+    },
+    {
+      "id": "qwen/qwen3-32b",
+      "label": "qwen3-32b",
+      "role": "mid_large_failing"
+    },
+    {
+      "id": "qwen/qwen3-8b",
+      "label": "qwen3-8b",
+      "role": "small_failing"
+    }
+  ],
+  "n_puzzles": 200,
+  "seed": 20260704,
+  "selection_seed": 20260702
+}

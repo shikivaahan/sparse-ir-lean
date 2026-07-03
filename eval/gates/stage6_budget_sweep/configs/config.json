@@ -1,0 +1,21 @@
+{
+  "answer_budget": 8192,
+  "budgets": [
+    "0",
+    "256",
+    "512",
+    "1024",
+    "2048",
+    "4096",
+    "8192",
+    "full"
+  ],
+  "endpoint": "https://openrouter.ai/api/v1",
+  "full_reasoning_budget": 24000,
+  "mode": "Mode-0 single-shot",
+  "model": "deepseek/deepseek-v4-flash",
+  "request_max_tokens": 32768,
+  "seed": 20260702,
+  "temperature": 0.1,
+  "workers": 12
+}

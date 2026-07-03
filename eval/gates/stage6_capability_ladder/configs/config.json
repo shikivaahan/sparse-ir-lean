@@ -1,0 +1,28 @@
+{
+  "endpoint": "https://openrouter.ai/api/v1",
+  "full_reasoning_budget": 24000,
+  "mode": "Mode-0 single-shot",
+  "models": [
+    {
+      "id": "qwen/qwen3-8b",
+      "label": "qwen3-8b",
+      "role": "small"
+    },
+    {
+      "id": "qwen/qwen3-32b",
+      "label": "qwen3-32b",
+      "role": "mid_large"
+    },
+    {
+      "id": "deepseek/deepseek-v4-flash",
+      "label": "v4-flash-baseline",
+      "role": "cheap_frontier_baseline"
+    }
+  ],
+  "n_problems": 200,
+  "puzzle_subset": "shared with stage6_budget_sweep",
+  "request_max_tokens": 32768,
+  "seed": 20260703,
+  "selection_seed": 20260702,
+  "temperature": 0.1
+}

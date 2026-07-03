@@ -1,0 +1,32 @@
+{
+  "confidence_source": "p_true",
+  "correctness_judge": "Lean check_candidate ACCEPT_SOLVED only",
+  "date": "2026-06-30",
+  "gate": "stage6_mode0_h2_h3",
+  "git_commit": "1b9823fc364e1a90d1c04fedb272b80bb981fbf3",
+  "grid_breakdown": {
+    "2x2": 1,
+    "2x3": 1,
+    "3x2": 1,
+    "3x3": 1,
+    "4x2": 1,
+    "4x3": 1,
+    "5x2": 1,
+    "5x3": 1,
+    "6x2": 1,
+    "6x3": 1
+  },
+  "model_id": "deepseek/deepseek-v4-flash",
+  "n": 10,
+  "oracle_certificates_only": true,
+  "prompt_template_hash": "10f9603ca39df826230a2403c6dd1a2c5aeabaa6d36737bfdc70455abe20eb92",
+  "provider": "openrouter",
+  "raw_outputs_stored_before_parsing": true,
+  "seeds": {
+    "sampling_and_generation": 20260630
+  },
+  "tokens_in": 11205,
+  "tokens_out": 15109,
+  "total_cost_usd": 0.0056143238,
+  "verifier_version": "0.1.0"
+}

@@ -29,7 +29,8 @@ def test_wheel_entry_point_loads_bundled_dataset(tmp_path: Path) -> None:
         capture_output=True,
         check=True,
     )
-    python = venv / "bin" / "python"
+    scripts = venv / ("Scripts" if os.name == "nt" else "bin")
+    python = scripts / ("python.exe" if os.name == "nt" else "python")
     subprocess.run(
         [uv, "pip", "install", "--python", str(python), "--no-deps", str(wheel)],
         text=True,
@@ -40,7 +41,7 @@ def test_wheel_entry_point_loads_bundled_dataset(tmp_path: Path) -> None:
     env = os.environ.copy()
     env.pop("PYTHONPATH", None)
     completed = subprocess.run(
-        [venv / "bin" / "sparseir-check-dataset"],
+        [scripts / ("sparseir-check-dataset.exe" if os.name == "nt" else "sparseir-check-dataset")],
         cwd=tmp_path,
         env=env,
         text=True,

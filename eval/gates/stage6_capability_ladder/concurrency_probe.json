@@ -1,0 +1,315 @@
+{
+  "chosen": {
+    "deepseek/deepseek-v4-flash": {
+      "fallback": false,
+      "probe_finished": false,
+      "probe_throughput_ex_per_min": 8.665789407334662,
+      "workers": 24
+    },
+    "qwen/qwen3-32b": {
+      "fallback": false,
+      "probe_finished": false,
+      "probe_throughput_ex_per_min": 8.665898370934709,
+      "workers": 12
+    },
+    "qwen/qwen3-8b": {
+      "fallback": true,
+      "reason": "Alibaba upstream rate-limits qwen3-8b aggressively; probe at w=6 returned 15/15 429s. Dropping to 2 workers with 3-retry backoff in the Provider; expect very slow run and some persistent 429s.",
+      "workers": 2
+    }
+  },
+  "probed": {
+    "deepseek/deepseek-v4-flash": [
+      {
+        "average_latency": 7.500363788499574,
+        "clue_violation": 1,
+        "confident_wrong": 0,
+        "cost_usd": 0.0047310122,
+        "coverage": 0.9166666666666666,
+        "elapsed": 90.0043654619949,
+        "eta_full_seconds": 250.01212628331913,
+        "examples_per_minute": 7.999611977754858,
+        "finish_reasons": {
+          "stop": 12
+        },
+        "label": "v4-flash-baseline",
+        "lean_outcomes": {
+          "clue_violation": 1,
+          "solved": 11
+        },
+        "malformed": 0,
+        "model_id": "deepseek/deepseek-v4-flash",
+        "n": 12,
+        "provider_error": 0,
+        "rate_limit_error": 0,
+        "reasoning_tokens": {
+          "max": 3741,
+          "median": 767.0,
+          "min": 0,
+          "p90": 1569,
+          "positive_count": 11,
+          "positive_rate": 0.9166666666666666
+        },
+        "solved": 11,
+        "timed_out": true,
+        "truncation": 0,
+        "workers": 6
+      },
+      {
+        "average_latency": 7.500659196419292,
+        "clue_violation": 0,
+        "confident_wrong": 0,
+        "cost_usd": 0.00557181978,
+        "coverage": 1.0,
+        "elapsed": 90.0079103570315,
+        "eta_full_seconds": 125.0109866069882,
+        "examples_per_minute": 7.9992969189485565,
+        "finish_reasons": {
+          "stop": 12
+        },
+        "label": "v4-flash-baseline",
+        "lean_outcomes": {
+          "solved": 12
+        },
+        "malformed": 0,
+        "model_id": "deepseek/deepseek-v4-flash",
+        "n": 12,
+        "provider_error": 0,
+        "rate_limit_error": 0,
+        "reasoning_tokens": {
+          "max": 7535,
+          "median": 1233.0,
+          "min": 256,
+          "p90": 2211,
+          "positive_count": 12,
+          "positive_rate": 1.0
+        },
+        "solved": 12,
+        "timed_out": true,
+        "truncation": 0,
+        "workers": 12
+      },
+      {
+        "average_latency": 6.923777763306414,
+        "clue_violation": 1,
+        "confident_wrong": 0,
+        "cost_usd": 0.0060238731,
+        "coverage": 0.9230769230769231,
+        "elapsed": 90.00911092298338,
+        "eta_full_seconds": 57.69814802755345,
+        "examples_per_minute": 8.665789407334662,
+        "finish_reasons": {
+          "stop": 13
+        },
+        "label": "v4-flash-baseline",
+        "lean_outcomes": {
+          "clue_violation": 1,
+          "solved": 12
+        },
+        "malformed": 0,
+        "model_id": "deepseek/deepseek-v4-flash",
+        "n": 13,
+        "provider_error": 0,
+        "rate_limit_error": 0,
+        "reasoning_tokens": {
+          "max": 4057,
+          "median": 1003,
+          "min": 277,
+          "p90": 2488,
+          "positive_count": 13,
+          "positive_rate": 1.0
+        },
+        "solved": 12,
+        "timed_out": true,
+        "truncation": 0,
+        "workers": 24
+      }
+    ],
+    "qwen/qwen3-32b": [
+      {
+        "average_latency": 11.25045041275007,
+        "clue_violation": 0,
+        "confident_wrong": 0,
+        "cost_usd": 0.00493279,
+        "coverage": 1.0,
+        "elapsed": 90.00360330200056,
+        "eta_full_seconds": 375.01501375833567,
+        "examples_per_minute": 5.333119812874545,
+        "finish_reasons": {
+          "stop": 8
+        },
+        "label": "qwen3-32b",
+        "lean_outcomes": {
+          "solved": 8
+        },
+        "malformed": 0,
+        "model_id": "qwen/qwen3-32b",
+        "n": 8,
+        "provider_error": 0,
+        "rate_limit_error": 0,
+        "reasoning_tokens": {
+          "max": 3000,
+          "median": 1207.5,
+          "min": 355,
+          "p90": 1660,
+          "positive_count": 8,
+          "positive_rate": 1.0
+        },
+        "solved": 8,
+        "timed_out": true,
+        "truncation": 0,
+        "workers": 6
+      },
+      {
+        "average_latency": 6.923690704848223,
+        "clue_violation": 1,
+        "confident_wrong": 0,
+        "cost_usd": 0.01535074,
+        "coverage": 0.9230769230769231,
+        "elapsed": 90.0079791630269,
+        "eta_full_seconds": 115.3948450808037,
+        "examples_per_minute": 8.665898370934709,
+        "finish_reasons": {
+          "stop": 13
+        },
+        "label": "qwen3-32b",
+        "lean_outcomes": {
+          "clue_violation": 1,
+          "solved": 12
+        },
+        "malformed": 0,
+        "model_id": "qwen/qwen3-32b",
+        "n": 13,
+        "provider_error": 0,
+        "rate_limit_error": 0,
+        "reasoning_tokens": {
+          "max": 3985,
+          "median": 2011,
+          "min": 303,
+          "p90": 3259,
+          "positive_count": 13,
+          "positive_rate": 1.0
+        },
+        "solved": 12,
+        "timed_out": true,
+        "truncation": 0,
+        "workers": 12
+      },
+      {
+        "average_latency": 8.182687591909515,
+        "clue_violation": 1,
+        "confident_wrong": 0,
+        "cost_usd": 0.00957647,
+        "coverage": 0.9090909090909091,
+        "elapsed": 90.00956351100467,
+        "eta_full_seconds": 68.18906326591262,
+        "examples_per_minute": 7.332554167083675,
+        "finish_reasons": {
+          "stop": 11
+        },
+        "label": "qwen3-32b",
+        "lean_outcomes": {
+          "clue_violation": 1,
+          "solved": 10
+        },
+        "malformed": 0,
+        "model_id": "qwen/qwen3-32b",
+        "n": 11,
+        "provider_error": 0,
+        "rate_limit_error": 0,
+        "reasoning_tokens": {
+          "max": 3746,
+          "median": 1278,
+          "min": 311,
+          "p90": 2196,
+          "positive_count": 11,
+          "positive_rate": 1.0
+        },
+        "solved": 10,
+        "timed_out": true,
+        "truncation": 0,
+        "workers": 24
+      }
+    ],
+    "qwen/qwen3-8b": [
+      {
+        "average_latency": 0.11052598200039938,
+        "clue_violation": 0,
+        "confident_wrong": 0,
+        "cost_usd": 0.0,
+        "coverage": 0.0,
+        "elapsed": 1.6578897300059907,
+        "eta_full_seconds": 3.6841994000133127,
+        "examples_per_minute": 542.8587822887038,
+        "finish_reasons": {
+          "None": 15
+        },
+        "label": "qwen3-8b",
+        "lean_outcomes": {
+          "malformed": 15
+        },
+        "malformed": 15,
+        "model_id": "qwen/qwen3-8b",
+        "n": 15,
+        "provider_error": 15,
+        "rate_limit_error": 15,
+        "reasoning_tokens": {
+          "max": 0,
+          "median": 0,
+          "min": 0,
+          "p90": 0,
+          "positive_count": 0,
+          "positive_rate": 0.0
+        },
+        "solved": 0,
+        "timed_out": false,
+        "truncation": 0,
+        "workers": 6
+      }
+    ]
+  },
+  "rejected": {
+    "deepseek/deepseek-v4-flash": [],
+    "qwen/qwen3-32b": [],
+    "qwen/qwen3-8b": [
+      {
+        "metrics": {
+          "average_latency": 0.11052598200039938,
+          "clue_violation": 0,
+          "confident_wrong": 0,
+          "cost_usd": 0.0,
+          "coverage": 0.0,
+          "elapsed": 1.6578897300059907,
+          "eta_full_seconds": 3.6841994000133127,
+          "examples_per_minute": 542.8587822887038,
+          "finish_reasons": {
+            "None": 15
+          },
+          "label": "qwen3-8b",
+          "lean_outcomes": {
+            "malformed": 15
+          },
+          "malformed": 15,
+          "model_id": "qwen/qwen3-8b",
+          "n": 15,
+          "provider_error": 15,
+          "rate_limit_error": 15,
+          "reasoning_tokens": {
+            "max": 0,
+            "median": 0,
+            "min": 0,
+            "p90": 0,
+            "positive_count": 0,
+            "positive_rate": 0.0
+          },
+          "solved": 0,
+          "timed_out": false,
+          "truncation": 0,
+          "workers": 6
+        },
+        "reason": "15 rate-limit (429) errors; 15 provider errors",
+        "workers": 6
+      }
+    ]
+  }
+}

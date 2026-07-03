@@ -1,0 +1,21 @@
+{
+  "id": "zl_lgp-test-6x5-32",
+  "generation": null,
+  "confidence": null,
+  "errors": [
+    {
+      "call": "generation",
+      "type": "JSONDecodeError",
+      "message": "Expecting value: line 239 column 1 (char 1309)"
+    }
+  ],
+  "lean_result": {
+    "failure": {
+      "failure_code": "invalid_candidate_json",
+      "message": "offset 0: unexpected end of input",
+      "path": "$",
+      "status": "malformed_candidate"
+    },
+    "kind": "REJECT"
+  }
+}

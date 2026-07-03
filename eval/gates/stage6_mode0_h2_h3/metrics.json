@@ -1,0 +1,3252 @@
+{
+  "by_grid": {
+    "2x2": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.25,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.2500)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.75,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.0
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.05
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.1
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.15
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.2
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.25
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.3
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.35
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.4
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.45
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.5
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.55
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.6
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.65
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.7
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.75
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.8
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.85
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.9
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.95
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.75,
+        "confident_wrong_rate": 0.25,
+        "coverage": 1.0
+      }
+    },
+    "2x3": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.0,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is not strictly below the swept P(True) curve: P(True) also reaches zero observed risk at equal-or-higher coverage."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 1.0,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.0
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.05
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.1
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.15
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.2
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.25
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.3
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.35
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.4
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.45
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.5
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.55
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.6
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.65
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.7
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.75
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.8
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.85
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.9
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.0,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 1.0,
+        "confident_wrong_rate": 0.0,
+        "coverage": 1.0
+      }
+    },
+    "2x4": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.375,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.1667)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.625,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.0
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.05
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.1
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.15
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.2
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.25
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.3
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.35
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.4
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.45
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.5
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.55
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.6
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.65
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.7
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.75
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.8
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.85
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.625,
+        "confident_wrong_rate": 0.375,
+        "coverage": 1.0
+      }
+    },
+    "2x5": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.25,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.2500)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.75,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.25,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.4,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.4,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.75,
+        "confident_wrong_rate": 0.25,
+        "coverage": 1.0
+      }
+    },
+    "2x6": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.125,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.1250)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.875,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.25,
+          "selective_risk": 0.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.875,
+        "confident_wrong_rate": 0.125,
+        "coverage": 1.0
+      }
+    },
+    "3x2": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.375,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.3750)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.625,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.0
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.05
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.1
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.15
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.2
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.25
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.3
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.35
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.4
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.45
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.5
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.55
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.6
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.65
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.7
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.75
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.8
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.4,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.4,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.625,
+        "confident_wrong_rate": 0.375,
+        "coverage": 1.0
+      }
+    },
+    "3x3": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.125,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.1250)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.875,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.0
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.05
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.1
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.15
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.2
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.25
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.3
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.35
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.4
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.45
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.5
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.55
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.6
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.65
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.7
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.75
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.8
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.85
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.9
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.125,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.16666666666666666,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.875,
+        "confident_wrong_rate": 0.125,
+        "coverage": 1.0
+      }
+    },
+    "3x4": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.375,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.2857)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.625,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.2857142857142857,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.375,
+          "selective_risk": 0.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.625,
+        "confident_wrong_rate": 0.375,
+        "coverage": 1.0
+      }
+    },
+    "3x5": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.375,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.2000)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.625,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.375,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.2,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.625,
+        "confident_wrong_rate": 0.375,
+        "coverage": 1.0
+      }
+    },
+    "3x6": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.75,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.6667)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.25,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.0
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.05
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.1
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.15
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.2
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.25
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.3
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.35
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.4
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.45
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.5
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.55
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.6
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.65
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.125,
+          "selective_risk": 1.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.25,
+        "confident_wrong_rate": 0.75,
+        "coverage": 1.0
+      }
+    },
+    "4x2": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.625,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.5000)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.375,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.5,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.625,
+          "selective_risk": 0.6,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.375,
+        "confident_wrong_rate": 0.625,
+        "coverage": 1.0
+      }
+    },
+    "4x3": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.75,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.7500)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.25,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.5,
+          "selective_risk": 1.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.25,
+        "confident_wrong_rate": 0.75,
+        "coverage": 1.0
+      }
+    },
+    "4x4": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.75,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.6667)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.25,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.0
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.05
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.1
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.15
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.2
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.25
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.3
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.35
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.4
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.45
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.5
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.55
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.6
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.65
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.7
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.75
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.8
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.85
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.0,
+          "selective_risk": 0.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.25,
+        "confident_wrong_rate": 0.75,
+        "coverage": 1.0
+      }
+    },
+    "4x5": {
+      "headline": {
+        "H2_confident_wrong_drop": 1.0,
+        "H3_lean_point_vs_ptrue_curve_note": "Mode-0 commits nothing; the H3 point-vs-curve comparison is uninformative."
+      },
+      "mode0": {
+        "accuracy_committed": 0.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.0,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 1.0,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 1.0,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 1.0,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 1.0,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 1.0,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 1.0,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 1.0,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 1.0,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 1.0,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 1.0,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 1.0,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 1.0,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 1.0,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 1.0,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 1.0,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 1.0,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 1.0,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 1.0,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 1.0,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 1.0,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.25,
+          "selective_risk": 1.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.0,
+        "confident_wrong_rate": 1.0,
+        "coverage": 1.0
+      }
+    },
+    "4x6": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.75,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.6667)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.25,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.0,
+          "selective_risk": 0.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.25,
+        "confident_wrong_rate": 0.75,
+        "coverage": 1.0
+      }
+    },
+    "5x2": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.5,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.3333)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.5,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.42857142857142855,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.3333333333333333,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.125,
+          "selective_risk": 0.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.5,
+        "confident_wrong_rate": 0.5,
+        "coverage": 1.0
+      }
+    },
+    "5x3": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.5,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.5000)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.5,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.0
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.05
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.1
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.15
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.2
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.25
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.3
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.35
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.4
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.45
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.5
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.55
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.6
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.65
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.7
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.75
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.8
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.85
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.9
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.5,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.25,
+          "selective_risk": 0.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.5,
+        "confident_wrong_rate": 0.5,
+        "coverage": 1.0
+      }
+    },
+    "5x4": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.75,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.6667)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.25,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.25,
+          "selective_risk": 1.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.25,
+        "confident_wrong_rate": 0.75,
+        "coverage": 1.0
+      }
+    },
+    "5x5": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.75,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.6667)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.25,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.0
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.05
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.1
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.15
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.7142857142857143,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.0,
+          "selective_risk": 0.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.25,
+        "confident_wrong_rate": 0.75,
+        "coverage": 1.0
+      }
+    },
+    "5x6": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.625,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.6250)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.375,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.0
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.05
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.1
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.15
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.2
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.25
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.3
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.35
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.4
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.45
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.5
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.55
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.6
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.65
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.7
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.75
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.8
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.85
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.9
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.125,
+          "selective_risk": 0.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.375,
+        "confident_wrong_rate": 0.625,
+        "coverage": 1.0
+      }
+    },
+    "6x2": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.625,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.5714)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.375,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.125,
+          "selective_risk": 0.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.375,
+        "confident_wrong_rate": 0.625,
+        "coverage": 1.0
+      }
+    },
+    "6x3": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.625,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.5714)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.375,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.5714285714285714,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.0,
+          "selective_risk": 0.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.375,
+        "confident_wrong_rate": 0.625,
+        "coverage": 1.0
+      }
+    },
+    "6x4": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.625,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.6250)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.375,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.0
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.05
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.1
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.15
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.2
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.25
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.3
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.35
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.4
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.45
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.5
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.55
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.6
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.65
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.7
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.75
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.8
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.85
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.9
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.625,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.125,
+          "selective_risk": 1.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.375,
+        "confident_wrong_rate": 0.625,
+        "coverage": 1.0
+      }
+    },
+    "6x5": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.75,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.6667)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.25,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.75,
+          "tau": 0.0
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.05
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.1
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.15
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.2
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.25
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.3
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.35
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.4
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.45
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.5
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.55
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.6
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.65
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.7
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.75
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.8
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.85
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.75,
+          "selective_risk": 0.6666666666666666,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.125,
+          "selective_risk": 1.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.25,
+        "confident_wrong_rate": 0.75,
+        "coverage": 1.0
+      }
+    },
+    "6x6": {
+      "headline": {
+        "H2_confident_wrong_drop": 0.875,
+        "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.8571)."
+      },
+      "mode0": {
+        "accuracy_committed": 1.0,
+        "catastrophic_rate": 0.0,
+        "coverage": 0.125,
+        "selective_risk": 0.0
+      },
+      "n": 8,
+      "ptrue_curve": [
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.0
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.05
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.1
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.15
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.2
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.25
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.3
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.35
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.4
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.45
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.5
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.55
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.6
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.65
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.7
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.75
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.8
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.85
+        },
+        {
+          "coverage": 1.0,
+          "selective_risk": 0.875,
+          "tau": 0.9
+        },
+        {
+          "coverage": 0.875,
+          "selective_risk": 0.8571428571428571,
+          "tau": 0.95
+        },
+        {
+          "coverage": 0.0,
+          "selective_risk": 0.0,
+          "tau": 1.0
+        }
+      ],
+      "unchecked": {
+        "accuracy": 0.125,
+        "confident_wrong_rate": 0.875,
+        "coverage": 1.0
+      }
+    }
+  },
+  "headline": {
+    "H2_confident_wrong_drop": 0.54,
+    "H3_lean_point_vs_ptrue_curve_note": "Lean point is strictly below every swept P(True) point at equal-or-higher coverage (best risk=0.4970)."
+  },
+  "mode0": {
+    "accuracy_committed": 1.0,
+    "catastrophic_rate": 0.0,
+    "coverage": 0.46,
+    "selective_risk": 0.0
+  },
+  "n": 200,
+  "ptrue_curve": [
+    {
+      "coverage": 1.0,
+      "selective_risk": 0.54,
+      "tau": 0.0
+    },
+    {
+      "coverage": 0.905,
+      "selective_risk": 0.5193370165745856,
+      "tau": 0.05
+    },
+    {
+      "coverage": 0.905,
+      "selective_risk": 0.5193370165745856,
+      "tau": 0.1
+    },
+    {
+      "coverage": 0.905,
+      "selective_risk": 0.5193370165745856,
+      "tau": 0.15
+    },
+    {
+      "coverage": 0.905,
+      "selective_risk": 0.5193370165745856,
+      "tau": 0.2
+    },
+    {
+      "coverage": 0.9,
+      "selective_risk": 0.5166666666666667,
+      "tau": 0.25
+    },
+    {
+      "coverage": 0.9,
+      "selective_risk": 0.5166666666666667,
+      "tau": 0.3
+    },
+    {
+      "coverage": 0.9,
+      "selective_risk": 0.5166666666666667,
+      "tau": 0.35
+    },
+    {
+      "coverage": 0.9,
+      "selective_risk": 0.5166666666666667,
+      "tau": 0.4
+    },
+    {
+      "coverage": 0.9,
+      "selective_risk": 0.5166666666666667,
+      "tau": 0.45
+    },
+    {
+      "coverage": 0.9,
+      "selective_risk": 0.5166666666666667,
+      "tau": 0.5
+    },
+    {
+      "coverage": 0.9,
+      "selective_risk": 0.5166666666666667,
+      "tau": 0.55
+    },
+    {
+      "coverage": 0.9,
+      "selective_risk": 0.5166666666666667,
+      "tau": 0.6
+    },
+    {
+      "coverage": 0.895,
+      "selective_risk": 0.5139664804469274,
+      "tau": 0.65
+    },
+    {
+      "coverage": 0.895,
+      "selective_risk": 0.5139664804469274,
+      "tau": 0.7
+    },
+    {
+      "coverage": 0.89,
+      "selective_risk": 0.5112359550561798,
+      "tau": 0.75
+    },
+    {
+      "coverage": 0.89,
+      "selective_risk": 0.5112359550561798,
+      "tau": 0.8
+    },
+    {
+      "coverage": 0.885,
+      "selective_risk": 0.5084745762711864,
+      "tau": 0.85
+    },
+    {
+      "coverage": 0.88,
+      "selective_risk": 0.5113636363636364,
+      "tau": 0.9
+    },
+    {
+      "coverage": 0.825,
+      "selective_risk": 0.49696969696969695,
+      "tau": 0.95
+    },
+    {
+      "coverage": 0.34,
+      "selective_risk": 0.3382352941176471,
+      "tau": 1.0
+    }
+  ],
+  "unchecked": {
+    "accuracy": 0.46,
+    "confident_wrong_rate": 0.54,
+    "coverage": 1.0
+  }
+}
