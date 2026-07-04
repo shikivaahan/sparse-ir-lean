@@ -240,3 +240,201 @@ def test_provider_validation_reports_fail_when_no_output_is_schema_valid() -> No
     )
     assert result["status"] == "fail"
     assert result["valid_trace_schemas"] == 0
+
+
+def test_frozen_trace_schema_validates_against_lean_parser(tmp_path: Path) -> None:
+    """The published zebra-trace.schema.json must accept the same shapes the
+    Lean TraceParser accepts, and must reject the same shapes it rejects.
+    Drift between the JSON Schema and the trusted parser is a Stage 4 freeze
+    failure: this test pins them together."""
+
+    import jsonschema
+
+    schema_path = ROOT / "schemas" / "zebra-trace.schema.json"
+    assert schema_path.is_file(), "missing schemas/zebra-trace.schema.json"
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+
+    validator = jsonschema.Draft202012Validator(schema)
+
+    def _expect_valid(trace_obj: dict[str, Any]) -> None:
+        validator.validate(trace_obj)
+
+    def _expect_invalid(trace_obj: dict[str, Any]) -> None:
+        try:
+            validator.validate(trace_obj)
+        except jsonschema.ValidationError:
+            return
+        raise AssertionError(f"schema accepted trace that should be invalid: {trace_obj}")
+
+    # positive: full-candidate
+    _expect_valid(
+        {
+            "schema_version": "0.2",
+            "problem_id": "zl_test",
+            "ops": [
+                {"op": "assign_all", "solution": {"Color": {"1": "red"}}},
+                {"op": "conclude", "status": "solved"},
+            ],
+        }
+    )
+    # positive: stepwise with from-cells
+    _expect_valid(
+        {
+            "schema_version": "0.2",
+            "problem_id": "zl_test",
+            "ops": [
+                {
+                    "op": "place",
+                    "cat": "Color",
+                    "house": 2,
+                    "val": "red",
+                    "justify": {"clue": "c1"},
+                },
+                {
+                    "op": "eliminate",
+                    "cat": "Drink",
+                    "house": 1,
+                    "val": "tea",
+                    "justify": {
+                        "clue": "c3",
+                        "from": [{"cat": "Color", "house": 2, "val": "red"}],
+                    },
+                },
+                {"op": "conclude", "status": "solved"},
+            ],
+        }
+    )
+    # negative: schema_version mismatch
+    _expect_invalid(
+        {"schema_version": "0.3", "problem_id": "zl_test", "ops": [{"op": "conclude", "status": "solved"}]}
+    )
+    # negative: missing required field on place
+    _expect_invalid(
+        {
+            "schema_version": "0.2",
+            "problem_id": "zl_test",
+            "ops": [{"op": "place", "house": 1, "val": "red", "justify": {"clue": "c1"}}],
+        }
+    )
+    # negative: unknown top-level field
+    _expect_invalid(
+        {
+            "schema_version": "0.2",
+            "problem_id": "zl_test",
+            "ops": [{"op": "conclude", "status": "solved"}],
+            "extra": True,
+        }
+    )
+    # negative: empty ops
+    _expect_invalid({"schema_version": "0.2", "problem_id": "zl_test", "ops": []})
+    # negative: unknown op
+    _expect_invalid(
+        {"schema_version": "0.2", "problem_id": "zl_test", "ops": [{"op": "guess"}]}
+    )
+    # negative: justify missing 'clue'
+    _expect_invalid(
+        {
+            "schema_version": "0.2",
+            "problem_id": "zl_test",
+            "ops": [
+                {"op": "place", "cat": "Color", "house": 1, "val": "red", "justify": {"from": []}}
+            ],
+        }
+    )
+    # negative: forbidden justification shape (the internal rule names MUST NOT
+    # appear in the public interface).
+    _expect_invalid(
+        {
+            "schema_version": "0.2",
+            "problem_id": "zl_test",
+            "ops": [
+                {
+                    "op": "place",
+                    "cat": "Color",
+                    "house": 1,
+                    "val": "red",
+                    "justify": {"clue": "c1", "rule": "given_found_at_place"},
+                }
+            ],
+        }
+    )
+    # negative: bad conclude status
+    _expect_invalid(
+        {
+            "schema_version": "0.2",
+            "problem_id": "zl_test",
+            "ops": [{"op": "conclude", "status": "unknown"}],
+        }
+    )
+
+
+def test_frozen_trace_schema_rejects_internal_rule_names() -> None:
+    """The published schema must not admit any of the 22 internal Lean
+    consequence-rule names as a valid justification field. This is a hard
+    contract: model-supplied internal rule names are not trusted input."""
+
+    import jsonschema
+
+    schema = json.loads(
+        (ROOT / "schemas" / "zebra-trace.schema.json").read_text(encoding="utf-8")
+    )
+    validator = jsonschema.Draft202012Validator(schema)
+
+    forbidden = {
+        "given_found_at_place",
+        "given_not_at_eliminate",
+        "bijection_place_eliminates_same_value_other_houses",
+        "bijection_place_eliminates_other_values_same_house",
+        "bijection_cell_singleton_forces_place",
+        "bijection_value_singleton_forces_place",
+        "same_house_place_from_placed",
+        "same_house_eliminate_no_possible_match",
+        "direct_left_place_from_fixed",
+        "direct_left_eliminate_no_possible_partner",
+        "direct_right_place_from_fixed",
+        "direct_right_eliminate_no_possible_partner",
+        "side_by_side_place_from_single_neighbor",
+        "side_by_side_eliminate_no_possible_neighbor",
+        "left_of_eliminate_impossible_order",
+        "right_of_eliminate_impossible_order",
+        "one_between_place_from_fixed",
+        "one_between_eliminate_no_possible_partner",
+        "two_between_place_from_fixed",
+        "two_between_eliminate_no_possible_partner",
+        "solved_conclusion",
+        "contradiction_detection",
+    }
+
+    for name in forbidden:
+        trace = {
+            "schema_version": "0.2",
+            "problem_id": "zl_test",
+            "ops": [
+                {
+                    "op": "place",
+                    "cat": "Color",
+                    "house": 1,
+                    "val": "red",
+                    "justify": {"clue": "c1", "rule": name},
+                }
+            ],
+        }
+        with pytest_raises_jsonschema():
+            validator.validate(trace)
+
+
+def pytest_raises_jsonschema():
+    """Tiny helper: context manager that asserts jsonschema.ValidationError."""
+    import contextlib
+
+    import jsonschema
+
+    @contextlib.contextmanager
+    def _ctx():
+        try:
+            yield
+        except jsonschema.ValidationError:
+            return
+        raise AssertionError("expected jsonschema.ValidationError")
+
+    return _ctx()

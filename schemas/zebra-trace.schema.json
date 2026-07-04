@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shikivaahan/sparse-ir-lean/schemas/zebra-trace.schema.json",
+  "title": "SparseIR Zebra trace",
+  "description": "Public Stage 4 frozen interface for a model-emitted reasoning trace. Parsed and lowered into a Trace AST by the trusted Lean verifier; never reaches a replay or checker in Stage 4. Internal Lean consequence-rule names are intentionally NOT exposed here.",
+  "type": "object",
+  "required": ["schema_version", "problem_id", "ops"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.2"
+    },
+    "problem_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ops": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {"$ref": "#/$defs/assign_all_op"},
+          {"$ref": "#/$defs/place_op"},
+          {"$ref": "#/$defs/eliminate_op"},
+          {"$ref": "#/$defs/conclude_op"}
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "cell": {
+      "type": "object",
+      "required": ["cat", "house", "val"],
+      "properties": {
+        "cat": {"type": "string", "minLength": 1},
+        "house": {"type": "integer", "minimum": 1},
+        "val": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "solution": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {"minLength": 1},
+      "additionalProperties": {
+        "type": "object",
+        "minProperties": 1,
+        "propertyNames": {"pattern": "^[1-9][0-9]*$"},
+        "additionalProperties": {"type": "string", "minLength": 1}
+      }
+    },
+    "justification": {
+      "type": "object",
+      "required": ["clue"],
+      "properties": {
+        "clue": {"type": "string", "minLength": 1},
+        "from": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/cell"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "assign_all_op": {
+      "type": "object",
+      "required": ["op", "solution"],
+      "properties": {
+        "op": {"const": "assign_all"},
+        "solution": {"$ref": "#/$defs/solution"}
+      },
+      "additionalProperties": false
+    },
+    "place_op": {
+      "type": "object",
+      "required": ["op", "cat", "house", "val", "justify"],
+      "properties": {
+        "op": {"const": "place"},
+        "cat": {"type": "string", "minLength": 1},
+        "house": {"type": "integer", "minimum": 1},
+        "val": {"type": "string", "minLength": 1},
+        "justify": {"$ref": "#/$defs/justification"}
+      },
+      "additionalProperties": false
+    },
+    "eliminate_op": {
+      "type": "object",
+      "required": ["op", "cat", "house", "val", "justify"],
+      "properties": {
+        "op": {"const": "eliminate"},
+        "cat": {"type": "string", "minLength": 1},
+        "house": {"type": "integer", "minimum": 1},
+        "val": {"type": "string", "minLength": 1},
+        "justify": {"$ref": "#/$defs/justification"}
+      },
+      "additionalProperties": false
+    },
+    "conclude_op": {
+      "type": "object",
+      "required": ["op", "status"],
+      "properties": {
+        "op": {"const": "conclude"},
+        "status": {"const": "solved"},
+        "solution": {"$ref": "#/$defs/solution"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-sparseir-interface": {
+    "stage": "stage-4",
+    "status": "frozen-stage-4",
+    "trace_styles": ["full_candidate", "stepwise"],
+    "public_justification_contract": {
+      "required": ["clue"],
+      "optional": ["from"],
+      "forbidden": ["rule", "rule_id", "schema", "kernel"]
+    },
+    "downstream_blokers": [
+      "trace replay is not implemented in Stage 4",
+      "{clue, from} -> internal kernel consequence-rule derivation is a Stage 5 task",
+      "stepwise G1 Lean<->clingo differential validation is outstanding Stage 3 debt"
+    ]
+  }
+}

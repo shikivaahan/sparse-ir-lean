@@ -46,7 +46,10 @@ def test_info_command_reports_stage0_capabilities() -> None:
     assert response["result"]["kind"] == "INFO"
     assert response["result"]["domain"] == "zebra"
     assert response["result"]["schema_version"] == "0.2"
-    assert response["result"]["capabilities"]["modes"] == []
+    assert response["result"]["capabilities"]["modes"] == [0]
+    assert response["result"]["capabilities"]["stepwise"] is False
+    assert response["result"]["capabilities"]["audit_view"] is False
+    assert response["result"]["capabilities"]["tactics"] is False
 
 
 @pytest.mark.parametrize(

@@ -126,7 +126,7 @@ def test_gate_writes_all_artifacts_and_raw_lean_outputs(tmp_path: Path) -> None:
 
 
 def test_inspect_eval_includes_lean_raw_outputs() -> None:
-    source = (ROOT / "evals" / "stage4_provider_adversarial.py").read_text(
+    source = (ROOT / "eval" / "inspect_tasks" / "stage4_provider_adversarial.py").read_text(
         encoding="utf-8"
     )
     assert '_rows("lean_outputs.jsonl")' in source

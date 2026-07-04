@@ -10,6 +10,8 @@ def backendVersion : String := "0.1.0"
 
 private def jsonString (value : String) : Json := Json.str value
 
+private def jsonNum (value : Nat) : Json := Json.num (Int.ofNat value)
+
 private def errorResponseWithPath (requestId : Json) (code message : String)
     (path : Option String) : Json :=
   let errorFields := [
@@ -43,8 +45,8 @@ private def infoResponse (requestId : Json) : Json :=
       ("schema_version", jsonString schemaVersion),
       ("trust", jsonString "trusted_for_results"),
       ("capabilities", Json.mkObj [
-        ("modes", Json.arr #[]),
-        ("stepwise", Json.bool true),
+        ("modes", Json.arr #[jsonNum 0]),
+        ("stepwise", Json.bool false),
         ("tactics", Json.bool false),
         ("audit_view", Json.bool false)
       ])
