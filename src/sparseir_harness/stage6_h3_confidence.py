@@ -78,7 +78,12 @@ CONF_PROMPT_TEMPLATE = (
 
 
 def _lenient_parse_confidence(raw: str) -> tuple[float | None, str]:
-    """Parse a 0..1 number out of a model response. Returns (value, raw)."""
+    """Parse a 0..1 number out of a model response. Returns (value, raw).
+
+    Percentages must be tried first and the bare-number patterns must reject any
+    number immediately followed by a percent sign, otherwise "0.5%" (0.005)
+    would be misread as 0.5 and "99%" would not be tried as 0.99 in some orderings.
+    """
     if not raw:
         return None, raw
     text = raw.strip()
@@ -86,19 +91,31 @@ def _lenient_parse_confidence(raw: str) -> tuple[float | None, str]:
     match = re.fullmatch(r"\s*(?:0(?:\.\d+)?|1(?:\.0+)?)\s*", text)
     if match:
         return float(match.group(0)), raw
-    # Fallback 1: pick the first 0..1 number in the response.
-    for pattern in (r"\b(?:0(?:\.\d+)?|1(?:\.0+)?)\b",
-                    r"\b(?:0|1)(?:\.\d+)?\b",
-                    r"(\d{1,3})(?:\.\d+)?\s*%"):
+
+    # Percentages first so that "0.5%" and "99%" are read as 0.005 and 0.99
+    # respectively, not as the trailing digits of an unanchored number regex.
+    percent_match = re.search(r"(\d{1,3}(?:\.\d+)?)\s*%", text)
+    if percent_match:
+        try:
+            val = float(percent_match.group(1)) / 100.0
+        except ValueError:
+            val = None
+        if val is not None and 0.0 <= val <= 1.0:
+            return val, raw
+
+    # Fallback: pick the first 0..1 number, anchored so a "%" right after the
+    # digits cannot be silently swallowed.
+    bare_patterns = (
+        r"\b(?:0(?:\.\d+)?|1(?:\.0+)?)(?![\d.%])",
+        r"\b(?:0|1)(?:\.\d+)?(?![\d.%])",
+    )
+    for pattern in bare_patterns:
         m = re.search(pattern, text)
         if not m:
             continue
         try:
-            if m.group(0).endswith("%") or "%" in m.group(0):
-                val = float(m.group(1)) / 100.0
-            else:
-                val = float(m.group(0))
-        except (ValueError, IndexError):
+            val = float(m.group(0))
+        except ValueError:
             continue
         if 0.0 <= val <= 1.0:
             return val, raw
