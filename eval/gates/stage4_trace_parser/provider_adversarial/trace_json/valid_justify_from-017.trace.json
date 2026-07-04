@@ -1,0 +1,1 @@
+{"ops":[{"cat":"Drink","house":1,"justify":{"clue":"c4","from":[{"cat":"Color","house":2,"val":"blue"}]},"op":"eliminate","val":"coffee"},{"op":"conclude","status":"solved"}],"problem_id":"zl_stage4_valid_justify_from_017","schema_version":"0.2"}

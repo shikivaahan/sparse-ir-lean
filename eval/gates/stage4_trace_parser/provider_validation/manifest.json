@@ -1,0 +1,29 @@
+{
+  "failure_codes": {},
+  "feature_coverage": {
+    "assign_all": 20,
+    "conclude": 20,
+    "eliminate": 20,
+    "justify": 20,
+    "justify_from": 20,
+    "mixed_traces": 20,
+    "place": 20
+  },
+  "feature_pass_counts": {
+    "assign_all": 20,
+    "conclude": 20,
+    "eliminate": 20,
+    "justify": 20,
+    "justify_from": 20,
+    "mixed_traces": 20,
+    "place": 20
+  },
+  "model": "deepseek/deepseek-v4-flash",
+  "protocol_error": 0,
+  "provider_output_not_json": 0,
+  "provider_validation_status": "pass",
+  "schema_invalid": 0,
+  "total_samples": 140,
+  "trace_parsed": 140,
+  "valid_json": 140
+}

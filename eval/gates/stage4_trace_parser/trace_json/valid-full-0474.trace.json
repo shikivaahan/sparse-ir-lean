@@ -1,0 +1,1 @@
+{"ops":[{"op":"assign_all","solution":{"Color":{"1":"yellow","2":"white","3":"green","4":"red"},"Name":{"1":"Eric","2":"Alice","3":"Peter","4":"Arnold"},"Vacation":{"1":"beach","2":"cruise","3":"mountain","4":"city"}}},{"op":"conclude","status":"solved"}],"problem_id":"zl_lgp-test-4x3-4","schema_version":"0.2"}

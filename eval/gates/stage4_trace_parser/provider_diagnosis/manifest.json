@@ -1,0 +1,18 @@
+{
+  "extraction_failures": 0,
+  "fixed": true,
+  "model_primary": "deepseek/deepseek-v4-flash",
+  "model_secondary": null,
+  "prompt_exemplar_parse_failures": 0,
+  "root_cause": [
+    "prompt_contract_mismatch",
+    "provider_added_extra_fields",
+    "scorer_bug"
+  ],
+  "schema_valid": 20,
+  "status": "pass",
+  "total_provider_calls": 20,
+  "unexpected_field_failures": 0,
+  "valid_json": 20,
+  "wrapper_failures": 0
+}

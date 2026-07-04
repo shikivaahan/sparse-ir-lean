@@ -10,6 +10,8 @@ def backendVersion : String := "0.1.0"
 
 private def jsonString (value : String) : Json := Json.str value
 
+private def jsonNum (value : Nat) : Json := Json.num (Int.ofNat value)
+
 private def errorResponseWithPath (requestId : Json) (code message : String)
     (path : Option String) : Json :=
   let errorFields := [
@@ -43,8 +45,8 @@ private def infoResponse (requestId : Json) : Json :=
       ("schema_version", jsonString schemaVersion),
       ("trust", jsonString "trusted_for_results"),
       ("capabilities", Json.mkObj [
-        ("modes", Json.arr #[]),
-        ("stepwise", Json.bool true),
+        ("modes", Json.arr #[jsonNum 0]),
+        ("stepwise", Json.bool false),
         ("tactics", Json.bool false),
         ("audit_view", Json.bool false)
       ])
@@ -102,6 +104,22 @@ private def malformedCandidateResponse (requestId : Json)
     ("failure", failureView "malformed_candidate" {
       code := failure.code.toString, path := failure.path, message := failure.message
     })
+  ]
+
+private def malformedTraceResponse (requestId : Json) (failure : TraceParseError) : Json :=
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "REJECT"),
+    ("failure", failureView "malformed_trace" {
+      code := failure.code.toString, path := failure.path, message := failure.message
+    })
+  ]
+
+private def traceParsedResponse (requestId : Json) (trace : Trace) : Json :=
+  resultResponse requestId <| Json.mkObj [
+    ("kind", jsonString "TRACE_PARSED"),
+    ("problem_id", jsonString trace.problemId),
+    ("op_count", toJson trace.ops.length),
+    ("trace_style", jsonString trace.style.toString)
   ]
 
 private def incompleteResponse (requestId : Json) (problemId : String)
@@ -222,7 +240,7 @@ private def allowedCommand (command : String) : Bool :=
   command == "info" || command == "compile" || command == "compile_view" ||
     command == "init_state" || command == "check_step" || command == "apply_step" ||
     command == "step" || command == "check_candidate" || command == "classify" ||
-    command == "render_audit" || command == "emit_artifact"
+    command == "parse_trace" || command == "render_audit" || command == "emit_artifact"
 
 private def validateRequestShape (request : Json) : Except String Unit := do
   let object ← request.getObj?.mapError fun _ => "request must be an object"
@@ -259,6 +277,19 @@ private def payloadText (request : Json) (field : String) : Except String String
       | .ok (Json.str text) => pure text
       | .ok _ => throw s!"payload.{field} must be a string"
       | .error _ => throw s!"payload.{field} is required"
+  | .error _ => throw "payload is required"
+
+private def payloadTraceText (request : Json) : Except String String := do
+  match request.getObjVal? "payload" with
+  | .ok payload =>
+      match payload.getObjVal? "trace" with
+      | .ok (Json.str text) => pure text
+      | .ok _ => throw "payload.trace must be a string"
+      | .error _ =>
+          match payload.getObjVal? "trace_json" with
+          | .ok (Json.str text) => pure text
+          | .ok _ => throw "payload.trace_json must be a string"
+          | .error _ => throw "payload.trace is required"
   | .error _ => throw "payload is required"
 
 private def compileProblem (request : Json) (includeView : Bool) : Json :=
@@ -310,6 +341,15 @@ private def checkCandidateCommand (request : Json) : Json :=
                   | .clueViolation index clueId => clueViolationResponse id index clueId
                   | .incomplete failure => incompleteResponse id compiled.envelope.id failure
                   | .invalid failure => invalidCandidateResponse id failure
+
+private def parseTraceCommand (request : Json) : Json :=
+  let id := requestId request
+  match payloadTraceText request with
+  | .error message => errorResponse id "invalid_request" message
+  | .ok traceText =>
+      match TraceParser.parse traceText with
+      | .error parseError => malformedTraceResponse id parseError
+      | .ok trace => traceParsedResponse id trace
 
 private def initStateCommand (request : Json) : Json :=
   let id := requestId request
@@ -364,6 +404,7 @@ private def dispatchCommand (request : Json) : Json :=
   | .ok (Json.str "compile") => compileCommand request
   | .ok (Json.str "compile_view") => compileViewCommand request
   | .ok (Json.str "check_candidate") => checkCandidateCommand request
+  | .ok (Json.str "parse_trace") => parseTraceCommand request
   | .ok (Json.str "init_state") => initStateCommand request
   | .ok (Json.str "check_step") => stepCommand request false
   | .ok (Json.str "apply_step") => stepCommand request true

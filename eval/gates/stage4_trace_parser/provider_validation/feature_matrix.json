@@ -1,0 +1,183 @@
+{
+  "assign_all": {
+    "exemplar": {
+      "ops": [
+        {
+          "op": "assign_all",
+          "solution": {
+            "Color": {
+              "1": "red"
+            }
+          }
+        },
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_assign_all_example",
+      "schema_version": "0.2"
+    },
+    "parse_rate": 1.0,
+    "samples": 20,
+    "trace_parsed": 20
+  },
+  "conclude": {
+    "exemplar": {
+      "ops": [
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_conclude_example",
+      "schema_version": "0.2"
+    },
+    "parse_rate": 1.0,
+    "samples": 20,
+    "trace_parsed": 20
+  },
+  "eliminate": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Drink",
+          "house": 2,
+          "justify": {
+            "clue": "c2"
+          },
+          "op": "eliminate",
+          "val": "tea"
+        },
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_eliminate_example",
+      "schema_version": "0.2"
+    },
+    "parse_rate": 1.0,
+    "samples": 20,
+    "trace_parsed": 20
+  },
+  "justify": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Pet",
+          "house": 2,
+          "justify": {
+            "clue": "c3"
+          },
+          "op": "place",
+          "val": "cat"
+        },
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_justify_example",
+      "schema_version": "0.2"
+    },
+    "parse_rate": 1.0,
+    "samples": 20,
+    "trace_parsed": 20
+  },
+  "justify_from": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Drink",
+          "house": 1,
+          "justify": {
+            "clue": "c4",
+            "from": [
+              {
+                "cat": "Color",
+                "house": 2,
+                "val": "blue"
+              }
+            ]
+          },
+          "op": "eliminate",
+          "val": "coffee"
+        },
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_justify_from_example",
+      "schema_version": "0.2"
+    },
+    "parse_rate": 1.0,
+    "samples": 20,
+    "trace_parsed": 20
+  },
+  "mixed_traces": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Color",
+          "house": 1,
+          "justify": {
+            "clue": "c1"
+          },
+          "op": "place",
+          "val": "red"
+        },
+        {
+          "cat": "Drink",
+          "house": 2,
+          "justify": {
+            "clue": "c2",
+            "from": [
+              {
+                "cat": "Color",
+                "house": 1,
+                "val": "red"
+              }
+            ]
+          },
+          "op": "eliminate",
+          "val": "tea"
+        },
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_mixed_traces_example",
+      "schema_version": "0.2"
+    },
+    "parse_rate": 1.0,
+    "samples": 20,
+    "trace_parsed": 20
+  },
+  "place": {
+    "exemplar": {
+      "ops": [
+        {
+          "cat": "Color",
+          "house": 1,
+          "justify": {
+            "clue": "c1"
+          },
+          "op": "place",
+          "val": "red"
+        },
+        {
+          "op": "conclude",
+          "status": "solved"
+        }
+      ],
+      "problem_id": "zl_place_example",
+      "schema_version": "0.2"
+    },
+    "parse_rate": 1.0,
+    "samples": 20,
+    "trace_parsed": 20
+  }
+}

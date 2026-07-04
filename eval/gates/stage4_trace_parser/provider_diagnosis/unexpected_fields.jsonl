@@ -1,0 +1,15 @@
+{"field": "operations", "path": "$.operations", "phase": "before", "problem_id": "zl_lgp-test-2x2-0", "sample_id": "provider-trace-00"}
+{"field": "solution", "path": "$.operations[0].solution", "phase": "before", "problem_id": "zl_lgp-test-2x2-0", "sample_id": "provider-trace-00"}
+{"field": "type", "path": "$.operations[0].type", "phase": "before", "problem_id": "zl_lgp-test-2x2-0", "sample_id": "provider-trace-00"}
+{"field": "status", "path": "$.operations[1].status", "phase": "before", "problem_id": "zl_lgp-test-2x2-0", "sample_id": "provider-trace-00"}
+{"field": "type", "path": "$.operations[1].type", "phase": "before", "problem_id": "zl_lgp-test-2x2-0", "sample_id": "provider-trace-00"}
+{"field": "operations", "path": "$.operations", "phase": "before", "problem_id": "zl_lgp-test-2x2-1", "sample_id": "provider-trace-01"}
+{"field": "assignments", "path": "$.operations[0].assignments", "phase": "before", "problem_id": "zl_lgp-test-2x2-1", "sample_id": "provider-trace-01"}
+{"field": "type", "path": "$.operations[0].type", "phase": "before", "problem_id": "zl_lgp-test-2x2-1", "sample_id": "provider-trace-01"}
+{"field": "status", "path": "$.operations[1].status", "phase": "before", "problem_id": "zl_lgp-test-2x2-1", "sample_id": "provider-trace-01"}
+{"field": "type", "path": "$.operations[1].type", "phase": "before", "problem_id": "zl_lgp-test-2x2-1", "sample_id": "provider-trace-01"}
+{"field": "operations", "path": "$.operations", "phase": "before", "problem_id": "zl_lgp-test-2x2-10", "sample_id": "provider-trace-02"}
+{"field": "assignment", "path": "$.operations[0].assignment", "phase": "before", "problem_id": "zl_lgp-test-2x2-10", "sample_id": "provider-trace-02"}
+{"field": "type", "path": "$.operations[0].type", "phase": "before", "problem_id": "zl_lgp-test-2x2-10", "sample_id": "provider-trace-02"}
+{"field": "status", "path": "$.operations[1].status", "phase": "before", "problem_id": "zl_lgp-test-2x2-10", "sample_id": "provider-trace-02"}
+{"field": "type", "path": "$.operations[1].type", "phase": "before", "problem_id": "zl_lgp-test-2x2-10", "sample_id": "provider-trace-02"}
