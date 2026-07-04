@@ -3,11 +3,12 @@
   "full_candidate_traces": 1000,
   "gate": "stage4_trace_parser",
   "lean_solver_search": false,
-  "malformed_traces": 22,
+  "malformed_traces": 25,
   "parse_error_coverage": {
     "assign_all_malformed_solution": true,
     "assign_all_missing_solution": true,
     "conclude_bad_status": true,
+    "conclude_malformed_solution": true,
     "conclude_missing_status": true,
     "eliminate_missing_cat": true,
     "eliminate_missing_house": true,
@@ -16,6 +17,8 @@
     "invalid_json": true,
     "malformed_from_cell": true,
     "malformed_justify": true,
+    "malformed_op": true,
+    "malformed_problem_id": true,
     "missing_justify": true,
     "missing_ops": true,
     "missing_problem_id": true,
@@ -55,5 +58,5 @@
   "status": "pass",
   "stepwise_traces": 1000,
   "total_protocol_error": 0,
-  "total_traces": 2022
+  "total_traces": 2025
 }

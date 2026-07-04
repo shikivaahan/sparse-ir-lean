@@ -39,7 +39,7 @@ ADVERSARIAL_EXPECTATIONS: dict[str, tuple[str, str]] = {
     "malformed_justify": ("malformed_justify", "$.ops[0].justify"),
     "malformed_justify_from": ("malformed_from_cell", "$.ops[0].justify.from"),
     "bad_conclude_status": ("conclude_bad_status", "$.ops[0].status"),
-    "wrapper_object": ("unexpected_wrapper_object", "$.trace"),
+    "wrapper_object": ("unexpected_field", "$.trace"),
     "missing_schema_version": ("missing_schema_version", "$.schema_version"),
     "unsupported_schema_version": ("unsupported_schema_version", "$.schema_version"),
     "missing_problem_id": ("missing_problem_id", "$.problem_id"),
@@ -136,17 +136,11 @@ def score_sample(
         expected_code = expected_path = None
     else:
         expected_code, expected_path = ADVERSARIAL_EXPECTATIONS[bucket]
-        if bucket == "wrapper_object":
-            expected = (
-                extraction_status == "unexpected_wrapper_object"
-                and lean_result.get("kind") == "REJECT"
-            )
-        else:
-            expected = (
-                lean_result.get("kind") == "REJECT"
-                and actual_code == expected_code
-                and actual_path == expected_path
-            )
+        expected = (
+            lean_result.get("kind") == "REJECT"
+            and actual_code == expected_code
+            and actual_path == expected_path
+        )
         passed = model_complied and expected
     return {
         "passed": passed,

@@ -29,9 +29,11 @@ REQUIRED_ERROR_CODES = (
     "missing_schema_version",
     "unsupported_schema_version",
     "missing_problem_id",
+    "malformed_problem_id",
     "missing_ops",
     "ops_not_array",
     "empty_ops",
+    "malformed_op",
     "unknown_op",
     "assign_all_missing_solution",
     "assign_all_malformed_solution",
@@ -46,6 +48,7 @@ REQUIRED_ERROR_CODES = (
     "malformed_from_cell",
     "conclude_missing_status",
     "conclude_bad_status",
+    "conclude_malformed_solution",
     "unexpected_field",
 )
 
@@ -282,6 +285,22 @@ def _malformed_cases() -> list[TraceCase]:
     value = with_op({"op": "conclude", "status": "solved"})
     value["extra"] = True
     case("unexpected-field", "unexpected_field", "$.extra", value)
+
+    value = deepcopy(envelope)
+    value["problem_id"] = 123
+    case("malformed-problem-id", "malformed_problem_id", "$.problem_id", value)
+
+    value = deepcopy(envelope)
+    value["ops"] = [123]
+    case("malformed-op", "malformed_op", "$.ops[0]", value)
+
+    value = with_op({"op": "conclude", "status": "solved", "solution": []})
+    case(
+        "conclude-malformed-solution",
+        "conclude_malformed_solution",
+        "$.ops[0].solution",
+        value,
+    )
     return cases
 
 

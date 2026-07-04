@@ -5,7 +5,7 @@ stable. This stage measures *parseability only*. Replay, semantic checks, and
 artifact emission are explicitly out of scope here.
 
 **Date:** 2026-07-04
-**Branch:** `dev`
+**Branch:** `main`
 **Evidence under:** `eval/gates/stage4_trace_parser/`
 **Schema file:** `schemas/zebra-trace.schema.json`
 
@@ -81,7 +81,7 @@ inside any op are rejected as `unexpected_field` at the offending JSON pointer.
 
 ## 2. Trace parse error taxonomy (frozen)
 
-22 codes, each with a deterministic JSON-pointer path. The
+25 codes, each with a deterministic JSON-pointer path. The
 `expected_code` column shows the value used in committed fixtures.
 
 | Code | Path example | Where it triggers |
@@ -90,9 +90,11 @@ inside any op are rejected as `unexpected_field` at the offending JSON pointer.
 | `missing_schema_version` | `$.schema_version` | Top-level `schema_version` absent. |
 | `unsupported_schema_version` | `$.schema_version` | `schema_version` ≠ `"0.2"`. |
 | `missing_problem_id` | `$.problem_id` | Top-level `problem_id` absent. |
+| `malformed_problem_id` | `$.problem_id` | `problem_id` is not a string. |
 | `missing_ops` | `$.ops` | Top-level `ops` absent. |
 | `ops_not_array` | `$.ops` | `ops` is not an array. |
 | `empty_ops` | `$.ops` | `ops` is an empty array. |
+| `malformed_op` | `$.ops[i]` | an `ops[i]` is not an object. |
 | `unknown_op` | `$.ops[i].op` | `op` is not one of the four known strings. |
 | `assign_all_missing_solution` | `$.ops[i].solution` | `assign_all` without `solution`. |
 | `assign_all_malformed_solution` | `$.ops[i].solution` | `assign_all` `solution` is not an object of assignments. |
@@ -107,6 +109,7 @@ inside any op are rejected as `unexpected_field` at the offending JSON pointer.
 | `malformed_from_cell` | `$.ops[i].justify.from[j]` | a from-cell is malformed. |
 | `conclude_missing_status` | `$.ops[i].status` | `conclude` without `status`. |
 | `conclude_bad_status` | `$.ops[i].status` | `status` is not the literal `"solved"`. |
+| `conclude_malformed_solution` | `$.ops[i].solution` | `conclude` `solution` is not an object of assignments. |
 | `unexpected_field` | `$.<key>` or `$.ops[i].<key>` | An extra key is present. |
 
 ## 3. `parse_trace` CLI command (frozen)
@@ -177,17 +180,19 @@ not from the headline `summary.md`.
 
 ### 5.1 Core parser gate
 
-- Total traces: **2022**
+- Total traces: **2025**
 - Valid full-candidate traces: **1000** — all returned `TRACE_PARSED` with
   `trace_style="full_candidate"`.
 - Valid stepwise traces: **1000** — all returned `TRACE_PARSED` with
   `trace_style="stepwise"`.
-- Malformed traces: **22** — all returned `REJECT` with the expected
+- Malformed traces: **25** — all returned `REJECT` with the expected
   `failure_code` and `path` (verified by re-running the expected-vs-actual
   comparison at freeze time).
 - Protocol errors: **0**.
 - Failures: **0**.
-- Parse error coverage: **22 / 22**.
+- Parse error coverage: **25 / 25** (the full reachable `TraceParseErrorCode`
+  taxonomy: 25 variants, 25 deterministic code + JSON-pointer paths, all
+  exercised at freeze time).
 
 ### 5.2 Provider trace-shape validation
 
@@ -195,6 +200,14 @@ not from the headline `summary.md`.
 - `TRACE_PARSED`: **140 / 140** (parseability rate = 1.0)
 - Status: **pass** (parseability only — does not check semantic correctness or
   puzzle solvability)
+- **Evidence interpretation:** the 140 stored provider outputs are
+  **strong-exemplar schema-following evidence** (the prompt supplies a
+  near-exact JSON shape with a single solution, and the model reproduces the
+  shape). They establish that the model can comply with a fully specified
+  schema when one is given, and that the parser accepts every compliant
+  output. This is a **parse-validity diagnostic**, not evidence of
+  autonomous trace-generation capability from a sparse natural-language
+  puzzle. The frozen spec defines this eval as parse-validity only.
 
 ### 5.3 Provider adversarial parser diagnostics
 
@@ -202,6 +215,15 @@ not from the headline `summary.md`.
 - Positive samples that returned `TRACE_PARSED`: **140 / 140**
 - Adversarial samples that returned `REJECT` (matching the expected structured
   bucket): **120 / 120**
+- **Mutation coverage:** the 120 adversarial samples represent **12 structural
+  mutation classes × 10 outputs each** (missing ops, unknown op, unexpected
+  top-level field, malformed assign_all solution, missing justify, malformed
+  justify, malformed justify.from, bad conclude status, wrapper object,
+  missing schema_version, unsupported schema_version, missing problem_id).
+  Each mutation class is one structural shape; the 10 outputs per class are
+  near-copies that vary the model-side noise. The headline `N=120` should be
+  read as 12 mutation classes exercised 10 times each, not as 120 unique
+  malformed shapes.
 - Status: **pass** (parseability only)
 
 ### 5.4 Validation commands
@@ -212,7 +234,7 @@ not from the headline `summary.md`.
 ~/.elan/bin/lake.exe test          # exit 0
 
 # Python test suite (skips the live-provider test_oracle)
-uv run pytest tests/ --ignore=tests/test_oracle.py    # 200 passed
+uv run pytest tests/ --ignore=tests/test_oracle.py    # 205 passed
 
 # Lint
 uv run ruff check .               # All checks passed
@@ -223,9 +245,9 @@ uv run pytest tests/test_stage4_trace_parser.py -k schema
 #   test_frozen_trace_schema_rejects_internal_rule_names PASS
 ```
 
-The existing 2022 core gate runs through the trusted parser; the schema test
+The existing 2025 core gate runs through the trusted parser; the schema test
 loads `schemas/zebra-trace.schema.json` and exercises both happy paths and each
-of the 22 reject cases directly. The internal-rule-names test enumerates the
+of the 25 reject cases directly. The internal-rule-names test enumerates the
 22 names from `StepKernel.supportedRules` and asserts the schema rejects each as
 an unknown property.
 
@@ -273,7 +295,7 @@ advertised by the runtime capabilities.
 ## 8. Reproduce the freeze evidence
 
 ```bash
-git checkout dev
+git checkout main
 ~/.elan/bin/lake.exe build
 ~/.elan/bin/lake.exe test
 uv run ruff check .

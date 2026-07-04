@@ -596,6 +596,12 @@ def main : IO UInt32 := do
     r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"place","cat":"Color","house":1,"val":"red","justify":{"clue":"c1","from":[{"cat":"Drink","val":"tea"}]}}]}"#
   expectTraceError "bad conclude status" .concludeBadStatus "$.ops[0].status"
     r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"conclude","status":"unknown"}]}"#
+  expectTraceError "malformed problem id" .malformedProblemId "$.problem_id"
+    r#"{"schema_version":"0.2","problem_id":123,"ops":[]}"#
+  expectTraceError "malformed trace op" .malformedOp "$.ops[0]"
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[123]}"#
+  expectTraceError "conclude malformed solution" .concludeMalformedSolution "$.ops[0].solution"
+    r#"{"schema_version":"0.2","problem_id":"zl_test","ops":[{"op":"conclude","status":"solved","solution":[]}]}"#
 
   -- ====================================================================
   -- Walkthrough: problem.json -> ParsedProblem -> CompiledPuzzle ->
