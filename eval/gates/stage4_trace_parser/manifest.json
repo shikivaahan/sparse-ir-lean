@@ -3,7 +3,7 @@
   "full_candidate_traces": 1000,
   "gate": "stage4_trace_parser",
   "lean_solver_search": false,
-  "malformed_traces": 25,
+  "malformed_traces": 28,
   "parse_error_coverage": {
     "assign_all_malformed_solution": true,
     "assign_all_missing_solution": true,
@@ -28,35 +28,19 @@
     "place_missing_house": true,
     "place_missing_val": true,
     "unexpected_field": true,
+    "unknown_justify_rule": true,
     "unknown_op": true,
     "unsupported_schema_version": true
   },
-  "provider_adversarial": {
-    "adversarial_samples": 120,
-    "artifact_path": "provider_adversarial",
-    "expected_rejections": 120,
-    "inspect_log_path": "provider_adversarial/inspect_logs/2026-06-29T19-58-32-00-00_stage4-provider-adversarial_6yGbaoGrSuxRmYWr8CBcdf.eval",
-    "inspect_view_url": "http://127.0.0.1:7577",
-    "model": "deepseek/deepseek-v4-flash",
-    "parseability_only": true,
-    "positive_samples": 140,
-    "status": "pass",
-    "total_samples": 260,
-    "trace_parsed": 140
-  },
   "provider_validation": {
-    "artifact_path": "provider_validation",
-    "model": "deepseek/deepseek-v4-flash",
-    "parseability_only": true,
-    "status": "pass",
-    "total_samples": 140,
-    "trace_parsed": 140,
-    "trace_parsed_rate": 1.0
+    "diagnostic_only": true,
+    "reason": "missing provider authorization/access",
+    "status": "blocked"
   },
   "replay_or_checking": false,
   "seed": 20260629,
   "status": "pass",
-  "stepwise_traces": 1000,
+  "stepwise_traces": 2000,
   "total_protocol_error": 0,
-  "total_traces": 2025
+  "total_traces": 3028
 }
