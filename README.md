@@ -29,7 +29,7 @@ This repository currently contributes:
 | Candidate-level clingo differential validation | **Built** | Independently compares candidate semantics against an ASP encoding during development. clingo is not in the runtime trust boundary. |
 | Provider-backed evaluation harness | **Built and run** | Stores prompts, raw provider output, parsed candidates, Lean verdicts, failures, and aggregate metrics. |
 | Step kernel | **Implemented, incompletely validated** | Supports local operations, but its evidence is example-based rather than a complete candidate-style differential gate. |
-| Trace parser (lower JSON → Trace AST) | **Built and frozen (Stage 4)** | Frozen contract: `parse_trace` lowers a trace JSON object into a `Trace` AST and returns a structured 25-code error taxonomy. Replay of the parsed trace and semantic stepwise checking are **not** implemented; no end-to-end Mode-1 or Mode-2 result is claimed. |
+| Trace parser (lower JSON → Trace AST) | **Built and frozen (Stage 4)** | Frozen contract: `parse_trace` lowers a trace JSON object into a `Trace` AST and returns a structured 26-code error taxonomy. The public justification shape is a tagged union: `{clue, from?}` or `{rule: bijection, from?}` (no private kernel rule names). Replay of the parsed trace and semantic stepwise checking are **not** implemented; no end-to-end Mode-1 or Mode-2 result is claimed. The parser does not require `conclude` — that is a Stage 5 / replay concern. |
 | Verifier-guided feedback and repair | **Not built** | The central feedback-granularity experiment remains future work. |
 | Natural-language to certificate parser | **Not built/evaluated end to end** | Current experiments start from gold certificates. |
 | Trusted human audit renderer (`Pretty.lean`) | **Stub** | `available := false`; this is a load-bearing missing component for the faithfulness story. |
@@ -431,7 +431,7 @@ These artifacts contain the experiment configuration, per-example results, separ
 - [Reasoning ON/OFF comparison](eval/gates/stage6_budget_sweep/summary.md): [metrics](eval/gates/stage6_budget_sweep/metrics.json) and [per-example results](eval/gates/stage6_budget_sweep/results.jsonl). Intermediate cap settings were not honored and should not be interpreted as a graded sweep.
 - [Contamination perturbation smoke](eval/gates/stage6_contamination/summary.md): [metrics](eval/gates/stage6_contamination/metrics.json) and [per-example results](eval/gates/stage6_contamination/results.jsonl)
 - [Mode-0 pilot and artifact schema](eval/gates/stage6_mode0_h2_h3/summary.md)
-- [Stage 4 trace-parser gate and freeze record](eval/gates/stage4_trace_parser/FREEZE.md): frozen `parse_trace` contract, 25-code error taxonomy, 25/25 parser fixtures, 140 positive + 120 adversarial provider-evidence samples
+- [Stage 4 trace-parser gate and freeze record](eval/gates/stage4_trace_parser/FREEZE.md): frozen `parse_trace` contract, 26-code error taxonomy, 26/26 parser fixtures, real JSON-Schema ↔ Lean-parser parity gate (122 boundary cases, zero disagreements), 140 positive + 120 adversarial provider-evidence samples reparse, 36-sample stepwise trace-shape diagnostic with public-rule-only prompt (zero private-rule leakage)
 - [Candidate-level differential checker test](tests/test_stage3b_differential_candidates.py)
 
 For example:
@@ -485,7 +485,7 @@ The Python harness is orchestration, not part of the trusted checker.
 | `SparseIRLean/Compiler.lean` | Static checks and compilation to the internal puzzle form |
 | `SparseIRLean/CheckerCore.lean` | Complete-candidate Mode-0 semantics |
 | `SparseIRLean/StepKernel.lean` | Experimental stepwise kernel (unbuilt for Mode 1/2 reuse) |
-| `SparseIRLean/Trace.lean` | Frozen trace parser (Stage 4) — `parse_trace` lowers a trace JSON into a `Trace` AST and returns a structured 25-code error taxonomy |
+| `SparseIRLean/Trace.lean` | Frozen trace parser (Stage 4) — `parse_trace` lowers a trace JSON into a `Trace` AST and returns a structured 26-code error taxonomy. The public justification shape is a tagged union (`{clue, from?}` or `{rule: bijection, from?}`). |
 | `SparseIRLean/Main.lean` | Fail-closed JSON CLI |
 | `SparseIRLean/Pretty.lean` | Trusted audit-renderer stub |
 | `src/sparseir_harness/` | Untrusted datasets, orchestration, scoring, and reference tooling |
