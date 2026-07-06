@@ -553,7 +553,7 @@ def _provider_validation(
 
 def run_trace_parser_gate(
     gate_a_dir: Path,
-    reference_dir: Path,
+    parser_fixture_solutions_dir: Path,
     output: Path,
     seed: int,
     *,
@@ -562,7 +562,22 @@ def run_trace_parser_gate(
     provider_call: Callable[[list[dict[str, str]], str], str] = call_provider,
     provider_model: str = DEFAULT_PROVIDER_MODEL,
 ) -> dict[str, Any]:
-    references = _read_jsonl(reference_dir / "reference_solutions.jsonl")
+    """Stage 4 trace-parser evidence gate.
+
+    Parameters:
+        gate_a_dir: directory containing Stage 2 Gate A's compiled_problems.jsonl
+            (real ZebraLogic-derived compiled puzzles).
+        parser_fixture_solutions_dir: directory containing
+            parser_fixture_solutions.jsonl. These are synthetic per-puzzle
+            candidate assignments that exist ONLY so the Stage 4 parser gate
+            can exercise the full-candidate and stepwise trace generation
+            path across grid sizes. They are NOT clingo gold reference
+            solutions, are NOT semantically correct, and are NOT used by any
+            Stage 3A reference-solution subsystem.
+        output: directory to write manifest.json, traces.jsonl, etc.
+        seed: numeric seed for reproducibility.
+    """
+    references = _read_jsonl(parser_fixture_solutions_dir / "parser_fixture_solutions.jsonl")
     compiled = _read_jsonl(gate_a_dir / "compiled_problems.jsonl")
     problems = {row["problem_id"]: row for row in compiled}
     cases = _full_candidate_cases(references)

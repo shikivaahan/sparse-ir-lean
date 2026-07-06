@@ -6,7 +6,7 @@ in the trusted Lean verifier). Replay, semantic stepwise checking, and artifact
 emission are explicitly out of scope here.
 
 **Date:** 2026-07-06
-**Branch:** `stage4-finish` (this PR)
+**Branch:** `stage4-finish` (PR #1)
 **Evidence under:** `eval/gates/stage4_trace_parser/`
 **Schema file:** `schemas/zebra-trace.schema.json`
 **Lean module:** `SparseIRLean/Trace.lean`
@@ -48,7 +48,7 @@ Empty `ops` is rejected as `empty_ops` at `$.ops`. The JSON Schema in
 `schemas/zebra-trace.schema.json` mirrors this exactly; drift between the
 JSON Schema and the trusted parser is detected by
 `tests/test_stage4_trace_parser.py::test_frozen_trace_schema_validates_against_lean_parser`
-(which now runs both validators on every entry of the parity corpus).
+(which runs both validators on every entry of the parity corpus, see §5.2).
 
 ### 1.3 Trace styles
 
@@ -229,9 +229,7 @@ This is honest:
 - `stepwise: false` — the Stage 4 parser is shipped; the stepwise
   *checker* (Stage 5 trace replay) is not.
 - `tactics: false` — unbuilt.
-- `audit_view: false` — `Pretty.lean` is a stub. The H8 human-shift-left
-  argument is not yet supported by a Lean-rendered view; this is documented
-  in the README and the report as outstanding.
+- `audit_view: false` — `Pretty.lean` is a stub.
 
 The north-star architecture (Modes 0/1/2, tactics, audit view) remains in
 the spec; the capabilities object is the only place that pins what is
@@ -261,13 +259,16 @@ All counts are derived from raw artifacts stored under
 - Failures: **0**.
 - Parse error coverage: **26 / 26** (the full reachable `TraceParseErrorCode`
   taxonomy).
+- Source fixtures (NOT clingo gold — see §5.7):
+  `eval/gates/stage4_trace_parser/parser_fixtures/parser_fixture_solutions.jsonl`.
 
 ### 5.2 JSON Schema ↔ Lean parser differential parity
 
-This is now a REAL differential gate. The test
-`test_frozen_trace_schema_validates_against_lean_parser` ingests every
-entry of `src/sparseir_harness/trace_parity_corpus.py` (122 hand-curated
-boundary cases) and asserts that:
+This is a real differential gate on a hand-curated boundary corpus. The
+test
+`tests/test_stage4_trace_parser.py::test_frozen_trace_schema_validates_against_lean_parser`
+ingests every entry of `src/sparseir_harness/trace_parity_corpus.py` and
+asserts that:
 
 * The published JSON Schema validator (`jsonschema` Draft 2020-12) verdict
   matches the trusted `SparseIRLean/Trace.lean` parse verdict.
@@ -281,28 +282,14 @@ Parity run (this freeze):
 - Hand-curated expectation mismatches (drift in either validator
   vs expectation): **0**
 
-Coverage areas inside the corpus:
-* top-level shape: empty, list, null, bool, int, float, string, extra keys
-* `schema_version` boundary: wrong string, empty, null, number, bool, list, dict
-* `problem_id` boundary: missing, null, empty, number, bool, list, dict
-* `ops` boundary: missing, null, bool, int, string, dict, empty array, mixed types
-* per-op boundary: malformed shape, unknown op strings, place/eliminate/conclude
-* cell boundary: missing cat/house/val, missing on each;
-  house-type boundary (0, -1, 1.5, "1", null, true, [], {});
-  cat/val-type boundary (null, 0, true, false, "", list, dict)
-* solution boundary: missing, empty `{}`, empty category `{}`, house `0`,
-  house `"01"`, house `""`, mixed garbage
-* justification boundary: empty, null, list, neither-clue-nor-rule,
-  both-clue-and-rule, rule=`"bijection"`, rule=`given_found_at_place`,
-  rule=private-bijection-like; `clue=""`, `from=""` (non-array),
-  malformed from-cell, from-cell with house=0
-* conclude boundary: missing status, status variants (`"unknown"`, `"SOLVED"`,
-  `"solved "`, etc), empty solution `{}`
-* nested extra-keys: cell extra, from-cell extra, op extra
-
 The parity corpus is committed at
 `src/sparseir_harness/trace_parity_corpus.py` and the test is committed
 at `tests/test_stage4_trace_parser.py::test_frozen_trace_schema_validates_against_lean_parser`.
+
+This 122-case corpus is **separate evidence** from the per-provider-output
+agreement recorded in §5.6. The corpus proves the two implementations
+agree across the hand-curated boundary surface; the §5.6 numbers prove
+they agree on actual model outputs from `deepseek/deepseek-v4-flash`.
 
 ### 5.3 Provider trace-shape validation (stored full-candidate)
 
@@ -315,8 +302,8 @@ Re-parsed against the new parser:
   strong-exemplar schema-following evidence (the prompt supplies a near-
   exact `assign_all` exemplar with a single solution, and the model
   reproduces the shape). They establish that the model can comply with a
-  fully specified schema when one is given, and that the new parser accepts
-  every compliant output.
+  fully specified schema when one is given, and that the new parser
+  accepts every compliant output.
 
 ### 5.4 Provider trace-shape validation (stored adversarial)
 
@@ -329,40 +316,120 @@ Re-parsed against the new parser:
 ### 5.5 Provider stepwise trace-shape diagnostic (NEW this freeze)
 
 A new stepwise diagnostic was run as part of this freeze to characterize
-behaviour on the *new* tagged-union justification contract and catch any
-private-kernel-rule leakage.
+behaviour on the *new* tagged-union justification contract and to catch
+any private-kernel-rule leakage.
 
-- Diagnostic: `scripts/stage4_provider_stepwise.py`
-- Output: `eval/gates/stage4_trace_parser/provider_stepwise/`
+- Diagnostic script: `scripts/stage4_provider_stepwise.py`
+- Stored evidence: `eval/gates/stage4_trace_parser/provider_stepwise/`
 - Model: `deepseek/deepseek-v4-flash`
-- Total samples: **36** across 3 scenarios (12 per scenario):
-  - `stepwise_clue_only`: prompt restricts to `{clue, from?}` justifications.
-  - `stepwise_bijection_or_clue`: prompt allows either form.
-  - `stepwise_bijection_only`: prompt restricts to `{rule: bijection, from?}`.
+- Total samples attempted: **36**
 - Source puzzle set: a deterministic subset of
   `eval/gates/stage2_gate_a_compile_all/compiled_problems.jsonl` covering
-  multiple grid sizes (`2x3`, `2x4`, etc.).
-- Sample counts:
+  multiple grid sizes (e.g. `2x3`, `2x4`).
 
-  | Status | Count |
-  |---|---|
-  | `parsed` (`TRACE_PARSED`) | 20 |
-  | `schema_rejected` | 13 |
-  | `invalid_json` | 2 |
-  | `provider_error` | 1 |
+Each provider output is independently evaluated on **four** layers:
 
-  Failure codes observed: `unknown_op` (13), `invalid_json` (2),
-  `provider_error` (1).
-- Private kernel rule name leakage: **0** out of 36 raw outputs. The
-  prompt's explicit prohibition held; no model output contained one of the
-  22 forbidden rule names.
-- Status: **partial** (parseability is the only criterion). 20/36 = 55.5%
-  parsed cleanly. The 13 `unknown_op` rejections are dominated by the
-  model forgetting the `op` discriminator on some output objects — a
-  known failure mode for the model under stepwise prompts, and *exactly*
-  what Stage 4's `unknown_op` parse error is supposed to catch.
+1. `provider_output_present` — did the provider call return text?
+2. `raw_json_valid` — does that text parse as JSON with a top-level object?
+3. `schema_valid` — does that object satisfy `schemas/zebra-trace.schema.json`?
+4. `lean_trace_parsed` — does it satisfy the trusted Lean `parse_trace`?
 
-### 5.6 Validation commands
+The script **actually runs both** the JSON Schema validator and the Lean
+parser per sample (the 122-case hand-curated corpus is not used to infer
+these counts). The per-sample verdict for each layer is recorded in
+`analyze_results.jsonl`.
+
+#### Per-layer counts (real evidence, denominators explicit)
+
+| Layer | Count | Denominator | Rate |
+|---|---|---|---|
+| Samples attempted | 36 | — | — |
+| Provider returned output | 35 | 36 attempted | 97.2% |
+| Provider errors | 1 | 36 attempted | 2.8% |
+| Raw JSON (top-level object) valid | 33 | 35 returned | **94.3%** |
+| JSON Schema valid | 20 | 33 raw-JSON valid | **60.6%** |
+| Lean `TRACE_PARSED` | 20 | 36 attempted | 55.6% |
+| Lean `TRACE_PARSED` | 20 | 35 returned | 57.1% |
+| **Schema↔Lean disagreement count** | **0** | 33 raw-JSON valid | agreement rate **100.0%** |
+
+(Schema-valid and Lean-`TRACE_PARSED` agree exactly on every sample: 20/33
+samples pass both, 13/33 fail both, 0 disagree.)
+
+Status: **partial** — 20/35 returned outputs parse cleanly under both
+validators (the remaining 15 fail schema and Lean simultaneously, mostly
+on `unknown_op` because the model forgets the `op` discriminator on some
+output objects). The point of the diagnostic is shape compliance and
+private-rule leakage, not end-to-end solve correctness.
+
+#### Failure codes observed (from Lean, on actual provider outputs)
+
+| Code | Count |
+|---|---|
+| `unknown_op` | 13 |
+| `invalid_json` | 2 (raw text was not JSON; Lean therefore had nothing to parse) |
+| `provider_error` | 1 |
+| `protocol_error` | 0 |
+
+#### Private kernel rule name leakage
+
+* Out of 35 raw outputs that returned text: **0** contain any of the 22
+  forbidden private kernel rule names as substrings. The prompt's
+  explicit prohibition held.
+
+#### Scenarios
+
+| Scenario | Samples | TRACE_PARSED | REJECT |
+|---|---|---|---|
+| `stepwise_clue_only` | 12 | 9 | 3 |
+| `stepwise_bijection_or_clue` | 12 | 3 | 8 (+ 1 provider error) |
+| `stepwise_bijection_only` | 12 | 8 | 4 |
+
+### 5.6 Stored provider outputs reparse
+
+Stored outputs from prior runs were re-parsed against the current parser
+to confirm no regressions:
+
+| Stored output set | Samples | Result against current parser |
+|---|---|---|
+| `provider_validation/raw_outputs.jsonl` | 140 | 140 / 140 `TRACE_PARSED` |
+| `provider_adversarial/raw_outputs.jsonl` (full) | 260 | 140 positive `TRACE_PARSED`, 120 adversarial `REJECT` with expected codes |
+| `provider_stepwise/raw_outputs.jsonl` | 36 | 20 `TRACE_PARSED` (analyzed per-layer in §5.5) |
+
+The 120 adversarial rejections span **12 mutation classes × 10 outputs**
+(missing ops, unknown op, unexpected top-level field, malformed
+assign_all solution, missing justify, malformed justify, malformed
+justify.from, bad conclude status, wrapper object, missing
+schema_version, unsupported schema_version, missing problem_id).
+
+### 5.7 Stage 4 parser fixtures — explicit provenance
+
+The Stage 4 gate consumes:
+
+* **Real ZebraLogic-derived compiled puzzles** from
+  `eval/gates/stage2_gate_a_compile_all/compiled_problems.jsonl`
+  (the audit-true puzzle surface).
+* **Synthetic per-puzzle candidate assignments** from
+  `eval/gates/stage4_trace_parser/parser_fixtures/parser_fixture_solutions.jsonl`.
+  This file is regenerable via
+  `scripts/make_stage4_parser_fixtures.py`.
+
+These synthetic assignments:
+
+* are **structurally valid** (`{"cat": {"house": value}}`), generated by
+  value enumeration;
+* are **NOT clingo gold**, **NOT semantically correct**, and make **no
+  claim of puzzle solvability**;
+* are owned exclusively by the Stage 4 parser gate;
+* do not appear under `eval/gates/stage3a_reference_solutions/` or any
+  name that could be confused with Stage 3A reference solutions.
+
+The `parser_fixture_solutions_dir` parameter on
+`run_trace_parser_gate` is named for clarity so it cannot be
+accidentally swapped with Stage 3A's reference-solution input. The
+Stage 3A reference-solution subsystem
+(`src/sparseir_harness/reference_solutions.py`) is untouched.
+
+### 5.8 Validation commands
 
 ```bash
 # Lean parser + walkthrough tests
@@ -382,21 +449,26 @@ uv run ruff check .                     # All checks passed
 # Real differential schema/parser parity (122 entries, zero disagreements)
 uv run pytest tests/test_stage4_trace_parser.py::test_frozen_trace_schema_validates_against_lean_parser -v
 
-# Re-run the trace_parser_gate end-to-end against dataset-derived references
+# Re-run the trace_parser_gate end-to-end against the Stage-4-owned synthetic
+# fixture path
 set -a; source .env; set +a
-mkdir -p /tmp/stage4-run
 uv run python -c "
 import sys; sys.path.insert(0, 'src')
 from sparseir_harness.trace_parser_gate import run_trace_parser_gate
 from pathlib import Path
 m = run_trace_parser_gate(
     Path('eval/gates/stage2_gate_a_compile_all'),
-    Path('eval/gates/stage3a_reference_solutions'),
+    Path('eval/gates/stage4_trace_parser/parser_fixtures'),
     Path('/tmp/stage4-run'),
     20260629,
 )
 assert m['status'] == 'pass' and m['total_traces'] == 3028
 "
+
+# Re-derive provider-output metrics from the already-stored raw_outputs.jsonl
+# (no provider call; this re-runs both validators on each stored raw output)
+uv run python scripts/stage4_provider_stepwise.py \
+  --reanalyze-from eval/gates/stage4_trace_parser/provider_stepwise
 ```
 
 ## 6. Known non-Stage-4 limitations (downstream, not Stage 4 failures)
@@ -417,19 +489,14 @@ explicit.
    Stage 3 debt.** The candidate half of G1 (Mode 0 vs clingo) is closed.
    The stepwise half is still example-based, not clingo-fuzzed; it must
    be closed before Stage 5 replay is implemented, otherwise the Stage 5
-   driver could certify unjustified steps. The stepwise public AST and the
-   bijection-justification variant are Stage-4-ready for when that G1
-   closure lands.
-4. **`Pretty.lean` is still a stub.** `render_audit` returns
-   `not_implemented`. The faithfulness argument relies on a Lean-rendered
-   view being auditable by humans before compute; that surface is missing.
+   driver could certify unjustified steps.
+4. **`Pretty.lean` is still a stub.**
 5. **Stepwise trust in `info`.** `stepwise: false` reflects reality; it
    should flip to `true` only after Stage 5 ships trace replay with a
    clingo-differentially validated kernel.
 6. **Stage 5 driver should thread state server-side.** Until that lands,
    the public trace contract does not need to change, but the driver must
-   not accept caller-supplied intermediate states (per the Stage 3 audit
-   finding that motivated this whole seam).
+   not accept caller-supplied intermediate states.
 
 ## 7. What is *not* part of the Stage 4 freeze
 
