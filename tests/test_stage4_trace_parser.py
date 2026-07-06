@@ -142,7 +142,10 @@ def test_gate_writes_complete_parser_artifacts(tmp_path: Path) -> None:
 
     assert manifest["status"] == "pass"
     assert manifest["full_candidate_traces"] == 1
-    assert manifest["stepwise_traces"] == 1
+    # Each reference produces 1 clue-based stepwise + 1 bijection-based
+    # stepwise (the latter exercises the public `{"rule": "bijection",
+    # "from": ...}` half of the tagged union).
+    assert manifest["stepwise_traces"] == 2
     assert all(manifest["parse_error_coverage"].values())
     assert manifest["total_protocol_error"] == 0
     assert manifest["provider_validation"]["status"] == "blocked"
@@ -246,125 +249,70 @@ def test_frozen_trace_schema_validates_against_lean_parser(tmp_path: Path) -> No
     """The published zebra-trace.schema.json must accept the same shapes the
     Lean TraceParser accepts, and must reject the same shapes it rejects.
     Drift between the JSON Schema and the trusted parser is a Stage 4 freeze
-    failure: this test pins them together."""
+    failure: this test pins them together.
+
+    This is now a REAL differential gate: every entry in the parity corpus
+    is fed through both the JSON Schema validator and the trusted Lean
+    TraceParser.parse executable. Verdicts MUST agree on every entry. The
+    corpus covers: top-level shapes, missing/extra fields, every JSON value
+    type at every nested position, empty/numeric/scientific house indexes,
+    the new tagged-union justification contract (`{clue/from}` vs
+    `{rule: bijection/from}`), the 22 private kernel rule names being
+    rejected at parse time, and the conclusion-shape boundary.
+    """
 
     import jsonschema
+
+    from sparseir_harness.trace_parity_corpus import parity_corpus
 
     schema_path = ROOT / "schemas" / "zebra-trace.schema.json"
     assert schema_path.is_file(), "missing schemas/zebra-trace.schema.json"
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
-
     validator = jsonschema.Draft202012Validator(schema)
 
-    def _expect_valid(trace_obj: dict[str, Any]) -> None:
-        validator.validate(trace_obj)
+    corpus = parity_corpus()
 
-    def _expect_invalid(trace_obj: dict[str, Any]) -> None:
+    def _schema_says_valid(trace_obj: dict[str, Any]) -> bool:
         try:
             validator.validate(trace_obj)
+            return True
         except jsonschema.ValidationError:
-            return
-        raise AssertionError(f"schema accepted trace that should be invalid: {trace_obj}")
+            return False
 
-    # positive: full-candidate
-    _expect_valid(
-        {
-            "schema_version": "0.2",
-            "problem_id": "zl_test",
-            "ops": [
-                {"op": "assign_all", "solution": {"Color": {"1": "red"}}},
-                {"op": "conclude", "status": "solved"},
-            ],
-        }
-    )
-    # positive: stepwise with from-cells
-    _expect_valid(
-        {
-            "schema_version": "0.2",
-            "problem_id": "zl_test",
-            "ops": [
+    def _lean_says_valid(trace_obj: dict[str, Any]) -> bool:
+        completed = subprocess.run(
+            [str(EXECUTABLE)],
+            cwd=ROOT,
+            input=json.dumps(
                 {
-                    "op": "place",
-                    "cat": "Color",
-                    "house": 2,
-                    "val": "red",
-                    "justify": {"clue": "c1"},
-                },
-                {
-                    "op": "eliminate",
-                    "cat": "Drink",
-                    "house": 1,
-                    "val": "tea",
-                    "justify": {
-                        "clue": "c3",
-                        "from": [{"cat": "Color", "house": 2, "val": "red"}],
+                    "protocol_version": "0.1.0",
+                    "request_id": "parity",
+                    "command": "parse_trace",
+                    "payload": {
+                        "trace": json.dumps(trace_obj, sort_keys=True, separators=(",", ":"))
                     },
-                },
-                {"op": "conclude", "status": "solved"},
-            ],
-        }
-    )
-    # negative: schema_version mismatch
-    _expect_invalid(
-        {"schema_version": "0.3", "problem_id": "zl_test", "ops": [{"op": "conclude", "status": "solved"}]}
-    )
-    # negative: missing required field on place
-    _expect_invalid(
-        {
-            "schema_version": "0.2",
-            "problem_id": "zl_test",
-            "ops": [{"op": "place", "house": 1, "val": "red", "justify": {"clue": "c1"}}],
-        }
-    )
-    # negative: unknown top-level field
-    _expect_invalid(
-        {
-            "schema_version": "0.2",
-            "problem_id": "zl_test",
-            "ops": [{"op": "conclude", "status": "solved"}],
-            "extra": True,
-        }
-    )
-    # negative: empty ops
-    _expect_invalid({"schema_version": "0.2", "problem_id": "zl_test", "ops": []})
-    # negative: unknown op
-    _expect_invalid(
-        {"schema_version": "0.2", "problem_id": "zl_test", "ops": [{"op": "guess"}]}
-    )
-    # negative: justify missing 'clue'
-    _expect_invalid(
-        {
-            "schema_version": "0.2",
-            "problem_id": "zl_test",
-            "ops": [
-                {"op": "place", "cat": "Color", "house": 1, "val": "red", "justify": {"from": []}}
-            ],
-        }
-    )
-    # negative: forbidden justification shape (the internal rule names MUST NOT
-    # appear in the public interface).
-    _expect_invalid(
-        {
-            "schema_version": "0.2",
-            "problem_id": "zl_test",
-            "ops": [
-                {
-                    "op": "place",
-                    "cat": "Color",
-                    "house": 1,
-                    "val": "red",
-                    "justify": {"clue": "c1", "rule": "given_found_at_place"},
                 }
-            ],
-        }
+            ),
+            text=True,
+            capture_output=True,
+            check=True,
+        )
+        response = json.loads(completed.stdout)["result"]
+        return response.get("kind") == "TRACE_PARSED"
+
+    mismatches: list[tuple[str, bool, bool, bool]] = []
+    for name, trace_obj, expected in corpus:
+        schema_v = _schema_says_valid(trace_obj)
+        lean_v = _lean_says_valid(trace_obj)
+        if not (schema_v == lean_v == expected):
+            mismatches.append((name, expected, schema_v, lean_v))
+
+    summary = "\n".join(
+        f"  {name}: expected={exp} schema={schema_v} lean={lean_v}"
+        for name, exp, schema_v, lean_v in mismatches[:20]
     )
-    # negative: bad conclude status
-    _expect_invalid(
-        {
-            "schema_version": "0.2",
-            "problem_id": "zl_test",
-            "ops": [{"op": "conclude", "status": "unknown"}],
-        }
+    assert not mismatches, (
+        "JSON Schema and Lean parser disagree on these trace shapes:\n" + summary
     )
 
 
