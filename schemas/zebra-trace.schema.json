@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/shikivaahan/sparse-ir-lean/schemas/zebra-trace.schema.json",
   "title": "SparseIR Zebra trace",
-  "description": "Public Stage 4 frozen interface for a model-emitted reasoning trace. Parsed and lowered into a Trace AST by the trusted Lean verifier; never reaches a replay or checker in Stage 4. Internal Lean consequence-rule names are intentionally NOT exposed here.",
+  "description": "Public Stage 4 frozen interface for a model-emitted reasoning trace. Parsed and lowered into a Trace AST by the trusted Lean verifier; never reaches a replay or checker in Stage 4. Internal Lean consequence-rule names are intentionally NOT exposed here. The public justification contract is a tagged union: clue-based (`{clue, from?}`) or structural (`{rule: bijection, from?}`); the only legal structural rule name on the public surface is the literal string `bijection`.",
   "type": "object",
   "required": ["schema_version", "problem_id", "ops"],
   "properties": {
@@ -39,35 +39,52 @@
       },
       "additionalProperties": false
     },
-    "solution": {
+    "non_empty_solution": {
       "type": "object",
       "minProperties": 1,
       "propertyNames": {"minLength": 1},
-      "additionalProperties": {
-        "type": "object",
-        "minProperties": 1,
-        "propertyNames": {"pattern": "^[1-9][0-9]*$"},
-        "additionalProperties": {"type": "string", "minLength": 1}
-      }
+      "additionalProperties": {"$ref": "#/$defs/non_empty_category_assignments"}
     },
-    "justification": {
+    "non_empty_category_assignments": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {"pattern": "^[1-9][0-9]*$"},
+      "additionalProperties": {"type": "string", "minLength": 1}
+    },
+    "from_array": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/cell"}
+    },
+    "clue_justification": {
       "type": "object",
       "required": ["clue"],
       "properties": {
         "clue": {"type": "string", "minLength": 1},
-        "from": {
-          "type": "array",
-          "items": {"$ref": "#/$defs/cell"}
-        }
+        "from": {"$ref": "#/$defs/from_array"}
       },
       "additionalProperties": false
+    },
+    "structural_justification": {
+      "type": "object",
+      "required": ["rule"],
+      "properties": {
+        "rule": {"const": "bijection"},
+        "from": {"$ref": "#/$defs/from_array"}
+      },
+      "additionalProperties": false
+    },
+    "justification": {
+      "oneOf": [
+        {"$ref": "#/$defs/clue_justification"},
+        {"$ref": "#/$defs/structural_justification"}
+      ]
     },
     "assign_all_op": {
       "type": "object",
       "required": ["op", "solution"],
       "properties": {
         "op": {"const": "assign_all"},
-        "solution": {"$ref": "#/$defs/solution"}
+        "solution": {"$ref": "#/$defs/non_empty_solution"}
       },
       "additionalProperties": false
     },
@@ -101,7 +118,7 @@
       "properties": {
         "op": {"const": "conclude"},
         "status": {"const": "solved"},
-        "solution": {"$ref": "#/$defs/solution"}
+        "solution": {"$ref": "#/$defs/non_empty_solution"}
       },
       "additionalProperties": false
     }
@@ -111,13 +128,22 @@
     "status": "frozen-stage-4",
     "trace_styles": ["full_candidate", "stepwise"],
     "public_justification_contract": {
-      "required": ["clue"],
-      "optional": ["from"],
-      "forbidden": ["rule", "rule_id", "schema", "kernel"]
+      "tagged_union": {
+        "clue": ["clue", "from?"],
+        "structural": ["rule: bijection", "from?"]
+      },
+      "forbidden_public_keys": ["rule_id", "schema", "kernel"],
+      "forbidden_rule_names": "any string other than the literal \"bijection\" at justify.rule; the 22 internal StepKernel consequence-rule names are private implementation details"
     },
-    "downstream_blokers": [
+    "parser_non_goals": [
+      "parser does not require a conclude op (replay/conclude enforcement is Stage 5 / Mode 0)",
+      "parser does not validate that categories/houses/values match the puzzle",
+      "parser does not validate that a justification is logically forced",
+      "parser does not deduplicate or canonicalize ops beyond JSON structural checks"
+    ],
+    "downstream_blockers": [
       "trace replay is not implemented in Stage 4",
-      "{clue, from} -> internal kernel consequence-rule derivation is a Stage 5 task",
+      "{clue/from or bijection/from} -> private kernel consequence-rule derivation is a Stage 5 task",
       "stepwise G1 Lean<->clingo differential validation is outstanding Stage 3 debt"
     ]
   }
