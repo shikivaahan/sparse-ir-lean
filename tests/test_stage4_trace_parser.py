@@ -110,7 +110,7 @@ def _write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
 
 def test_gate_writes_complete_parser_artifacts(tmp_path: Path) -> None:
     gate_a = tmp_path / "gate-a"
-    references = tmp_path / "references"
+    fixtures = tmp_path / "parser-fixtures"
     output = tmp_path / "stage4"
     problem_id = "zl_fixture"
     _write_jsonl(
@@ -126,7 +126,7 @@ def test_gate_writes_complete_parser_artifacts(tmp_path: Path) -> None:
         ],
     )
     _write_jsonl(
-        references / "reference_solutions.jsonl",
+        fixtures / "parser_fixture_solutions.jsonl",
         [
             {
                 "candidate": {
@@ -138,11 +138,11 @@ def test_gate_writes_complete_parser_artifacts(tmp_path: Path) -> None:
         ],
     )
 
-    manifest = run_trace_parser_gate(gate_a, references, output, 20260629)
+    manifest = run_trace_parser_gate(gate_a, fixtures, output, 20260629)
 
     assert manifest["status"] == "pass"
     assert manifest["full_candidate_traces"] == 1
-    # Each reference produces 1 clue-based stepwise + 1 bijection-based
+    # Each fixture produces 1 clue-based stepwise + 1 bijection-based
     # stepwise (the latter exercises the public `{"rule": "bijection",
     # "from": ...}` half of the tagged union).
     assert manifest["stepwise_traces"] == 2
@@ -166,7 +166,7 @@ def test_gate_writes_complete_parser_artifacts(tmp_path: Path) -> None:
 
 def test_provider_validation_is_diagnostic_and_does_not_change_core_status(tmp_path: Path) -> None:
     gate_a = tmp_path / "gate-a"
-    references = tmp_path / "references"
+    fixtures = tmp_path / "parser-fixtures"
     output = tmp_path / "stage4"
     candidate = {
         "schema_version": "0.2",
@@ -185,7 +185,7 @@ def test_provider_validation_is_diagnostic_and_does_not_change_core_status(tmp_p
             }
         ],
     )
-    _write_jsonl(references / "reference_solutions.jsonl", [{"candidate": candidate}])
+    _write_jsonl(fixtures / "parser_fixture_solutions.jsonl", [{"candidate": candidate}])
 
     provider_trace = _trace(
         [
@@ -195,7 +195,7 @@ def test_provider_validation_is_diagnostic_and_does_not_change_core_status(tmp_p
     ).replace("zl_test", candidate["problem_id"])
     manifest = run_trace_parser_gate(
         gate_a,
-        references,
+        fixtures,
         output,
         20260629,
         provider_validate=True,
