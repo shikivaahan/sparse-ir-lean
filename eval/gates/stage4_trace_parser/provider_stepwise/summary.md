@@ -3,10 +3,15 @@
 Status: **PARTIAL** (parseability only)
 
 - Model: `deepseek/deepseek-v4-flash`
-- Samples: 36
-- TRACE_PARSED: 20/36
-- Valid JSON: 20/36
+- Samples attempted: 36
+- Provider returned output: 35/36
 - Provider errors: 1
-- Private-rule-name leakage count: 0
+- Raw JSON (top-level object) valid: 33/35 (94.3%)
+- JSON Schema valid: 20/33 (60.6%)
+- Lean TRACE_PARSED: 20/36 (55.6% of attempted; 57.1% of returned)
+- Schema<->Lean disagreements (on actual provider outputs): 0
+- Private kernel rule name leakage (raw-output substring scan): 0
 
-Success means raw provider outputs parsed under the trusted Lean verifier and the published JSON Schema. The trace did NOT have to be semantically sound.
+Each provider output is independently evaluated on four layers:
+provider call -> raw JSON -> JSON Schema -> Lean parse_trace.
+Trace validity claims are DENOMINATED on the layer above them, not on `samples attempted`. The 122-case `src/sparseir_harness/trace_parity_corpus.py` is separate hand-curated evidence and does not prove provider-output parity; this script's `schema_lean_disagreement_count` is the per-output evidence.
