@@ -1,0 +1,39 @@
+{
+  "diagnostic": "stage4_provider_stepwise",
+  "fail_code_counts": {
+    "invalid_json": 2,
+    "provider_error": 1,
+    "unknown_op": 13
+  },
+  "model": "deepseek/deepseek-v4-flash",
+  "parse_status_counts": {
+    "invalid_json": 2,
+    "parsed": 20,
+    "provider_error": 1,
+    "schema_rejected": 13
+  },
+  "parseability_only": true,
+  "private_rule_name_leak_count": 0,
+  "private_rule_name_leak_samples": [],
+  "protocol_error": 1,
+  "scenario_status_counts": {
+    "stepwise_bijection_only": {
+      "parsed": 8,
+      "schema_rejected": 4
+    },
+    "stepwise_bijection_or_clue": {
+      "invalid_json": 2,
+      "parsed": 3,
+      "provider_error": 1,
+      "schema_rejected": 6
+    },
+    "stepwise_clue_only": {
+      "parsed": 9,
+      "schema_rejected": 3
+    }
+  },
+  "status": "partial",
+  "total_samples": 36,
+  "trace_parsed": 20,
+  "valid_json": 20
+}
