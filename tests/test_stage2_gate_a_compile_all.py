@@ -8,6 +8,11 @@ from typing import Any
 
 from sparseir_harness.zebralogic_ingest import convert_source_record, load_official_source
 
+from tests._dataset_prereq import require_zebralogic_source
+
+
+require_zebralogic_source()
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts" / "stage2_gate_a_compile_all.py"
