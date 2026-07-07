@@ -16,6 +16,11 @@ from sparseir_harness.step_kernel_gate import (
     run_step_gate,
 )
 
+from tests._dataset_prereq import require_ingested_problems
+
+
+require_ingested_problems()
+
 
 ROOT = Path(__file__).resolve().parents[1]
 EXECUTABLE = ROOT / ".lake" / "build" / "bin" / "sparse-ir-lean"

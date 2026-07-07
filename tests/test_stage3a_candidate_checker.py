@@ -14,6 +14,12 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
+from tests._dataset_prereq import require_ingested_problems
+
+
+require_ingested_problems()
+
+
 ROOT = Path(__file__).resolve().parents[1]
 GATE_A = ROOT / "eval" / "gates" / "stage2_gate_a_compile_all"
 PROBLEM = json.loads(
