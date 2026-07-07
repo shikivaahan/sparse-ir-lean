@@ -45,6 +45,7 @@ REQUIRED_ERROR_CODES = (
     "eliminate_missing_val",
     "missing_justify",
     "malformed_justify",
+    "unknown_justify_rule",
     "malformed_from_cell",
     "conclude_missing_status",
     "conclude_bad_status",
@@ -161,6 +162,15 @@ def _step_from_problem(problem: dict[str, Any]) -> dict[str, Any]:
 def _stepwise_cases(
     references: list[dict[str, Any]], problems: dict[str, dict[str, Any]]
 ) -> list[TraceCase]:
+    """Stepwise traces that exercise the public justification contract:
+    * half use `{"clue": ..., "from": ...?}` (clue-based)
+    * half use `{"rule": "bijection", "from": ...?}` (structural bijection)
+
+    Both shapes must round-trip the trusted parser and the JSON Schema.
+    The structural-shuffle from the gold solution is used to manufacture
+    non-malformed `from` cells; the parser does not check semantic
+    correctness at Stage 4.
+    """
     cases: list[TraceCase] = []
     for index, reference in enumerate(references):
         candidate = reference["candidate"]
@@ -168,7 +178,8 @@ def _stepwise_cases(
         problem = problems.get(problem_id)
         if problem is None:
             continue
-        trace = {
+        # 1) clue-based stepwise (legacy happy path)
+        clue_trace = {
             "schema_version": "0.2",
             "problem_id": problem_id,
             "ops": [
@@ -180,13 +191,81 @@ def _stepwise_cases(
             TraceCase(
                 f"valid-stepwise-{index:04d}",
                 "valid_stepwise",
-                _json_text(trace),
+                _json_text(clue_trace),
+                problem_id,
+                "TRACE_PARSED",
+                "stepwise",
+            )
+        )
+        # 2) bijection-based stepwise (new contract happy path)
+        bio_trace = _bijection_step_trace(problem_id, candidate.get("solution", {}))
+        cases.append(
+            TraceCase(
+                f"valid-stepwise-bijection-{index:04d}",
+                "valid_stepwise_bijection",
+                _json_text(bio_trace),
                 problem_id,
                 "TRACE_PARSED",
                 "stepwise",
             )
         )
     return cases
+
+
+def _bijection_step_trace(problem_id: str, solution: dict[str, Any]) -> dict[str, Any]:
+    """Build a stepwise trace that uses ONLY the public `{"rule": "bijection",
+    "from": ...?}` justification form. This proves the new contract is
+    accepted, while being deterministic (no model call) and dataset-derived.
+
+    The op sequence is purely structural — the parser does not care about
+    semantic correctness at Stage 4. The replay (Stage 5) is what would judge
+    whether a bijection step is actually forced.
+    """
+    ops: list[dict[str, Any]] = []
+    seen_vals: dict[str, set[int]] = {}
+    for cat, assignments in solution.items():
+        # place the first placed value with an empty from (rule alone).
+        first_house: int | None = None
+        for hk, v in assignments.items():
+            try:
+                h = int(hk)
+            except ValueError:
+                continue
+            if first_house is None:
+                first_house = h
+                ops.append({
+                    "op": "place",
+                    "cat": cat,
+                    "house": h,
+                    "val": v,
+                    "justify": {"rule": "bijection"},
+                })
+                seen_vals.setdefault(cat, set()).add(h)
+        # second: an elimination with a from-cell referencing another house.
+        if first_house is not None:
+            for hk, v in assignments.items():
+                try:
+                    h = int(hk)
+                except ValueError:
+                    continue
+                if h != first_house:
+                    ops.append({
+                        "op": "eliminate",
+                        "cat": cat,
+                        "house": first_house,
+                        "val": v,
+                        "justify": {
+                            "rule": "bijection",
+                            "from": [{"cat": cat, "house": h, "val": v}],
+                        },
+                    })
+                    break
+    ops.append({"op": "conclude", "status": "solved", "solution": solution})
+    return {
+        "schema_version": "0.2",
+        "problem_id": problem_id,
+        "ops": ops,
+    }
 
 
 def _malformed_case(
@@ -262,6 +341,32 @@ def _malformed_cases() -> list[TraceCase]:
     op = deepcopy(place)
     op["justify"] = []
     case("malformed-justify", "malformed_justify", "$.ops[0].justify", with_op(op))
+    # unknown_justify_rule: a structural rule name other than the literal
+    # "bijection" must be rejected. This is the 26th reachable taxonomy code
+    # added when the public justification contract was extended from a single
+    # `clue/from` shape to a tagged union (`{clue/from}` or `{rule/from}`).
+    op = deepcopy(place)
+    op["justify"] = {"rule": "given_found_at_place"}
+    case(
+        "unknown-justify-rule",
+        "unknown_justify_rule",
+        "$.ops[0].justify.rule",
+        with_op(op),
+    )
+    # malformed_justify also covers the "neither clue nor rule" case where
+    # the justification object is fully empty.
+    op = deepcopy(place)
+    op["justify"] = {}
+    case("malformed-justify-empty", "malformed_justify", "$.ops[0].justify", with_op(op))
+    # malformed_justify also covers the "both clue AND rule" case.
+    op = deepcopy(place)
+    op["justify"] = {"clue": "c1", "rule": "bijection"}
+    case(
+        "malformed-justify-both",
+        "malformed_justify",
+        "$.ops[0].justify",
+        with_op(op),
+    )
     op = deepcopy(place)
     op["justify"] = {"clue": "c1", "from": [{"cat": "Drink", "val": "tea"}]}
     case(
@@ -448,7 +553,7 @@ def _provider_validation(
 
 def run_trace_parser_gate(
     gate_a_dir: Path,
-    reference_dir: Path,
+    parser_fixture_solutions_dir: Path,
     output: Path,
     seed: int,
     *,
@@ -457,7 +562,22 @@ def run_trace_parser_gate(
     provider_call: Callable[[list[dict[str, str]], str], str] = call_provider,
     provider_model: str = DEFAULT_PROVIDER_MODEL,
 ) -> dict[str, Any]:
-    references = _read_jsonl(reference_dir / "reference_solutions.jsonl")
+    """Stage 4 trace-parser evidence gate.
+
+    Parameters:
+        gate_a_dir: directory containing Stage 2 Gate A's compiled_problems.jsonl
+            (real ZebraLogic-derived compiled puzzles).
+        parser_fixture_solutions_dir: directory containing
+            parser_fixture_solutions.jsonl. These are synthetic per-puzzle
+            candidate assignments that exist ONLY so the Stage 4 parser gate
+            can exercise the full-candidate and stepwise trace generation
+            path across grid sizes. They are NOT clingo gold reference
+            solutions, are NOT semantically correct, and are NOT used by any
+            Stage 3A reference-solution subsystem.
+        output: directory to write manifest.json, traces.jsonl, etc.
+        seed: numeric seed for reproducibility.
+    """
+    references = _read_jsonl(parser_fixture_solutions_dir / "parser_fixture_solutions.jsonl")
     compiled = _read_jsonl(gate_a_dir / "compiled_problems.jsonl")
     problems = {row["problem_id"]: row for row in compiled}
     cases = _full_candidate_cases(references)

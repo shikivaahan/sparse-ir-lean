@@ -1,0 +1,39 @@
+{
+  "diagnostic": "stage4_provider_stepwise",
+  "fail_code_counts": {
+    "invalid_json": 2,
+    "provider_error": 1,
+    "unknown_op": 13
+  },
+  "lean_trace_parsed": 20,
+  "lean_trace_parsed_rate_of_attempted": 0.5555555555555556,
+  "lean_trace_parsed_rate_of_returned": 0.5714285714285714,
+  "model": "deepseek/deepseek-v4-flash",
+  "parseability_only": true,
+  "private_rule_name_leak_count": 0,
+  "provider_error_count": 1,
+  "provider_returned_output": 35,
+  "raw_json_valid": 33,
+  "raw_json_valid_rate": 0.9428571428571428,
+  "samples_attempted": 36,
+  "scenario_layer_counts": {
+    "stepwise_bijection_only": {
+      "REJECT": 4,
+      "TRACE_PARSED": 8
+    },
+    "stepwise_bijection_or_clue": {
+      "REJECT": 8,
+      "TRACE_PARSED": 3,
+      "provider_error": 1
+    },
+    "stepwise_clue_only": {
+      "REJECT": 3,
+      "TRACE_PARSED": 9
+    }
+  },
+  "schema_lean_agreement_rate_of_json": 1.0,
+  "schema_lean_disagreement_count": 0,
+  "schema_valid": 20,
+  "schema_valid_rate": 0.6060606060606061,
+  "status": "partial"
+}
