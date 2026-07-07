@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # lean-action reads the repository's lean-toolchain pin (v4.30.0) and
       # installs the matching Lean + Lake via elan.
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # The pytest suite exercises the Lean verifier executable through the
       # protocol; build it in this job so python validation is independent.
@@ -43,7 +43,7 @@ jobs:
           test: false
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v3
+        uses: astral-sh/setup-uv@d31148d669074a8d0a63714ba94f3201e7020bc3 # v8.3.0
 
       - name: Set up Python (reads pyproject.toml)
         run: uv python install
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: No OPENROUTER_API_KEY in CI environment
         run: |
