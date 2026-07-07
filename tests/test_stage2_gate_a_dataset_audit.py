@@ -13,6 +13,11 @@ from sparseir_harness.zebralogic_ingest import (
     load_official_source,
 )
 
+from tests._dataset_prereq import require_zebralogic_source
+
+
+require_zebralogic_source()
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts/audit_stage2_gate_a_dataset.py"
