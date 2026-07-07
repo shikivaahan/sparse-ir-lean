@@ -11,10 +11,29 @@ structure TraceCell where
   value : Zebra.ValueName
   deriving Repr, BEq
 
-structure TraceJustification where
-  clue : String
-  fromCells : List TraceCell
+/-- Public justification for a `place`/`eliminate` step.
+
+This is the *Stage 4* honest AST: it admits only what the spec allows a model
+to emit on the public trace surface.
+
+* `clue clueId fromCells?` — a step justified by a single clue id (an optional
+  `from` list is allowed and provides referenced cells).
+* `bijection fromCells?` — a step justified by the structural bijection rule.
+  The 22 private `StepKernel.supportedRules` names are intentionally NOT
+  exposed here; mapping a public structural `bijection` to the right private
+  consequence-schema is the Stage 5 bridge work.
+
+The 22 private kernel rule names stay forbidden and are not encoded as
+constructors. The Stage 5 bridge that infers the private rule from
+`(op, publicJustification, currentState)` is out of scope here. -/
+inductive TraceJustification where
+  | clue (clueId : String) (fromCells : List TraceCell)
+  | bijection (fromCells : List TraceCell)
   deriving Repr, BEq
+
+/-- The ONLY legal public structural-rule name. The JSON wire form is
+`{"rule": "bijection", "from": ...?}`. -/
+def structuralRuleBijection : String := "bijection"
 
 inductive TraceOp where
   | assignAll (solution : List CandidateCategory)
@@ -66,6 +85,7 @@ inductive TraceParseErrorCode where
   | eliminateMissingVal
   | missingJustify
   | malformedJustify
+  | unknownJustifyRule
   | malformedFromCell
   | concludeMissingStatus
   | concludeBadStatus
@@ -94,6 +114,7 @@ def TraceParseErrorCode.toString : TraceParseErrorCode → String
   | .eliminateMissingVal => "eliminate_missing_val"
   | .missingJustify => "missing_justify"
   | .malformedJustify => "malformed_justify"
+  | .unknownJustifyRule => "unknown_justify_rule"
   | .malformedFromCell => "malformed_from_cell"
   | .concludeMissingStatus => "conclude_missing_status"
   | .concludeBadStatus => "conclude_bad_status"
@@ -148,27 +169,33 @@ private def divideDecimal (mantissa : Nat) : Nat → Option Nat
 private def asNat (code : TraceParseErrorCode) (path : String) (value : Json) : ParseM Nat :=
   match value with
   | .num number =>
-      if number.mantissa < 0 then fail code path "expected a natural number"
+      if number.mantissa <= 0 then fail code path "expected a natural number"
       else match divideDecimal number.mantissa.natAbs number.exponent with
-        | some result => pure result
+        | some result =>
+            if result == 0 then fail code path "expected a natural number" else pure result
         | none => fail code path "expected an integer"
   | _ => fail code path "expected an integer"
 
 private def parseSolution (code : TraceParseErrorCode) (path : String)
     (value : Json) : ParseM (List CandidateCategory) := do
   let object ← asObject code path value
+  if object.isEmpty then
+    fail code path "solution must declare at least one category"
   let mut solution : List CandidateCategory := []
   for (categoryName, rawAssignments) in object.toList do
     if categoryName.isEmpty then
       fail code path "category names must be non-empty"
     let categoryPath := childPath path categoryName
     let assignmentsObject ← asObject code categoryPath rawAssignments
+    if assignmentsObject.isEmpty then
+      fail code categoryPath "category must declare at least one assignment"
     let mut assignments : List (Nat × Zebra.ValueName) := []
     for (houseKey, rawValue) in assignmentsObject.toList do
       let housePath := childPath categoryPath houseKey
       let house ← match houseKey.toNat? with
         | some parsed =>
-            if toString parsed == houseKey then pure parsed
+            if parsed == 0 then fail code housePath "house keys must be positive integers"
+            else if toString parsed == houseKey then pure parsed
             else fail code housePath "house keys must be canonical decimal integers"
         | none => fail code housePath "house keys must be decimal integers"
       let valueName ← asString code housePath rawValue
@@ -188,22 +215,54 @@ private def parseFromCell (path : String) (value : Json) : ParseM TraceCell := d
   checkFields path ["cat", "house", "val"] object
   parseCell .malformedFromCell .malformedFromCell .malformedFromCell path object
 
+/-- Parse the optional `from` array of a justify object. The list may be absent
+or empty (an empty `from` is documented to be allowed). -/
+private def parseFromArray (justifyPath : String) (value : Json) : ParseM (List TraceCell) := do
+  match value with
+  | .arr cells =>
+      let mut parsed : List TraceCell := []
+      for index in [0:cells.size] do
+        parsed := parsed ++
+          [← parseFromCell (indexPath (childPath justifyPath "from") index) cells[index]!]
+      pure parsed
+  | _ => fail .malformedFromCell (childPath justifyPath "from") "expected an array"
+
 private def parseJustification (opPath : String) (object : JObject) : ParseM TraceJustification := do
   let justifyPath := childPath opPath "justify"
   let raw ← required .missingJustify opPath "justify" object
   let justify ← asObject .malformedJustify justifyPath raw
-  checkFields justifyPath ["clue", "from"] justify
-  let clue ← asString .malformedJustify (childPath justifyPath "clue")
-    (← required .malformedJustify justifyPath "clue" justify)
-  let fromCells ← match justify.get? "from" with
-    | none => pure []
-    | some (.arr cells) => do
-        let mut parsed : List TraceCell := []
-        for index in [0:cells.size] do
-          parsed := parsed ++ [← parseFromCell (indexPath (childPath justifyPath "from") index) cells[index]!]
-        pure parsed
-    | some _ => fail .malformedFromCell (childPath justifyPath "from") "expected an array"
-  pure { clue, fromCells }
+  -- A justify object must declare exactly one of:
+  --   * `clue` (and optional `from`)  → clue-based justification
+  --   * `rule` (and optional `from`)  → structural rule (currently only `bijection`)
+  -- Combining `clue` and `rule` is forbidden. The 22 private kernel rule
+  -- names stay forbidden and are rejected via `unknown_justify_rule`.
+  let hasClue := justify.contains "clue"
+  let hasRule := justify.contains "rule"
+  if hasClue && hasRule then
+    fail .malformedJustify justifyPath
+      "justify must not declare both 'clue' and 'rule'"
+  if !hasClue && !hasRule then
+    fail .malformedJustify justifyPath
+      "justify must declare either 'clue' or 'rule'"
+  if hasRule then
+    checkFields justifyPath ["rule", "from"] justify
+    let rawRule ← required .unknownJustifyRule justifyPath "rule" justify
+    let ruleName ← asString .unknownJustifyRule (childPath justifyPath "rule") rawRule
+    unless ruleName == structuralRuleBijection do
+      fail .unknownJustifyRule (childPath justifyPath "rule")
+        s!"unknown structural rule '{ruleName}'; only 'bijection' is public"
+    let fromCells ← match justify.get? "from" with
+      | none => pure []
+      | some raw => parseFromArray justifyPath raw
+    pure (.bijection fromCells)
+  else
+    checkFields justifyPath ["clue", "from"] justify
+    let rawClue ← required .malformedJustify justifyPath "clue" justify
+    let clue ← asString .malformedJustify (childPath justifyPath "clue") rawClue
+    let fromCells ← match justify.get? "from" with
+      | none => pure []
+      | some raw => parseFromArray justifyPath raw
+    pure (.clue clue fromCells)
 
 private def parseOp (index : Nat) (value : Json) : ParseM TraceOp := do
   let path := indexPath "$.ops" index
