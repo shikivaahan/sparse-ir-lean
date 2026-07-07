@@ -6,13 +6,20 @@ Verdict: reduced 3-model capability ladder, Lean `check_candidate` sole judge.
 - Puzzles per model: 200 (same 200-puzzle balanced subset as the budget sweep).
 - Total cost across all models: $1.4889.
 
+## Provenance: historical wall time
+
+Wall time is reported as `n/a` for any model whose result rows do not include persisted per-puzzle `started_at` / `ended_at` timestamps. Filesystem mtimes, Git commit times, and per-example `elapsed_seconds` sums are NOT substitutes for concurrent-run wall-clock duration, so no historical wall time or throughput is reconstructed for those runs. Future reruns of this gate write both timestamps on every result row.
+
+- `qwen3-32b` (`qwen/qwen3-32b`): wall_time_status = `unavailable_missing_persisted_timestamps`.
+- `v4-flash-baseline` (`deepseek/deepseek-v4-flash`): wall_time_status = `unavailable_missing_persisted_timestamps`.
+
 ## Capability ladder (sorted by coverage)
 
 | label | model | role | coverage | solved/n | cost USD | cost/verified | median rsn | trunc | clue violation | malformed | tput ex/min | wall min |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | qwen3-8b | `qwen/qwen3-8b` | small | 64.0% | 128/200 | $0.6409 | $0.005007 | 3902 | 0 | 53 | 2 | 0.6 | 359.2 |
-| qwen3-32b | `qwen/qwen3-32b` | mid_large | 73.0% | 146/200 | $0.5883 | $0.004030 | 3265 | 0 | 39 | 13 | 108634.2 | 0.0 |
-| v4-flash-baseline | `deepseek/deepseek-v4-flash` | cheap_frontier_baseline | 98.0% | 196/200 | $0.2596 | $0.001325 | 2501 | 2 | 0 | 4 | 108062.8 | 0.0 |
+| qwen3-32b | `qwen/qwen3-32b` | mid_large | 73.0% | 146/200 | $0.5883 | $0.004030 | 3265 | 0 | 39 | 13 | n/a | n/a |
+| v4-flash-baseline | `deepseek/deepseek-v4-flash` | cheap_frontier_baseline | 98.0% | 196/200 | $0.2596 | $0.001325 | 2501 | 2 | 0 | 4 | n/a | n/a |
 
 ## Coverage by house bin
 
@@ -45,16 +52,16 @@ Verdict: reduced 3-model capability ladder, Lean `check_candidate` sole judge.
 
 Lean verdict: `ACCEPT_SOLVED/solved`.
 
-Reasoning excerpt: Okay, let's try to solve this Zebra puzzle. First, I need to understand the given information. The puzzle has two categories: CarModel and Name. There are two houses, numbered 1 and 2. The clues provided are: Clue c1: The CarModel "ford f150" and Name "Arnold" are in the same house. Clue c2: The Name "Arnold" is found at house 1. So, starting with clue c2, since Arnold is in house 1, that means the Name category for house 1 is Arnold. Now, clue c1 says that Arnold (who is in house 1) is in the s
+Reasoning excerpt: (reasoning content unavailable; token metadata is retained)
 
 ### `qwen3-32b` solved `zl_lgp-test-2x2-10`
 
 Lean verdict: `ACCEPT_SOLVED/solved`.
 
-Reasoning excerpt: Okay, let's try to solve this Zebra puzzle. The problem has two categories: CarModel and Name. The CarModel options are "ford f150" and "tesla model 3", while the Name options are "Eric" and "Arnold". There are two houses, numbered 1 and 2. Looking at the clues provided, the first one is c1: same_house for CarModel's "ford f150" and Name's "Arnold". That means wherever the ford f150 is, Arnold must be in the same house. The second clue, c2, says that Arnold is found at house 1. So from c2, Arnol
+Reasoning excerpt: (reasoning content unavailable; token metadata is retained)
 
 ### `v4-flash-baseline` solved `zl_lgp-test-2x2-10`
 
 Lean verdict: `ACCEPT_SOLVED/solved`.
 
-Reasoning excerpt: We need to solve a small logic puzzle. The puzzle has 2 houses (1 and 2) and two categories: CarModel (ford f150, tesla model 3) and Name (Eric, Arnold). Clues: 1. (c1) same_house: ford f150 and Arnold are in the same house. 2. (c2) found_at: Arnold is at house 1. So from c2, Arnold is at house 1. Then c1 says ford f150 is in the same house as Arnold, so ford f150 is also at house 1. That means house 1 has Arnold and ford f150. Then house 2 must have the remaining: Eric and tesla model 3. Thus s
+Reasoning excerpt: (reasoning content unavailable; token metadata is retained)

@@ -15,14 +15,16 @@
       "role": "small",
       "solved": 128,
       "truncation": 0,
-      "wall_minutes": 359.19504859050113
+      "wall_minutes": 359.19504859050113,
+      "wall_seconds": 21551.70291543007,
+      "wall_time_status": "ok"
     },
     {
       "clue_violation": 39,
       "cost_per_verified_correct": 0.004029516780821918,
       "cost_usd": 0.58830945,
       "coverage": 0.73,
-      "examples_per_minute": 108634.2235162838,
+      "examples_per_minute": null,
       "label": "qwen3-32b",
       "malformed": 13,
       "max_reasoning_tokens": 24000,
@@ -32,14 +34,16 @@
       "role": "mid_large",
       "solved": 146,
       "truncation": 0,
-      "wall_minutes": 0.0018410404523213704
+      "wall_minutes": null,
+      "wall_seconds": null,
+      "wall_time_status": "unavailable_missing_persisted_timestamps"
     },
     {
       "clue_violation": 0,
       "cost_per_verified_correct": 0.0013245263094081635,
       "cost_usd": 0.259607156644,
       "coverage": 0.98,
-      "examples_per_minute": 108062.78729740233,
+      "examples_per_minute": null,
       "label": "v4-flash-baseline",
       "malformed": 4,
       "max_reasoning_tokens": 32768,
@@ -49,7 +53,9 @@
       "role": "cheap_frontier_baseline",
       "solved": 196,
       "truncation": 2,
-      "wall_minutes": 0.0018507758776346841
+      "wall_minutes": null,
+      "wall_seconds": null,
+      "wall_time_status": "unavailable_missing_persisted_timestamps"
     }
   ],
   "per_model": {
@@ -273,7 +279,7 @@
       "cost_per_verified_correct": 0.0013245263094081635,
       "cost_usd": 0.259607156644,
       "coverage": 0.98,
-      "examples_per_minute": 108062.78729740233,
+      "examples_per_minute": null,
       "finish_reasons": {
         "None": 1,
         "error": 1,
@@ -305,7 +311,9 @@
       },
       "truncation": 2,
       "verifier_value": 0.98,
-      "wall_seconds": 0.11104655265808105
+      "wall_minutes": null,
+      "wall_seconds": null,
+      "wall_time_status": "unavailable_missing_persisted_timestamps"
     },
     "qwen/qwen3-32b": {
       "by_grid": {
@@ -527,7 +535,7 @@
       "cost_per_verified_correct": 0.004029516780821918,
       "cost_usd": 0.58830945,
       "coverage": 0.73,
-      "examples_per_minute": 108634.2235162838,
+      "examples_per_minute": null,
       "finish_reasons": {
         "None": 2,
         "error": 9,
@@ -560,7 +568,9 @@
       },
       "truncation": 0,
       "verifier_value": 0.73,
-      "wall_seconds": 0.11046242713928223
+      "wall_minutes": null,
+      "wall_seconds": null,
+      "wall_time_status": "unavailable_missing_persisted_timestamps"
     },
     "qwen/qwen3-8b": {
       "by_grid": {
@@ -814,7 +824,9 @@
       },
       "truncation": 0,
       "verifier_value": 0.64,
-      "wall_seconds": 21551.70291543007
+      "wall_minutes": 359.19504859050113,
+      "wall_seconds": 21551.70291543007,
+      "wall_time_status": "ok"
     }
   },
   "totals": {

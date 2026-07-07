@@ -17,6 +17,11 @@ from sparseir_harness.stage6_mode0 import (
     run_evaluation,
 )
 
+from tests._dataset_prereq import require_ingested_problems
+
+
+require_ingested_problems()
+
 
 ROOT = Path(__file__).resolve().parents[1]
 PROBLEMS = ROOT / "eval/gates/stage2_gate_a_compile_all/ingested_problems"
