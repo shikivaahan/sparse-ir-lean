@@ -16,10 +16,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # lean-action reads the repository's lean-toolchain pin (v4.30.0) and
+      # installs the matching Lean + Lake via elan.
       - name: Set up Lean (reads lean-toolchain)
-        uses: leanprover/lean4-action@ac8d4d57b46b4da0c4f1b3411dfb8d29da0c46e5 # v4.30.0 release action pin
-        with:
-          lake-version: 1.2.0
+        uses: leanprover/lean-action@v1
 
       - name: lake build
         run: lake build
@@ -33,6 +33,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      # The pytest suite exercises the Lean verifier executable through the
+      # protocol; build it in this job so python validation is independent.
+      - name: Set up Lean (reads lean-toolchain)
+        uses: leanprover/lean-action@v1
+        with:
+          build: true
+          test: false
 
       - name: Install uv
         uses: astral-sh/setup-uv@v3
