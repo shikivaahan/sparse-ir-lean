@@ -438,12 +438,51 @@ def test_provider_stepwise_analysis_uses_canonical_field_name() -> None:
         bool(r.get(PROVIDER_OUTPUT_PRESENT_FIELD)) for r in rows
     ]
     assert manifest["provider_returned_output"] == sum(counts)
-    # And the 22 PRIVATE_KERNEL_RULE_NAMES tuple must remain complete and
-    # in sync with SparseIRLean.StepKernel.supportedRules.
-    assert "given_found_at_place" in PRIVATE_KERNEL_RULE_NAMES
-    assert "given_not_at_eliminate" in PRIVATE_KERNEL_RULE_NAMES
-    assert "contradiction_detection" in PRIVATE_KERNEL_RULE_NAMES
-    assert len(PRIVATE_KERNEL_RULE_NAMES) == 22
+    # And PRIVATE_KERNEL_RULE_NAMES must be the exact set of names declared
+    # by SparseIRLean.StepKernel.supportedRules, with no duplicates on
+    # either side. This catches the class of drift where one legitimate
+    # rule disappears from Python (or a stale name appears) while the
+    # total cardinality happens to stay at 22.
+    import re as _re
+
+    step_kernel_text = (ROOT / "SparseIRLean" / "StepKernel.lean").read_text(encoding="utf-8")
+    # Narrowly scope extraction to the supportedRules declaration body so
+    # every other double-quoted string literal in the file is ignored.
+    m = _re.search(
+        r"def\s+supportedRules\s*:\s*List\s+String\s*:=\s*\[(?P<body>.*?)\]",
+        step_kernel_text,
+        flags=_re.DOTALL,
+    )
+    assert m is not None, (
+        "could not locate SparseIRLean/StepKernel.lean::supportedRules "
+        "list declaration; the extraction rule may be stale."
+    )
+    lean_supported_rules: list[str] = _re.findall(r'"([^"]+)"', m.group("body"))
+    assert len(lean_supported_rules) > 0, (
+        "expected at least one string literal inside "
+        "StepKernel.supportedRules body"
+    )
+    # Exact-set equality between the Python leakage scan and the Lean
+    # declaration, with both sides required to be duplicate-free so the
+    # set comparison cannot mask a duplicate.
+    assert len(PRIVATE_KERNEL_RULE_NAMES) == len(set(PRIVATE_KERNEL_RULE_NAMES)), (
+        "PRIVATE_KERNEL_RULE_NAMES contains duplicates"
+    )
+    assert len(lean_supported_rules) == len(set(lean_supported_rules)), (
+        "StepKernel.supportedRules contains duplicates"
+    )
+    py_set = set(PRIVATE_KERNEL_RULE_NAMES)
+    lean_set = set(lean_supported_rules)
+    missing_in_py = lean_set - py_set
+    extra_in_py = py_set - lean_set
+    assert not missing_in_py and not extra_in_py, (
+        "PRIVATE_KERNEL_RULE_NAMES is out of sync with "
+        "StepKernel.supportedRules.\n"
+        f"  in Lean only (Python is missing): {sorted(missing_in_py)}\n"
+        f"  in Python only (Lean has no such rule): {sorted(extra_in_py)}\n"
+        "Update one of them so the two sides match exactly."
+    )
+    assert py_set == lean_set, "redundant guard"
 
     # Cleanup.
     import shutil as _shutil
