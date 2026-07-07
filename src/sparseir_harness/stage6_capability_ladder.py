@@ -627,15 +627,25 @@ def _group_metrics(rows, key):
     return out
 
 
-def _model_metrics(rows, model_id, wall_seconds):
+def _model_metrics(rows, model_id, wall_seconds, wall_time_status):
     if not rows:
-        return {"model_id": model_id, "n": 0}
+        return {"model_id": model_id, "n": 0,
+                "wall_seconds": wall_seconds, "wall_minutes": None,
+                "examples_per_minute": None, "wall_time_status": wall_time_status}
     n = len(rows)
     reasoning = [int(r["reasoning_tokens"] or 0) for r in rows]
     finish = Counter(str(r["finish_reason"]) for r in rows)
     outcomes = Counter(r["lean_status"] for r in rows)
     solved = sum(bool(r["correct"]) for r in rows)
-    wall = wall_seconds or sum(float(r["elapsed_seconds"]) for r in rows)
+    if wall_seconds is None:
+        # Persisted started_at/ended_at were not available; do not synthesise
+        # wall time from filesystem mtimes, per-example latency sums, or any
+        # other proxy. Throughput is therefore also unavailable.
+        examples_per_minute = None
+        wall_minutes = None
+    else:
+        examples_per_minute = n / wall_seconds * 60 if wall_seconds else 0.0
+        wall_minutes = wall_seconds / 60.0
     return {
         "model_id": model_id,
         "n": n,
@@ -662,8 +672,10 @@ def _model_metrics(rows, model_id, wall_seconds):
                    "output_including_reasoning": sum(r["tokens_out"] for r in rows)},
         "cost_usd": sum(float(r["cost_usd"]) for r in rows),
         "cost_per_verified_correct": (sum(float(r["cost_usd"]) for r in rows) / solved) if solved else None,
-        "examples_per_minute": n / wall * 60 if wall else 0.0,
-        "wall_seconds": wall,
+        "examples_per_minute": examples_per_minute,
+        "wall_seconds": wall_seconds,
+        "wall_minutes": wall_minutes,
+        "wall_time_status": wall_time_status,
         "by_grid": _group_metrics(rows, "grid"),
         "by_house": _group_metrics(rows, "houses"),
         "verifier_value": solved / n if n else 0.0,
@@ -680,22 +692,21 @@ def compute_metrics(run_dir):
         by_model[mid] = _read_jsonl(path)
     per_model = {}
     for mid, rows in by_model.items():
-        # Prefer per-puzzle started_at/ended_at; fall back to the raw-file
-        # mtime range (earliest to latest), which approximates the actual
-        # wall-clock window even for runs that did not complete all puzzles.
-        starts = [float(r.get("started_at", 0.0)) for r in rows if r.get("started_at")]
-        ends = [float(r.get("ended_at", 0.0)) for r in rows if r.get("ended_at")]
+        # Wall time requires persisted per-puzzle started_at and ended_at. Do
+        # NOT fall back to filesystem mtimes (they are checkout metadata after
+        # a clone, not experimental wall-clock) or to per-example latency sums
+        # (those are concurrent-run wall time, not the same thing). When the
+        # timestamps are absent we report wall_seconds = null and surface the
+        # provenance status so downstream readers do not invent a number.
+        starts = [float(r["started_at"]) for r in rows if r.get("started_at")]
+        ends = [float(r["ended_at"]) for r in rows if r.get("ended_at")]
         if starts and ends:
-            wall = max(ends) - min(starts)
+            wall_seconds = max(ends) - min(starts)
+            wall_time_status = "ok"
         else:
-            raw_dir = run_dir / "raw"
-            safe_mid = mid.replace("/", "__")
-            try:
-                raws = [p.stat().st_mtime for p in raw_dir.glob(f"full__{safe_mid}__*.json")]
-                wall = (max(raws) - min(raws)) if raws else 0.0
-            except FileNotFoundError:
-                wall = max((float(r.get("elapsed_seconds", 0.0)) for r in rows), default=0.0)
-        per_model[mid] = _model_metrics(rows, mid, wall)
+            wall_seconds = None
+            wall_time_status = "unavailable_missing_persisted_timestamps"
+        per_model[mid] = _model_metrics(rows, mid, wall_seconds, wall_time_status)
     ladder = []
     for mid, m in per_model.items():
         if m.get("n", 0) == 0:
@@ -715,7 +726,9 @@ def compute_metrics(run_dir):
             "median_reasoning_tokens": m["reasoning_tokens"]["median"],
             "max_reasoning_tokens": m["reasoning_tokens"]["max"],
             "examples_per_minute": m["examples_per_minute"],
-            "wall_minutes": m["wall_seconds"] / 60.0,
+            "wall_minutes": m["wall_minutes"],
+            "wall_seconds": m["wall_seconds"],
+            "wall_time_status": m["wall_time_status"],
         })
     ladder.sort(key=lambda r: r["coverage"])
     return {
@@ -872,6 +885,23 @@ def _render_summary(per_model, ladder, totals, metadata, chosen, run_dir):
         for label, mid, n, solved, cov in partials:
             lines.append(f"- `{label}` (`{mid}`) completed {n}/{totals['n_problems']} puzzles (coverage on the partial set: {cov:.1%}, {solved}/{n}). The full run was abandoned because the upstream rate limit made 5x/6x-house puzzles unviable to wait for. The 121 completed puzzles still represent a meaningful capability sample.")
         lines.append("")
+    # Surface wall-time provenance so readers do not invent a throughput number.
+    unavailable = [r for r in ladder if r.get("wall_time_status") != "ok"]
+    if unavailable:
+        lines.append("## Provenance: historical wall time")
+        lines.append("")
+        lines.append(
+            "Wall time is reported as `n/a` for any model whose result rows do not include "
+            "persisted per-puzzle `started_at` / `ended_at` timestamps. Filesystem mtimes, "
+            "Git commit times, and per-example `elapsed_seconds` sums are NOT substitutes for "
+            "concurrent-run wall-clock duration, so no historical wall time or throughput is "
+            "reconstructed for those runs. Future reruns of this gate write both timestamps on "
+            "every result row."
+        )
+        lines.append("")
+        for row in unavailable:
+            lines.append(f"- `{row['label']}` (`{row['model_id']}`): wall_time_status = `{row['wall_time_status']}`.")
+        lines.append("")
     lines += [
         "## Capability ladder (sorted by coverage)",
         "",
@@ -881,12 +911,16 @@ def _render_summary(per_model, ladder, totals, metadata, chosen, run_dir):
     for row in ladder:
         cpc = row["cost_per_verified_correct"]
         cpc_str = f"${cpc:.6f}" if cpc is not None else "n/a"
+        tput = row["examples_per_minute"]
+        wall = row["wall_minutes"]
+        tput_str = f"{tput:.1f}" if tput is not None else "n/a"
+        wall_str = f"{wall:.1f}" if wall is not None else "n/a"
         lines.append(
             f"| {row['label']} | `{row['model_id']}` | {row['role']} | {row['coverage']:.1%} | "
             f"{row['solved']}/{row['n']} | ${row['cost_usd']:.4f} | {cpc_str} | "
             f"{row['median_reasoning_tokens']:.0f} | {row['truncation']} | "
             f"{row['clue_violation']} | {row['malformed']} | "
-            f"{row['examples_per_minute']:.1f} | {row['wall_minutes']:.1f} |"
+            f"{tput_str} | {wall_str} |"
         )
     lines += ["", "## Coverage by house bin", ""]
     houses = list(range(2, 7))
@@ -1039,5 +1073,25 @@ def finalize(output, executable, chosen_workers, git_commit, probe_results, reje
             "qwen3-8b reasoning-positive": small.get("reasoning_tokens", {}).get("positive_count", 0),
             "qwen3-8b provider routing": "OpenRouter default; sole available endpoint Alibaba",
         },
+    )
+    return metrics
+
+
+def regenerate_metrics_from_results(run_dir, chosen_workers, probe_results, rejected):
+    """Recompute metrics.json and summary.md from existing result rows.
+
+    Does NOT re-invoke Lean; uses the Lean verdicts already persisted on each
+    result row. Use this when only the aggregation policy changed (e.g. wall
+    time provenance) and the underlying experiment did not run again.
+    """
+    metrics = compute_metrics(run_dir)
+    _write_json(run_dir / "metrics.json", metrics)
+    metadata = {"chosen_workers": chosen_workers,
+                "probe_results": probe_results,
+                "rejected": rejected}
+    (run_dir / "summary.md").write_text(
+        _render_summary(metrics["per_model"], metrics["ladder"],
+                        metrics["totals"], metadata, chosen_workers, run_dir),
+        encoding="utf-8",
     )
     return metrics
