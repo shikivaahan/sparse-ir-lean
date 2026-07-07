@@ -48,6 +48,7 @@ from sparseir_harness.trace_parser_gate import (  # noqa: E402  (sys.path set ab
 # a cheap "is the model trying to expose kernel internals?" diagnostic.
 PRIVATE_KERNEL_RULE_NAMES: tuple[str, ...] = (
     "given_found_at_place",
+    "given_not_at_eliminate",
     "bijection_place_eliminates_same_value_other_houses",
     "bijection_place_eliminates_other_values_same_house",
     "bijection_cell_singleton_forces_place",
@@ -68,6 +69,15 @@ PRIVATE_KERNEL_RULE_NAMES: tuple[str, ...] = (
     "two_between_eliminate_no_possible_partner",
     "solved_conclusion",
     "contradiction_detection",
+)
+
+# Order-invariant: a runtime guard for the rule count. Bumping this is a
+# Statement that the Lean side has gained or lost a private kernel rule;
+# it must be a deliberate change kept in sync with
+# SparseIRLean/StepKernel.lean::supportedRules.
+assert len(PRIVATE_KERNEL_RULE_NAMES) == 22, (
+    "PRIVATE_KERNEL_RULE_NAMES count drifted from the 22 internal "
+    "StepKernel.supportedRules names; update the tuple and the assertion."
 )
 
 
@@ -236,7 +246,7 @@ def analyze_outputs(
             continue
 
         raw_text: str = raw_row.get("raw_output", "") or ""
-        analyze["raw_output_present"] = bool(raw_text.strip())
+        analyze["provider_output_present"] = bool(raw_text.strip())
         if raw_text.strip():
             provider_output_present += 1
 
