@@ -316,6 +316,141 @@ def test_frozen_trace_schema_validates_against_lean_parser(tmp_path: Path) -> No
     )
 
 
+# Regression test: the per-sample four-layer evidence emitted by
+# scripts/stage4_provider_stepwise.py must use the canonical field name
+# `provider_output_present`. A prior freeze used `raw_output_present` on
+# the normal-row path while `provider_output_present` was used on the
+# provider-error path — inconsistent. This test pins the canonical name
+# so a future edit cannot silently re-introduce the alias.
+PROVIDER_OUTPUT_PRESENT_FIELD = "provider_output_present"
+LEGACY_PROVIDER_OUTPUT_PRESENT_FIELDS = ("raw_output_present",)
+
+
+def test_provider_stepwise_analysis_uses_canonical_field_name() -> None:
+    """If `scripts/stage4_provider_stepwise.py` ever emits per-sample rows
+    with the legacy `raw_output_present` (or any other alias) field instead
+    of `provider_output_present`, this test fails the build. The check
+    asserts (a) every analyze row carries the canonical key, (b) no row
+    carries any of the forbidden alias keys, (c) the four-layer metrics
+    pipeline in `analyze_outputs` populates the field correctly.
+    """
+    import sys
+
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from stage4_provider_stepwise import (  # noqa: E402
+        PRIVATE_KERNEL_RULE_NAMES,
+        analyze_outputs,
+    )
+    import jsonschema
+
+    # Build a fake output dir with one provider-error row, one raw-JSON
+    # valid + schema-valid + Lean TRACE_PARSED row, and one garbage-JSON row.
+    fake_dir = ROOT / "eval" / "stage4-fake-analyze-test"
+    fake_dir.mkdir(parents=True, exist_ok=True)
+    raw_lines = [
+        {
+            "sample_id": "alpha-00",
+            "scenario": "alpha",
+            "problem_id": "p1",
+            "provider_error": "rate limit",
+        },
+        {
+            "sample_id": "beta-00",
+            "scenario": "beta",
+            "problem_id": "p2",
+            "raw_output": json.dumps(
+                {
+                    "schema_version": "0.2",
+                    "problem_id": "p2",
+                    "ops": [{"op": "conclude", "status": "solved"}],
+                }
+            ),
+        },
+        {
+            "sample_id": "gamma-00",
+            "scenario": "gamma",
+            "problem_id": "p3",
+            "raw_output": '{"schema_version": "0.2", "problem_id":',  # malformed JSON
+        },
+    ]
+    (fake_dir / "raw_outputs.jsonl").write_text(
+        "\n".join(json.dumps(r) for r in raw_lines) + "\n", encoding="utf-8"
+    )
+    (fake_dir / "prompts.jsonl").write_text(
+        "\n".join(
+            json.dumps(
+                {
+                    "sample_id": r["sample_id"],
+                    "scenario": r["scenario"],
+                    "problem_id": r["problem_id"],
+                    "model": "test",
+                    "messages": [],
+                }
+            )
+            for r in raw_lines
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    schema = json.loads((ROOT / "schemas" / "zebra-trace.schema.json").read_text(encoding="utf-8"))
+    schema_validator = jsonschema.Draft202012Validator(schema)
+    executable = ROOT / ".lake" / "build" / "bin" / "sparse-ir-lean"
+    executable_arg = executable if executable.is_file() else None
+
+    manifest = analyze_outputs(
+        fake_dir,
+        lean_executable=executable_arg,
+        schema_validator=schema_validator,
+        model="test",
+    )
+    rows = [
+        json.loads(line)
+        for line in (fake_dir / "analyze_results.jsonl").read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    assert len(rows) == 3, rows
+
+    # (a) every analyze row carries the canonical key.
+    for r in rows:
+        assert PROVIDER_OUTPUT_PRESENT_FIELD in r, (
+            f"row missing canonical field {PROVIDER_OUTPUT_PRESENT_FIELD!r}: {r}"
+        )
+
+    # (b) no row carries any forbidden alias key.
+    for r in rows:
+        for alias in LEGACY_PROVIDER_OUTPUT_PRESENT_FIELDS:
+            assert alias not in r, (
+                f"row still carries legacy alias {alias!r}: {r}"
+            )
+
+    # (c) The provider-output-present value is meaningful: provider_error
+    # row -> False, valid-output row -> True, garbage-JSON row -> True
+    # (the provider DID return text; what we mean by "valid JSON" is the
+    # next layer).
+    by_id = {r["sample_id"]: r for r in rows}
+    assert by_id["alpha-00"][PROVIDER_OUTPUT_PRESENT_FIELD] is False
+    assert by_id["beta-00"][PROVIDER_OUTPUT_PRESENT_FIELD] is True
+    assert by_id["gamma-00"][PROVIDER_OUTPUT_PRESENT_FIELD] is True
+    # Also sanity-check that the global count the manifest reports matches
+    # what the rows say.
+    counts = [
+        bool(r.get(PROVIDER_OUTPUT_PRESENT_FIELD)) for r in rows
+    ]
+    assert manifest["provider_returned_output"] == sum(counts)
+    # And the 22 PRIVATE_KERNEL_RULE_NAMES tuple must remain complete and
+    # in sync with SparseIRLean.StepKernel.supportedRules.
+    assert "given_found_at_place" in PRIVATE_KERNEL_RULE_NAMES
+    assert "given_not_at_eliminate" in PRIVATE_KERNEL_RULE_NAMES
+    assert "contradiction_detection" in PRIVATE_KERNEL_RULE_NAMES
+    assert len(PRIVATE_KERNEL_RULE_NAMES) == 22
+
+    # Cleanup.
+    import shutil as _shutil
+
+    _shutil.rmtree(fake_dir)
+
+
 def test_frozen_trace_schema_rejects_internal_rule_names() -> None:
     """The published schema must not admit any of the 22 internal Lean
     consequence-rule names as a valid justification field. This is a hard
