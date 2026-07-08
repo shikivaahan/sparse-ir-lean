@@ -28,7 +28,7 @@ This repository currently contributes:
 | Lean complete-candidate checker | **Built and evaluated** | Checks completeness, bijections, and all clue predicates for a supplied grid. This is the Mode-0 path used in the reported results. |
 | Candidate-level clingo differential validation | **Built** | Independently compares candidate semantics against an ASP encoding during development. clingo is not in the runtime trust boundary. |
 | Provider-backed evaluation harness | **Built and run** | Stores prompts, raw provider output, parsed candidates, Lean verdicts, failures, and aggregate metrics. |
-| Step kernel | **Implemented, incompletely validated** | Supports local operations, but its evidence is example-based rather than a complete candidate-style differential gate. |
+| Step kernel | **Implemented, empirically validated** | Supports local operations. Closes the missing stepwise half of G1 with two independent clingo oracles: global soundness (zero unsound accepts over 1,000 gold + 10,000 fuzzed puzzles, 139,846 SAT-consistent step queries) and justification-local differential (zero disagreements over the supported place/eliminate consequence rules). See [eval/gates/stage3_stepwise_g1/summary.md](eval/gates/stage3_stepwise_g1/summary.md) and [DESIGN.md](eval/gates/stage3_stepwise_g1/DESIGN.md). |
 | Trace parser (lower JSON → Trace AST) | **Built and frozen (Stage 4)** | Frozen contract: `parse_trace` lowers a trace JSON object into a `Trace` AST and returns a structured 26-code error taxonomy. The public justification shape is a tagged union: `{clue, from?}` or `{rule: bijection, from?}` (no private kernel rule names). Replay of the parsed trace and semantic stepwise checking are **not** implemented; no end-to-end Mode-1 or Mode-2 result is claimed. The parser does not require `conclude` — that is a Stage 5 / replay concern. |
 | Verifier-guided feedback and repair | **Not built** | The central feedback-granularity experiment remains future work. |
 | Natural-language to certificate parser | **Not built/evaluated end to end** | Current experiments start from gold certificates. |
@@ -192,6 +192,14 @@ The natural-language-to-certificate arrow is intentionally not claimed as a buil
 For a supplied grid, Lean checks that every category is a bijection over houses and that each typed clue predicate is satisfied. It does not enumerate assignments, call a solver, consult the gold answer, or repair the grid. This asymmetry keeps the trusted decision small and inspectable.
 
 Candidate-level clue semantics were tested against an independent clingo encoding. That differential test is evidence about this bounded implementation; it is not a proof that the certificate matches human intent, nor does it establish the same validation depth for stepwise operations.
+
+Stepwise G1 evidence covers three separate trust claims that are reported independently:
+
+* **Candidate G1** — zero Lean↔clingo differential disagreement on complete bijective candidates (existing `stage3b_differential_candidates` gate).
+* **Stepwise global soundness** — every Lean-accepted place/eliminate step on a SAT-consistent state is globally forced under `Puzzle + StepState` by the independent clingo oracle; zero unsound accepted steps over the recorded corpus.
+* **Stepwise local-rule differential** — over the supported place/eliminate consequence rules, Lean acceptance agrees with an independent clingo oracle that uses only the structural bijection, the current state, and the single cited clue; zero disagreements.
+
+See [Stage 3 stepwise G1 closure](eval/gates/stage3_stepwise_g1/summary.md) for headline numbers and the design note ([DESIGN.md](eval/gates/stage3_stepwise_g1/DESIGN.md)) explaining why the global and local oracles are separate.
 
 ## What Lean guarantees, and what it does not
 
@@ -412,7 +420,7 @@ This tests whether verifier feedback adds useful information beyond rejection sa
 ## Next steps
 
 1. Build trace replay and the first-failure protocol on top of the frozen Stage 4 trace-parser contract (`SparseIRLean/Trace.lean`), then run Mode-1 and Mode-2 repair experiments against blind resampling, with matched budgets.
-2. Close the stepwise semantic-validation gap against an independent reference.
+2. **DONE** (Stage 3 stepwise G1 closure PR): close the stepwise semantic-validation gap against an independent reference. See [eval/gates/stage3_stepwise_g1/summary.md](eval/gates/stage3_stepwise_g1/summary.md) — candidate G1, stepwise global soundness, and stepwise local-rule differential all closed with zero disagreements over 1,000 gold + 10,000 fuzzed puzzles and 139,846 SAT-consistent step queries. Stage 5 replay and Mode 1/2 remain not started.
 3. Build the trusted `Pretty.lean` audit renderer and evaluate human detection of certificate mistranslations and automation complacency.
 5. Move beyond ≤6-house ZebraLogic to measure the residual tail on instances that challenge frontier models.
 6. Compare against stronger uncertainty baselines with multiple seeds.
