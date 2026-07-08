@@ -192,3 +192,11 @@ eval/gates/**/raw/
 eval/gates/**/probe/
 eval/**/inspect_logs/
 *.eval
+
+# Stage 3 stepwise G1 closure: large per-case evidence is regenerable from
+# the deterministic seed + problem fabricator + Lean executable + clingo.
+# Keep only aggregated manifest, summary, design note, coverage, config, and
+# empty disagreement/counterexample JSONLs in git.
+eval/gates/stage3_stepwise_g1/fabricated_problems/
+eval/gates/stage3_stepwise_g1/results.jsonl
+eval/gates/stage3_stepwise_g1/step_cases.jsonl
