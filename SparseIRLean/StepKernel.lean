@@ -255,6 +255,18 @@ private def noPartnerAtDistance (puzzle : CompiledPuzzle) (state : StepState)
     attributePossible state item other &&
       (house + distance == other || other + distance == house)
 
+private def partnerAvailableForDistance (puzzle : CompiledPuzzle) (state : StepState)
+    (item : Zebra.Attribute) (house distance : Nat) : Bool :=
+  match placedHouse? puzzle state item with
+  | some h => h + distance == house || house + distance == h
+  | none => attributePossible state item (house + distance) || attributePossible state item (house - distance)
+
+private def attributeAvailably (puzzle : CompiledPuzzle) (state : StepState)
+    (item : Zebra.Attribute) (house : Nat) : Bool :=
+  match placedHouse? puzzle state item with
+  | some h => h == house
+  | none => attributePossible state item house
+
 private def ruleAllows (puzzle : CompiledPuzzle) (state : StepState)
     (step : SingleStep) : Except StepError Bool := do
   let justification := match step with
@@ -333,16 +345,27 @@ private def ruleAllows (puzzle : CompiledPuzzle) (state : StepState)
           pure <| if item == a then !attributePossible state b house
             else if item == b then !attributePossible state a house else false
       | "direct_left_eliminate_no_possible_partner", some (.directLeft _ a b) =>
-          pure <| if item == a then !attributePossible state b (house + 1)
-            else if item == b then house == 1 || !attributePossible state a (house - 1)
+          pure <| if item == a then
+              !attributePossible state b (house + 1) ||
+                !attributeAvailably puzzle state b (house + 1)
+            else if item == b then
+              house == 1 || !attributeAvailably puzzle state a (house - 1)
             else false
       | "direct_right_eliminate_no_possible_partner", some (.directRight _ a b) =>
-          pure <| if item == a then house == 1 || !attributePossible state b (house - 1)
-            else if item == b then !attributePossible state a (house + 1)
+          pure <| if item == a then
+              house == 1 || !attributeAvailably puzzle state b (house - 1)
+            else if item == b then
+              !attributePossible state a (house + 1) ||
+                !attributeAvailably puzzle state a (house + 1)
             else false
       | "side_by_side_eliminate_no_possible_neighbor", some (.sideBySide _ a b) =>
-          pure <| if item == a then noPartnerAtDistance puzzle state b house 1
-            else if item == b then noPartnerAtDistance puzzle state a house 1 else false
+          pure <| if item == a then
+              noPartnerAtDistance puzzle state b house 1 ||
+                ¬ partnerAvailableForDistance puzzle state b house 1
+            else if item == b then
+              noPartnerAtDistance puzzle state a house 1 ||
+                ¬ partnerAvailableForDistance puzzle state a house 1
+            else false
       | "left_of_eliminate_impossible_order", some (.leftOf _ a b) =>
           pure <| if item == a then !(possibleHouses puzzle state b).any (· > house)
             else if item == b then !(possibleHouses puzzle state a).any (· < house)
@@ -352,11 +375,21 @@ private def ruleAllows (puzzle : CompiledPuzzle) (state : StepState)
             else if item == b then !(possibleHouses puzzle state a).any (· > house)
             else false
       | "one_between_eliminate_no_possible_partner", some (.oneBetween _ a b) =>
-          pure <| if item == a then noPartnerAtDistance puzzle state b house 2
-            else if item == b then noPartnerAtDistance puzzle state a house 2 else false
+          pure <| if item == a then
+              noPartnerAtDistance puzzle state b house 2 ||
+                ¬ partnerAvailableForDistance puzzle state b house 2
+            else if item == b then
+              noPartnerAtDistance puzzle state a house 2 ||
+                ¬ partnerAvailableForDistance puzzle state a house 2
+            else false
       | "two_between_eliminate_no_possible_partner", some (.twoBetween _ a b) =>
-          pure <| if item == a then noPartnerAtDistance puzzle state b house 3
-            else if item == b then noPartnerAtDistance puzzle state a house 3 else false
+          pure <| if item == a then
+              noPartnerAtDistance puzzle state b house 3 ||
+                ¬ partnerAvailableForDistance puzzle state b house 3
+            else if item == b then
+              noPartnerAtDistance puzzle state a house 3 ||
+                ¬ partnerAvailableForDistance puzzle state a house 3
+            else false
       | _, _ => pure false
   | .conclude .. => pure false
 
