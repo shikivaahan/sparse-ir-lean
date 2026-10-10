@@ -1,0 +1,11 @@
+{
+  "compiled_path": "eval/gates/stage2_gate_a_compile_all/compiled_problems.jsonl",
+  "reference_dir": "eval/gates/stage3a_reference_solutions",
+  "output_dir": "eval/gates/stage3_stepwise_g1",
+  "fuzz_seed": 20260815,
+  "fuzz_count": 10000,
+  "states_per_puzzle": 3,
+  "steps_per_state": 8,
+  "clingo_timeout_seconds": 10.0,
+  "seed": 20260815
+}
