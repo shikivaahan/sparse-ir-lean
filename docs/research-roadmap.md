@@ -27,14 +27,14 @@ The larger project asks whether models can reason in compact, checkable SparseIR
 | Verifier feedback | Do first-failure or stepwise Lean reports repair failures better than best-of-N? | Untested |
 | Parser faithfulness | Does natural language to certificate translation preserve the intended task? | Untested; current results use gold certificates |
 | Human audit | Do people catch certificate misframings, and does a “verified” label cause over-trust? | Untested |
-| Cost efficiency | Does a cheap model plus Lean beat frontier reasoning at fixed precision? | Untested |
+| Cost efficiency | Does a cheap model plus Lean beat frontier reasoning at fixed precision? | Small single-shot directional probe only; end-to-end superiority untested |
 | Tactics / recursion | Do high-level tactics or checked subproblem reuse reduce cost? | Untested |
 | Swappable verifier backend | Can the checker interface support Lean or another verified or specialized backend without changing the evaluation harness? | Designed in the spec; v0 uses Lean only |
 | Model self-check | Can a model's own self-verification approximate the checker closely enough to become useful as a baseline or fallback signal? | Untested; not trusted for commits in v0 |
 
 The larger architecture is checker-interface-first, not necessarily Lean-only forever. v0 uses Lean as the only trusted backend, but the spec defines a backend contract so the harness can eventually route the same abstract operations to another trusted checker. Such a backend would need deterministic verdicts, a clear result vocabulary, and its own validation gate before it could produce committed results. Model self-check is different: it may become a useful comparison, fallback, or calibration signal if models improve, but it is not equivalent to a trusted checker and cannot replace Lean as the commit judge in v0.
 
-This README reports a checked selective-prediction result, not the completed SparseIR architecture.
+The [README](../README.md) reports a checked selective-prediction result, not the completed SparseIR architecture.
 
 ## What would weaken this direction?
 

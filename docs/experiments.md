@@ -44,7 +44,7 @@ All headline runs use gold certificates and one end-only Lean check.
 
 The v4-flash ladder result should not be read as proof of zero tail risk. A separate clean 1,000-puzzle run measured 95.9% coverage and about **1.0% confident-wrong among parseable answers**. The ladder was too easy to expose that small tail reliably.
 
-![Unchecked confident-wrong rate across the 200-puzzle capability ladder; committed error after Lean is zero for all three models.](../report_assets/fig_verifier_value_scaling.png)
+[Capability-ladder figure](../report_assets/fig_verifier_value_scaling.png): the same comparison as the table above, with observed zero committed error after Lean for all three models.
 
 ### High-confidence answers were often wrong
 

@@ -86,7 +86,7 @@ Each model attempted the same balanced **200-puzzle** subset.
 ¹ Clue-violating / (solved + clue-violating), excluding malformed and structurally
 invalid candidates. This is answer behavior, not an elicited confidence score.
 
-![Unchecked wrong complete-candidate rate across the capability ladder.](report_assets/fig_verifier_value_scaling.png)
+[Capability-ladder figure](report_assets/fig_verifier_value_scaling.png) (the same recorded comparison).
 
 ### Confidence, difficulty, and the residual tail
 

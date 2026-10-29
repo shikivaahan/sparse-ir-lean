@@ -4,9 +4,18 @@
 
 ## Offline candidate walkthrough
 
-From the repository root, build with `lake build`, then run this standard-library
-Python example against a committed fixture. It checks one satisfying grid and one
-complete but clue-violating grid; no dataset download or provider is involved.
+From the repository root, build with `lake build` if the verifier is not already
+built, then run this standard-library Python example against a committed fixture.
+It checks one satisfying grid and one complete but clue-violating grid; no dataset
+download or provider is involved. An existing `.lake/build/bin/sparse-ir-lean`
+can be exercised directly without invoking Lake or fetching a toolchain:
+
+```bash
+python3 scripts/run_lean_verifier.py --executable .lake/build/bin/sparse-ir-lean
+```
+
+The information request reports available features; the candidate requests below
+exercise acceptance and rejection.
 
 ```bash
 python3 - <<'PY'
@@ -63,10 +72,10 @@ For example:
 
 ```bash
 # Pretty-print aggregate capability-ladder metrics.
-uv run python -m json.tool eval/gates/stage6_capability_ladder/metrics.json
+python3 -m json.tool eval/gates/stage6_capability_ladder/metrics.json
 
 # Pretty-print the first retained per-example result.
-uv run python -c "import json, pathlib; p=pathlib.Path('eval/gates/stage6_capability_ladder/results.jsonl'); print(json.dumps(json.loads(p.open(encoding='utf-8').readline()), indent=2))"
+python3 -c "import json, pathlib; p=pathlib.Path('eval/gates/stage6_capability_ladder/results.jsonl'); print(json.dumps(json.loads(p.open(encoding='utf-8').readline()), indent=2))"
 ```
 
 ### Run a fresh provider-backed smoke
@@ -146,8 +155,9 @@ PYTHONPATH=src uv run python scripts/stage2_gate_a_compile_all.py \
 ```
 
 Once the ingested problems exist on disk, the previously skipped tests
-turn into real assertions automatically (the next `uv run pytest`
-passes them). Gate commands that build on top of those ingested problems
+turn into real assertions automatically on the next `uv run pytest`; their
+success still depends on the implementation and environment. Gate commands that
+build on top of those ingested problems
 (`scripts/audit_stage2_gate_a_dataset.py`, the Stage 2 Gate B scripts,
 `scripts/run_stage6_*.py`, etc.) then run as designed. None of those
 gate commands call OpenRouter when only the static / parsing /

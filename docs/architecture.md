@@ -166,7 +166,9 @@ flowchart LR
     COMP --> CAND[Mode-0 candidate checker]:::built
     CAND --> EVAL[Provider-backed Mode-0 eval]:::built
     COMP --> STEP[Step kernel]:::partial
-    STEP --> TRACE[Trace parse + replay]:::future
+    COMP --> PARSE[Trace parser]:::built
+    PARSE --> TRACE[Trace replay]:::future
+    STEP --> TRACE
     TRACE --> FEED[Mode 1 / Mode 2 feedback]:::future
     COMP -.-> PRETTY[Trusted audit renderer]:::future
     FEED --> COST[Feedback and cost experiments]:::future
@@ -181,7 +183,7 @@ Mode 0 gates a completed answer. The target system adds two feedback regimes: Mo
 | `SparseIRLean/Json.lean` | Strict problem-envelope and certificate parsing |
 | `SparseIRLean/Compiler.lean` | Static checks and compilation to the internal puzzle form |
 | `SparseIRLean/CheckerCore.lean` | Complete-candidate Mode-0 semantics |
-| `SparseIRLean/StepKernel.lean` | Experimental stepwise kernel (unbuilt for Mode 1/2 reuse) |
+| `SparseIRLean/StepKernel.lean` | Implemented local step operations; not integrated into Mode 1/2 replay |
 | `SparseIRLean/Trace.lean` | Frozen trace parser (Stage 4) — `parse_trace` lowers a trace JSON into a `Trace` AST and returns a structured 26-code error taxonomy. The public justification shape is a tagged union (`{clue, from?}` or `{rule: bijection, from?}`). |
 | `SparseIRLean/Main.lean` | Fail-closed JSON CLI |
 | `SparseIRLean/Pretty.lean` | Trusted audit-renderer stub |
